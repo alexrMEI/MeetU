@@ -1,0 +1,589 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		75603D68236B61AC00D81813 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75603D67236B61AC00D81813 /* AppDelegate.swift */; };
+		75603D6A236B61AC00D81813 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75603D69236B61AC00D81813 /* SceneDelegate.swift */; };
+		75603D6C236B61AC00D81813 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75603D6B236B61AC00D81813 /* ViewController.swift */; };
+		75603D6F236B61AC00D81813 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75603D6D236B61AC00D81813 /* Main.storyboard */; };
+		75603D71236B61AE00D81813 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 75603D70236B61AE00D81813 /* Assets.xcassets */; };
+		75603D74236B61AE00D81813 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75603D72236B61AE00D81813 /* LaunchScreen.storyboard */; };
+		75603D7F236B61AE00D81813 /* MeetUTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75603D7E236B61AE00D81813 /* MeetUTests.swift */; };
+		75603D8A236B61AE00D81813 /* MeetUUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75603D89236B61AE00D81813 /* MeetUUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		75603D7B236B61AE00D81813 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75603D5C236B61AC00D81813 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 75603D63236B61AC00D81813;
+			remoteInfo = MeetU;
+		};
+		75603D86236B61AE00D81813 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 75603D5C236B61AC00D81813 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 75603D63236B61AC00D81813;
+			remoteInfo = MeetU;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		75603D64236B61AC00D81813 /* MeetU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetU.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		75603D67236B61AC00D81813 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		75603D69236B61AC00D81813 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		75603D6B236B61AC00D81813 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		75603D6E236B61AC00D81813 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		75603D70236B61AE00D81813 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		75603D73236B61AE00D81813 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		75603D75236B61AE00D81813 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75603D7A236B61AE00D81813 /* MeetUTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeetUTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		75603D7E236B61AE00D81813 /* MeetUTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetUTests.swift; sourceTree = "<group>"; };
+		75603D80236B61AE00D81813 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75603D85236B61AE00D81813 /* MeetUUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeetUUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		75603D89236B61AE00D81813 /* MeetUUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetUUITests.swift; sourceTree = "<group>"; };
+		75603D8B236B61AE00D81813 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		75603D61236B61AC00D81813 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75603D77236B61AE00D81813 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75603D82236B61AE00D81813 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		75603D5B236B61AC00D81813 = {
+			isa = PBXGroup;
+			children = (
+				75603D66236B61AC00D81813 /* MeetU */,
+				75603D7D236B61AE00D81813 /* MeetUTests */,
+				75603D88236B61AE00D81813 /* MeetUUITests */,
+				75603D65236B61AC00D81813 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		75603D65236B61AC00D81813 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				75603D64236B61AC00D81813 /* MeetU.app */,
+				75603D7A236B61AE00D81813 /* MeetUTests.xctest */,
+				75603D85236B61AE00D81813 /* MeetUUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		75603D66236B61AC00D81813 /* MeetU */ = {
+			isa = PBXGroup;
+			children = (
+				75603D67236B61AC00D81813 /* AppDelegate.swift */,
+				75603D69236B61AC00D81813 /* SceneDelegate.swift */,
+				75603D6B236B61AC00D81813 /* ViewController.swift */,
+				75603D6D236B61AC00D81813 /* Main.storyboard */,
+				75603D70236B61AE00D81813 /* Assets.xcassets */,
+				75603D72236B61AE00D81813 /* LaunchScreen.storyboard */,
+				75603D75236B61AE00D81813 /* Info.plist */,
+			);
+			path = MeetU;
+			sourceTree = "<group>";
+		};
+		75603D7D236B61AE00D81813 /* MeetUTests */ = {
+			isa = PBXGroup;
+			children = (
+				75603D7E236B61AE00D81813 /* MeetUTests.swift */,
+				75603D80236B61AE00D81813 /* Info.plist */,
+			);
+			path = MeetUTests;
+			sourceTree = "<group>";
+		};
+		75603D88236B61AE00D81813 /* MeetUUITests */ = {
+			isa = PBXGroup;
+			children = (
+				75603D89236B61AE00D81813 /* MeetUUITests.swift */,
+				75603D8B236B61AE00D81813 /* Info.plist */,
+			);
+			path = MeetUUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		75603D63236B61AC00D81813 /* MeetU */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 75603D8E236B61AE00D81813 /* Build configuration list for PBXNativeTarget "MeetU" */;
+			buildPhases = (
+				75603D60236B61AC00D81813 /* Sources */,
+				75603D61236B61AC00D81813 /* Frameworks */,
+				75603D62236B61AC00D81813 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MeetU;
+			productName = MeetU;
+			productReference = 75603D64236B61AC00D81813 /* MeetU.app */;
+			productType = "com.apple.product-type.application";
+		};
+		75603D79236B61AE00D81813 /* MeetUTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 75603D91236B61AE00D81813 /* Build configuration list for PBXNativeTarget "MeetUTests" */;
+			buildPhases = (
+				75603D76236B61AE00D81813 /* Sources */,
+				75603D77236B61AE00D81813 /* Frameworks */,
+				75603D78236B61AE00D81813 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				75603D7C236B61AE00D81813 /* PBXTargetDependency */,
+			);
+			name = MeetUTests;
+			productName = MeetUTests;
+			productReference = 75603D7A236B61AE00D81813 /* MeetUTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		75603D84236B61AE00D81813 /* MeetUUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 75603D94236B61AE00D81813 /* Build configuration list for PBXNativeTarget "MeetUUITests" */;
+			buildPhases = (
+				75603D81236B61AE00D81813 /* Sources */,
+				75603D82236B61AE00D81813 /* Frameworks */,
+				75603D83236B61AE00D81813 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				75603D87236B61AE00D81813 /* PBXTargetDependency */,
+			);
+			name = MeetUUITests;
+			productName = MeetUUITests;
+			productReference = 75603D85236B61AE00D81813 /* MeetUUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		75603D5C236B61AC00D81813 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+				ORGANIZATIONNAME = "MeetU Inc.";
+				TargetAttributes = {
+					75603D63236B61AC00D81813 = {
+						CreatedOnToolsVersion = 11.0;
+					};
+					75603D79236B61AE00D81813 = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 75603D63236B61AC00D81813;
+					};
+					75603D84236B61AE00D81813 = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 75603D63236B61AC00D81813;
+					};
+				};
+			};
+			buildConfigurationList = 75603D5F236B61AC00D81813 /* Build configuration list for PBXProject "MeetU" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 75603D5B236B61AC00D81813;
+			productRefGroup = 75603D65236B61AC00D81813 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				75603D63236B61AC00D81813 /* MeetU */,
+				75603D79236B61AE00D81813 /* MeetUTests */,
+				75603D84236B61AE00D81813 /* MeetUUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		75603D62236B61AC00D81813 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75603D74236B61AE00D81813 /* LaunchScreen.storyboard in Resources */,
+				75603D71236B61AE00D81813 /* Assets.xcassets in Resources */,
+				75603D6F236B61AC00D81813 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75603D78236B61AE00D81813 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75603D83236B61AE00D81813 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		75603D60236B61AC00D81813 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75603D6C236B61AC00D81813 /* ViewController.swift in Sources */,
+				75603D68236B61AC00D81813 /* AppDelegate.swift in Sources */,
+				75603D6A236B61AC00D81813 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75603D76236B61AE00D81813 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75603D7F236B61AE00D81813 /* MeetUTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		75603D81236B61AE00D81813 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				75603D8A236B61AE00D81813 /* MeetUUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		75603D7C236B61AE00D81813 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 75603D63236B61AC00D81813 /* MeetU */;
+			targetProxy = 75603D7B236B61AE00D81813 /* PBXContainerItemProxy */;
+		};
+		75603D87236B61AE00D81813 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 75603D63236B61AC00D81813 /* MeetU */;
+			targetProxy = 75603D86236B61AE00D81813 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		75603D6D236B61AC00D81813 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				75603D6E236B61AC00D81813 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		75603D72236B61AE00D81813 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				75603D73236B61AE00D81813 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		75603D8C236B61AE00D81813 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		75603D8D236B61AE00D81813 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		75603D8F236B61AE00D81813 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MeetU/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ipl.MeetU;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		75603D90236B61AE00D81813 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MeetU/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ipl.MeetU;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		75603D92236B61AE00D81813 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MeetUTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ipl.MeetUTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeetU.app/MeetU";
+			};
+			name = Debug;
+		};
+		75603D93236B61AE00D81813 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MeetUTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ipl.MeetUTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/MeetU.app/MeetU";
+			};
+			name = Release;
+		};
+		75603D95236B61AE00D81813 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MeetUUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ipl.MeetUUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MeetU;
+			};
+			name = Debug;
+		};
+		75603D96236B61AE00D81813 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = MeetUUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = ipl.MeetUUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = MeetU;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		75603D5F236B61AC00D81813 /* Build configuration list for PBXProject "MeetU" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75603D8C236B61AE00D81813 /* Debug */,
+				75603D8D236B61AE00D81813 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		75603D8E236B61AE00D81813 /* Build configuration list for PBXNativeTarget "MeetU" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75603D8F236B61AE00D81813 /* Debug */,
+				75603D90236B61AE00D81813 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		75603D91236B61AE00D81813 /* Build configuration list for PBXNativeTarget "MeetUTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75603D92236B61AE00D81813 /* Debug */,
+				75603D93236B61AE00D81813 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		75603D94236B61AE00D81813 /* Build configuration list for PBXNativeTarget "MeetUUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				75603D95236B61AE00D81813 /* Debug */,
+				75603D96236B61AE00D81813 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 75603D5C236B61AC00D81813 /* Project object */;
+}
