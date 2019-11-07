@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5BAA1DCAF482B27E78DC5876 /* Pods_MeetUTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC78349DCFEE574E1C56D553 /* Pods_MeetUTests.framework */; };
 		75603D68236B61AC00D81813 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75603D67236B61AC00D81813 /* AppDelegate.swift */; };
 		75603D6A236B61AC00D81813 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75603D69236B61AC00D81813 /* SceneDelegate.swift */; };
 		75603D6C236B61AC00D81813 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75603D6B236B61AC00D81813 /* ViewController.swift */; };
@@ -15,6 +16,9 @@
 		75603D74236B61AE00D81813 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75603D72236B61AE00D81813 /* LaunchScreen.storyboard */; };
 		75603D7F236B61AE00D81813 /* MeetUTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75603D7E236B61AE00D81813 /* MeetUTests.swift */; };
 		75603D8A236B61AE00D81813 /* MeetUUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75603D89236B61AE00D81813 /* MeetUUITests.swift */; };
+		A8B4A85BBF2F7545B35F0A84 /* Pods_MeetU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48EA7310C895DCFA6D967A93 /* Pods_MeetU.framework */; };
+		B48EBCBC2374A99B0036B407 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B48EBCBB2374A99B0036B407 /* GoogleService-Info.plist */; };
+		DC6BF52391ACE61F1415D33D /* Pods_MeetU_MeetUUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57113C123C32829CBE8E8621 /* Pods_MeetU_MeetUUITests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +39,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		087F6AC6D39C8D857B5005F5 /* Pods-MeetU.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetU.release.xcconfig"; path = "Target Support Files/Pods-MeetU/Pods-MeetU.release.xcconfig"; sourceTree = "<group>"; };
+		1499E84B07F8196479D0179D /* Pods-MeetUTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetUTests.debug.xcconfig"; path = "Target Support Files/Pods-MeetUTests/Pods-MeetUTests.debug.xcconfig"; sourceTree = "<group>"; };
+		313D2666F6237FEE8EE92CEA /* Pods-MeetU-MeetUUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetU-MeetUUITests.debug.xcconfig"; path = "Target Support Files/Pods-MeetU-MeetUUITests/Pods-MeetU-MeetUUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		48EA7310C895DCFA6D967A93 /* Pods_MeetU.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetU.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		57113C123C32829CBE8E8621 /* Pods_MeetU_MeetUUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetU_MeetUUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		75603D64236B61AC00D81813 /* MeetU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MeetU.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		75603D67236B61AC00D81813 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		75603D69236B61AC00D81813 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +58,11 @@
 		75603D85236B61AE00D81813 /* MeetUUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeetUUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		75603D89236B61AE00D81813 /* MeetUUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetUUITests.swift; sourceTree = "<group>"; };
 		75603D8B236B61AE00D81813 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		848E306E1539FCD6BA7696E2 /* Pods-MeetU.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetU.debug.xcconfig"; path = "Target Support Files/Pods-MeetU/Pods-MeetU.debug.xcconfig"; sourceTree = "<group>"; };
+		B48EBCBB2374A99B0036B407 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EB3E60CB3B050F55A9851300 /* Pods-MeetUTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetUTests.release.xcconfig"; path = "Target Support Files/Pods-MeetUTests/Pods-MeetUTests.release.xcconfig"; sourceTree = "<group>"; };
+		EC78349DCFEE574E1C56D553 /* Pods_MeetUTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetUTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB2586ACD40EDE79903EF797 /* Pods-MeetU-MeetUUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetU-MeetUUITests.release.xcconfig"; path = "Target Support Files/Pods-MeetU-MeetUUITests/Pods-MeetU-MeetUUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8B4A85BBF2F7545B35F0A84 /* Pods_MeetU.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5BAA1DCAF482B27E78DC5876 /* Pods_MeetUTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC6BF52391ACE61F1415D33D /* Pods_MeetU_MeetUUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +100,8 @@
 				75603D7D236B61AE00D81813 /* MeetUTests */,
 				75603D88236B61AE00D81813 /* MeetUUITests */,
 				75603D65236B61AC00D81813 /* Products */,
+				AFA9678D46D1A5DBD0A7EF7A /* Pods */,
+				F007BB09117853DB6EF5E9D0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -106,6 +125,7 @@
 				75603D70236B61AE00D81813 /* Assets.xcassets */,
 				75603D72236B61AE00D81813 /* LaunchScreen.storyboard */,
 				75603D75236B61AE00D81813 /* Info.plist */,
+				B48EBCBB2374A99B0036B407 /* GoogleService-Info.plist */,
 			);
 			path = MeetU;
 			sourceTree = "<group>";
@@ -128,6 +148,30 @@
 			path = MeetUUITests;
 			sourceTree = "<group>";
 		};
+		AFA9678D46D1A5DBD0A7EF7A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				848E306E1539FCD6BA7696E2 /* Pods-MeetU.debug.xcconfig */,
+				087F6AC6D39C8D857B5005F5 /* Pods-MeetU.release.xcconfig */,
+				313D2666F6237FEE8EE92CEA /* Pods-MeetU-MeetUUITests.debug.xcconfig */,
+				FB2586ACD40EDE79903EF797 /* Pods-MeetU-MeetUUITests.release.xcconfig */,
+				1499E84B07F8196479D0179D /* Pods-MeetUTests.debug.xcconfig */,
+				EB3E60CB3B050F55A9851300 /* Pods-MeetUTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F007BB09117853DB6EF5E9D0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				48EA7310C895DCFA6D967A93 /* Pods_MeetU.framework */,
+				57113C123C32829CBE8E8621 /* Pods_MeetU_MeetUUITests.framework */,
+				EC78349DCFEE574E1C56D553 /* Pods_MeetUTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +179,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 75603D8E236B61AE00D81813 /* Build configuration list for PBXNativeTarget "MeetU" */;
 			buildPhases = (
+				960EA9F488AFF1E2AE9957DC /* [CP] Check Pods Manifest.lock */,
 				75603D60236B61AC00D81813 /* Sources */,
 				75603D61236B61AC00D81813 /* Frameworks */,
 				75603D62236B61AC00D81813 /* Resources */,
+				63CAF9F15CAAEA2834EE212E /* [CP] Embed Pods Frameworks */,
+				B6ABD8B7FF9D6D6C116F3209 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -152,6 +199,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 75603D91236B61AE00D81813 /* Build configuration list for PBXNativeTarget "MeetUTests" */;
 			buildPhases = (
+				5BC7FE7CDE4A5ADE231329DF /* [CP] Check Pods Manifest.lock */,
 				75603D76236B61AE00D81813 /* Sources */,
 				75603D77236B61AE00D81813 /* Frameworks */,
 				75603D78236B61AE00D81813 /* Resources */,
@@ -170,9 +218,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 75603D94236B61AE00D81813 /* Build configuration list for PBXNativeTarget "MeetUUITests" */;
 			buildPhases = (
+				BE469536D3DFA8C67C05F7A5 /* [CP] Check Pods Manifest.lock */,
 				75603D81236B61AE00D81813 /* Sources */,
 				75603D82236B61AE00D81813 /* Frameworks */,
 				75603D83236B61AE00D81813 /* Resources */,
+				4FBD5BE4595B3B8FB760334A /* [CP] Embed Pods Frameworks */,
+				6A0A7457B88F7E3A0E0AE26D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -233,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75603D74236B61AE00D81813 /* LaunchScreen.storyboard in Resources */,
+				B48EBCBC2374A99B0036B407 /* GoogleService-Info.plist in Resources */,
 				75603D71236B61AE00D81813 /* Assets.xcassets in Resources */,
 				75603D6F236B61AC00D81813 /* Main.storyboard in Resources */,
 			);
@@ -253,6 +305,143 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		4FBD5BE4595B3B8FB760334A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MeetU-MeetUUITests/Pods-MeetU-MeetUUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MeetU-MeetUUITests/Pods-MeetU-MeetUUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MeetU-MeetUUITests/Pods-MeetU-MeetUUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5BC7FE7CDE4A5ADE231329DF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MeetUTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		63CAF9F15CAAEA2834EE212E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MeetU/Pods-MeetU-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MeetU/Pods-MeetU-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MeetU/Pods-MeetU-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6A0A7457B88F7E3A0E0AE26D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MeetU-MeetUUITests/Pods-MeetU-MeetUUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MeetU-MeetUUITests/Pods-MeetU-MeetUUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MeetU-MeetUUITests/Pods-MeetU-MeetUUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		960EA9F488AFF1E2AE9957DC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MeetU-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B6ABD8B7FF9D6D6C116F3209 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MeetU/Pods-MeetU-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MeetU/Pods-MeetU-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MeetU/Pods-MeetU-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BE469536D3DFA8C67C05F7A5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MeetU-MeetUUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		75603D60236B61AC00D81813 /* Sources */ = {
@@ -432,6 +621,7 @@
 		};
 		75603D8F236B61AE00D81813 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 848E306E1539FCD6BA7696E2 /* Pods-MeetU.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -449,6 +639,7 @@
 		};
 		75603D90236B61AE00D81813 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 087F6AC6D39C8D857B5005F5 /* Pods-MeetU.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -466,6 +657,7 @@
 		};
 		75603D92236B61AE00D81813 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1499E84B07F8196479D0179D /* Pods-MeetUTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -487,6 +679,7 @@
 		};
 		75603D93236B61AE00D81813 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EB3E60CB3B050F55A9851300 /* Pods-MeetUTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -508,6 +701,7 @@
 		};
 		75603D95236B61AE00D81813 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 313D2666F6237FEE8EE92CEA /* Pods-MeetU-MeetUUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -527,6 +721,7 @@
 		};
 		75603D96236B61AE00D81813 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FB2586ACD40EDE79903EF797 /* Pods-MeetU-MeetUUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
