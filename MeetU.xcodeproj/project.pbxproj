@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,8 +16,8 @@
 		75603D74236B61AE00D81813 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75603D72236B61AE00D81813 /* LaunchScreen.storyboard */; };
 		75603D7F236B61AE00D81813 /* MeetUTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75603D7E236B61AE00D81813 /* MeetUTests.swift */; };
 		75603D8A236B61AE00D81813 /* MeetUUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75603D89236B61AE00D81813 /* MeetUUITests.swift */; };
+		75D6AEBB2385C51600F16C00 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75D6AEBA2385C51600F16C00 /* GoogleService-Info.plist */; };
 		A8B4A85BBF2F7545B35F0A84 /* Pods_MeetU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48EA7310C895DCFA6D967A93 /* Pods_MeetU.framework */; };
-		B48EBCBC2374A99B0036B407 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B48EBCBB2374A99B0036B407 /* GoogleService-Info.plist */; };
 		DC6BF52391ACE61F1415D33D /* Pods_MeetU_MeetUUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57113C123C32829CBE8E8621 /* Pods_MeetU_MeetUUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,8 +58,8 @@
 		75603D85236B61AE00D81813 /* MeetUUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeetUUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		75603D89236B61AE00D81813 /* MeetUUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetUUITests.swift; sourceTree = "<group>"; };
 		75603D8B236B61AE00D81813 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		75D6AEBA2385C51600F16C00 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		848E306E1539FCD6BA7696E2 /* Pods-MeetU.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetU.debug.xcconfig"; path = "Target Support Files/Pods-MeetU/Pods-MeetU.debug.xcconfig"; sourceTree = "<group>"; };
-		B48EBCBB2374A99B0036B407 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EB3E60CB3B050F55A9851300 /* Pods-MeetUTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetUTests.release.xcconfig"; path = "Target Support Files/Pods-MeetUTests/Pods-MeetUTests.release.xcconfig"; sourceTree = "<group>"; };
 		EC78349DCFEE574E1C56D553 /* Pods_MeetUTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetUTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB2586ACD40EDE79903EF797 /* Pods-MeetU-MeetUUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetU-MeetUUITests.release.xcconfig"; path = "Target Support Files/Pods-MeetU-MeetUUITests/Pods-MeetU-MeetUUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -125,7 +125,7 @@
 				75603D70236B61AE00D81813 /* Assets.xcassets */,
 				75603D72236B61AE00D81813 /* LaunchScreen.storyboard */,
 				75603D75236B61AE00D81813 /* Info.plist */,
-				B48EBCBB2374A99B0036B407 /* GoogleService-Info.plist */,
+				75D6AEBA2385C51600F16C00 /* GoogleService-Info.plist */,
 			);
 			path = MeetU;
 			sourceTree = "<group>";
@@ -158,7 +158,6 @@
 				1499E84B07F8196479D0179D /* Pods-MeetUTests.debug.xcconfig */,
 				EB3E60CB3B050F55A9851300 /* Pods-MeetUTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -184,7 +183,6 @@
 				75603D61236B61AC00D81813 /* Frameworks */,
 				75603D62236B61AC00D81813 /* Resources */,
 				63CAF9F15CAAEA2834EE212E /* [CP] Embed Pods Frameworks */,
-				B6ABD8B7FF9D6D6C116F3209 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -223,7 +221,6 @@
 				75603D82236B61AE00D81813 /* Frameworks */,
 				75603D83236B61AE00D81813 /* Resources */,
 				4FBD5BE4595B3B8FB760334A /* [CP] Embed Pods Frameworks */,
-				6A0A7457B88F7E3A0E0AE26D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -247,6 +244,7 @@
 				TargetAttributes = {
 					75603D63236B61AC00D81813 = {
 						CreatedOnToolsVersion = 11.0;
+						LastSwiftMigration = 1120;
 					};
 					75603D79236B61AE00D81813 = {
 						CreatedOnToolsVersion = 11.0;
@@ -284,7 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75603D74236B61AE00D81813 /* LaunchScreen.storyboard in Resources */,
-				B48EBCBC2374A99B0036B407 /* GoogleService-Info.plist in Resources */,
+				75D6AEBB2385C51600F16C00 /* GoogleService-Info.plist in Resources */,
 				75603D71236B61AE00D81813 /* Assets.xcassets in Resources */,
 				75603D6F236B61AC00D81813 /* Main.storyboard in Resources */,
 			);
@@ -363,23 +361,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MeetU/Pods-MeetU-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6A0A7457B88F7E3A0E0AE26D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MeetU-MeetUUITests/Pods-MeetU-MeetUUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MeetU-MeetUUITests/Pods-MeetU-MeetUUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MeetU-MeetUUITests/Pods-MeetU-MeetUUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		960EA9F488AFF1E2AE9957DC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -400,23 +381,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B6ABD8B7FF9D6D6C116F3209 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MeetU/Pods-MeetU-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MeetU/Pods-MeetU-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MeetU/Pods-MeetU-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BE469536D3DFA8C67C05F7A5 /* [CP] Check Pods Manifest.lock */ = {
@@ -624,6 +588,7 @@
 			baseConfigurationReference = 848E306E1539FCD6BA7696E2 /* Pods-MeetU.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MeetU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -632,6 +597,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ipl.MeetU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MeetU/MeetU-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -642,6 +609,7 @@
 			baseConfigurationReference = 087F6AC6D39C8D857B5005F5 /* Pods-MeetU.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MeetU/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -650,6 +618,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ipl.MeetU;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MeetU/MeetU-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
