@@ -529,10 +529,10 @@
             </objects>
             <point key="canvasLocation" x="130" y="1594"/>
         </scene>
-        <!--View Controller-->
+        <!--Create Account View Controller-->
         <scene sceneID="AAK-DF-1MZ">
             <objects>
-                <viewController id="a1b-fN-s3g" sceneMemberID="viewController">
+                <viewController id="a1b-fN-s3g" customClass="CreateAccountViewController" customModule="MeetU" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JKx-gi-X4b">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -584,6 +584,9 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="tintColor" red="0.61408353829999995" green="0.84234568669999998" blue="0.51341547099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" backgroundImage="arrow.right.circle.fill" catalog="system"/>
+                                <connections>
+                                    <action selector="onClickCreateAccount:" destination="a1b-fN-s3g" eventType="touchUpInside" id="P6v-sw-fMY"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -631,10 +634,15 @@
                         <viewLayoutGuide key="safeArea" id="cwf-D5-hKS"/>
                     </view>
                     <navigationItem key="navigationItem" id="m2D-LK-c3b"/>
+                    <connections>
+                        <outlet property="emailTxt" destination="jMK-xz-G5S" id="pmu-2k-9oS"/>
+                        <outlet property="passwordTxt" destination="YbV-6W-uVZ" id="oNl-7n-toD"/>
+                        <outlet property="usernameTxt" destination="YGe-Co-fnv" id="ljn-YX-uSn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X0T-WG-tql" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1141" y="136"/>
+            <point key="canvasLocation" x="1141" y="137"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8sn-CS-C9n">
