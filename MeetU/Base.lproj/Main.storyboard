@@ -7,10 +7,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Email View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MeetU" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="EmailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,6 +56,7 @@
                                 <color key="tintColor" red="0.61408353829999995" green="0.84234568669999998" blue="0.51341547099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" backgroundImage="arrow.right.circle.fill" catalog="system"/>
                                 <connections>
+                                    <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="m2y-2W-ZzN"/>
                                     <segue destination="gJN-Zz-0CM" kind="show" id="PJO-Y3-m68"/>
                                 </connections>
                             </button>
@@ -99,6 +100,7 @@
                             <constraint firstItem="j6v-QL-RNi" firstAttribute="top" secondItem="8Fd-dh-z4g" secondAttribute="bottom" constant="50" id="fTB-rY-y0l">
                                 <variation key="heightClass=compact-widthClass=regular" constant="20"/>
                             </constraint>
+                            <constraint firstItem="i6n-ty-9NX" firstAttribute="top" secondItem="E0a-mw-dHW" secondAttribute="bottom" constant="150" id="jgJ-sW-dme"/>
                             <constraint firstItem="vDc-Pg-t4a" firstAttribute="height" secondItem="j6v-QL-RNi" secondAttribute="height" id="knL-f3-v1R"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="h3B-kw-7Kc" secondAttribute="trailing" constant="-30" id="lE5-c2-3Lu"/>
                             <constraint firstItem="i6n-ty-9NX" firstAttribute="leading" secondItem="8Fd-dh-z4g" secondAttribute="trailing" constant="40" id="pKK-jR-hfY"/>
@@ -113,6 +115,10 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="bhR-5m-ptc"/>
+                    <connections>
+                        <outlet property="emailField" destination="i6n-ty-9NX" id="8QL-9B-Dvb"/>
+                        <outlet property="passwordField" destination="vEO-i9-7Bd" id="XEQ-Y3-B8c"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
