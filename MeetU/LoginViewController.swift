@@ -11,7 +11,7 @@ import UIKit
 import Firebase
 
 @objc(EmailViewController)
-class EmailViewController: UIViewController {
+class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!

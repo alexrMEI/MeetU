@@ -18,7 +18,7 @@
 		75603D8A236B61AE00D81813 /* MeetUUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75603D89236B61AE00D81813 /* MeetUUITests.swift */; };
 		75D6AEBB2385C51600F16C00 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75D6AEBA2385C51600F16C00 /* GoogleService-Info.plist */; };
 		A8B4A85BBF2F7545B35F0A84 /* Pods_MeetU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48EA7310C895DCFA6D967A93 /* Pods_MeetU.framework */; };
-		B4BF32A12385D38C007D68F0 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BF32A02385D38C007D68F0 /* EmailViewController.swift */; };
+		B4BF32A12385D38C007D68F0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BF32A02385D38C007D68F0 /* LoginViewController.swift */; };
 		DC6BF52391ACE61F1415D33D /* Pods_MeetU_MeetUUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57113C123C32829CBE8E8621 /* Pods_MeetU_MeetUUITests.framework */; };
 /* End PBXBuildFile section */
 
@@ -61,7 +61,7 @@
 		75603D8B236B61AE00D81813 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75D6AEBA2385C51600F16C00 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		848E306E1539FCD6BA7696E2 /* Pods-MeetU.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetU.debug.xcconfig"; path = "Target Support Files/Pods-MeetU/Pods-MeetU.debug.xcconfig"; sourceTree = "<group>"; };
-		B4BF32A02385D38C007D68F0 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
+		B4BF32A02385D38C007D68F0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EB3E60CB3B050F55A9851300 /* Pods-MeetUTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetUTests.release.xcconfig"; path = "Target Support Files/Pods-MeetUTests/Pods-MeetUTests.release.xcconfig"; sourceTree = "<group>"; };
 		EC78349DCFEE574E1C56D553 /* Pods_MeetUTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetUTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FB2586ACD40EDE79903EF797 /* Pods-MeetU-MeetUUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetU-MeetUUITests.release.xcconfig"; path = "Target Support Files/Pods-MeetU-MeetUUITests/Pods-MeetU-MeetUUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 				75603D72236B61AE00D81813 /* LaunchScreen.storyboard */,
 				75603D75236B61AE00D81813 /* Info.plist */,
 				75D6AEBA2385C51600F16C00 /* GoogleService-Info.plist */,
-				B4BF32A02385D38C007D68F0 /* EmailViewController.swift */,
+				B4BF32A02385D38C007D68F0 /* LoginViewController.swift */,
 			);
 			path = MeetU;
 			sourceTree = "<group>";
@@ -418,7 +418,7 @@
 				75603D6C236B61AC00D81813 /* ViewController.swift in Sources */,
 				75603D68236B61AC00D81813 /* AppDelegate.swift in Sources */,
 				75603D6A236B61AC00D81813 /* SceneDelegate.swift in Sources */,
-				B4BF32A12385D38C007D68F0 /* EmailViewController.swift in Sources */,
+				B4BF32A12385D38C007D68F0 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
