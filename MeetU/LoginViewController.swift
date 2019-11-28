@@ -10,7 +10,7 @@ import UIKit
 
 import Firebase
 
-@objc(EmailViewController)
+@objc(LoginViewController)
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailField: UITextField!
