@@ -9,6 +9,8 @@
 import UIKit
 import MapKit
 import CoreLocation
+import Firebase
+import FirebaseDatabase
 
 class MenuViewController: UIViewController {
 
@@ -99,6 +101,11 @@ extension MenuViewController: CLLocationManagerDelegate{
             annotation.subtitle = "Your Name"
                 
             mapView.addAnnotation(annotation)
+            
+            var ref: DatabaseReference!
+            ref = Database.database().reference()
+            // TODO - colocar user.uid dinamico
+            ref.child("Users").child("XiEGVhTdMdMklM5OAfHIrNXSZj93").child("Location").setValue(["Latitude": location.latitude, "Longitude": location.longitude])
         }
     }
     
