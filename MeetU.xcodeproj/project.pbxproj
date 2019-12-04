@@ -133,12 +133,12 @@
 				75603D6D236B61AC00D81813 /* Main.storyboard */,
 				75603D70236B61AE00D81813 /* Assets.xcassets */,
 				75603D72236B61AE00D81813 /* LaunchScreen.storyboard */,
-				75603D75236B61AE00D81813 /* Info.plist */,
 				B4BF32A02385D38C007D68F0 /* LoginViewController.swift */,
-				B408A95B23985051002D3972 /* GoogleService-Info.plist */,
 				75B026F42385CC6D0093F06E /* CreateAccountViewController.swift */,
 				75B026F62385E1F00093F06E /* User.swift */,
 				B40A6BB523870DC600B8DC48 /* MenuViewController.swift */,
+				75603D75236B61AE00D81813 /* Info.plist */,
+				B408A95B23985051002D3972 /* GoogleService-Info.plist */,
 				B40A6BB7238717A000B8DC48 /* LocationESTG.gpx */,
 			);
 			path = MeetU;
