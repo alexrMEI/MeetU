@@ -29,6 +29,9 @@ class MenuViewController: UIViewController {
         //}
         
         retriveCurrentLocation()
+        
+        // GET user info
+        //print(UserDefaults.standard.value(forKey: "userName") as? String)
     }
     
     func retriveCurrentLocation(){

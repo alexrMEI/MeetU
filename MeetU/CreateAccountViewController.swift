@@ -49,6 +49,14 @@ class CreateAccountViewController: UIViewController {
                     // Create a node with the user information
                     self.ref.child("Users").child(authResult!.user.uid).setValue(["Name": self.user!.name, "Email": self.user!.email])
                     
+                    // Save user info to UserDefaults
+                    //let userInfo = ["email": self.user!.email, "password": self.passwordTxt.text!, "uid": authResult!.user.uid]
+                    //UserDefaults.standard.set(userInfo, forKey: "userDetails")
+                    // OR
+                    UserDefaults.standard.set(self.user!.name, forKey: "userName")
+                    UserDefaults.standard.set(self.user!.email, forKey: "userEmail")
+                    UserDefaults.standard.set(authResult!.user.uid, forKey: "userUID")
+                    
                     // open the new page if creation is successful
                     let storyboard = UIStoryboard(name: "Main", bundle: nil)
                     let secondVC = storyboard.instantiateViewController(identifier: "MenuViewController")
