@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<<<<<<< HEAD
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hCC-yl-NQP">
-=======
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="gJN-Zz-0CM">
->>>>>>> menuBranch
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
@@ -211,11 +207,7 @@
         <!--Menu View Controller-->
         <scene sceneID="apG-kh-mvk">
             <objects>
-<<<<<<< HEAD
-                <viewController storyboardIdentifier="MenuViewController" id="gJN-Zz-0CM" sceneMemberID="viewController">
-=======
                 <viewController id="gJN-Zz-0CM" customClass="MenuViewController" customModule="MeetU" customModuleProvider="target" sceneMemberID="viewController">
->>>>>>> menuBranch
                     <view key="view" contentMode="scaleToFill" id="5hP-oo-th7">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -359,11 +351,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rfJ-OA-Kkk">
-<<<<<<< HEAD
-                                <rect key="frame" x="304" y="98.5" width="100" height="99.5"/>
-=======
                                 <rect key="frame" x="304" y="10.5" width="100" height="99"/>
->>>>>>> menuBranch
                                 <color key="tintColor" red="0.61408353829999995" green="0.84234568669999998" blue="0.51341547099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="HE2-gK-ATA">
