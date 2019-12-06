@@ -13,6 +13,16 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate {
     
     @IBOutlet weak var profilePhoto: UIImageView!
     
+    var user: User?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if let user = user {
+            profilePhoto.image = user.photo
+            profilePhoto.isUserInteractionEnabled = false
+        }
+    }
+    
     //MARK: UIImagePickerControllerDelegate
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
     {
