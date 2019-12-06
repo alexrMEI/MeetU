@@ -48,6 +48,10 @@ class MenuViewController: UIViewController {
             return
         }
         
+        UserController.info(forUserID: "asdad", completion: {(user) in
+            
+        })
+        
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         
         // at this point the authorization status is authorized
