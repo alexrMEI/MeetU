@@ -16,7 +16,6 @@
 		75603D74236B61AE00D81813 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75603D72236B61AE00D81813 /* LaunchScreen.storyboard */; };
 		75603D7F236B61AE00D81813 /* MeetUTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75603D7E236B61AE00D81813 /* MeetUTests.swift */; };
 		75603D8A236B61AE00D81813 /* MeetUUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75603D89236B61AE00D81813 /* MeetUUITests.swift */; };
-		75B026F52385CC6D0093F06E /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B026F42385CC6D0093F06E /* CreateAccountViewController.swift */; };
 		75B026F72385E1F00093F06E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B026F62385E1F00093F06E /* User.swift */; };
 		75D6AEBB2385C51600F16C00 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75D6AEBA2385C51600F16C00 /* GoogleService-Info.plist */; };
 		A8B4A85BBF2F7545B35F0A84 /* Pods_MeetU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48EA7310C895DCFA6D967A93 /* Pods_MeetU.framework */; };
@@ -64,9 +63,8 @@
 		75603D85236B61AE00D81813 /* MeetUUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MeetUUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		75603D89236B61AE00D81813 /* MeetUUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetUUITests.swift; sourceTree = "<group>"; };
 		75603D8B236B61AE00D81813 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		75B026F42385CC6D0093F06E /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		75B026F62385E1F00093F06E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		75D6AEBA2385C51600F16C00 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		75D6AEBA2385C51600F16C00 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		848E306E1539FCD6BA7696E2 /* Pods-MeetU.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetU.debug.xcconfig"; path = "Target Support Files/Pods-MeetU/Pods-MeetU.debug.xcconfig"; sourceTree = "<group>"; };
 		B40A6BB523870DC600B8DC48 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		B40A6BB7238717A000B8DC48 /* LocationESTG.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LocationESTG.gpx; sourceTree = "<group>"; };
@@ -140,7 +138,6 @@
 				75603D75236B61AE00D81813 /* Info.plist */,
 				75D6AEBA2385C51600F16C00 /* GoogleService-Info.plist */,
 				B4BF32A02385D38C007D68F0 /* LoginViewController.swift */,
-				75B026F42385CC6D0093F06E /* CreateAccountViewController.swift */,
 				75B026F62385E1F00093F06E /* User.swift */,
 				B4FC28FA239AE8770095C555 /* UserController.swift */,
 				B40A6BB523870DC600B8DC48 /* MenuViewController.swift */,
@@ -432,7 +429,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				75B026F52385CC6D0093F06E /* CreateAccountViewController.swift in Sources */,
 				75603D6C236B61AC00D81813 /* ViewController.swift in Sources */,
 				B4FC28FB239AE8770095C555 /* UserController.swift in Sources */,
 				75603D68236B61AC00D81813 /* AppDelegate.swift in Sources */,

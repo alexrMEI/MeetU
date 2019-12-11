@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class ProfileViewController: UIViewController, UIImagePickerControllerDelegate {
+class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var profilePhoto: UIImageView!
     
@@ -21,6 +21,14 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate {
             profilePhoto.image = user.photo
             profilePhoto.isUserInteractionEnabled = false
         }
+    }
+    
+    //MARK: Actions
+    @IBAction func selectImageFromLibrary(_ sender: UITapGestureRecognizer) {
+        let imagePickerController = UIImagePickerController() // Only allow photos to be picked, not taken.
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true, completion: nil)
     }
     
     //MARK: UIImagePickerControllerDelegate
