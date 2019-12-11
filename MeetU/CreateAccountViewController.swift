@@ -11,6 +11,7 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 import SwiftOverlays
+import AudioToolbox
 
 class CreateAccountViewController: UIViewController {
 
@@ -19,6 +20,8 @@ class CreateAccountViewController: UIViewController {
     @IBOutlet weak var usernameTxt: UITextField!
     @IBOutlet weak var emailTxt: UITextField!
     @IBOutlet weak var passwordTxt: UITextField!
+    @IBOutlet weak var errorMessage: UILabel!
+    
     private var user: User?
     
     override func viewDidLoad() {
@@ -40,21 +43,27 @@ class CreateAccountViewController: UIViewController {
 
     // MARK: Create new account when clicked
     @IBAction func onClickCreateAccount(_ sender: Any) {
-        var name = usernameTxt.text
-        var email = emailTxt.text
-        var password = passwordTxt.text
+        let name = usernameTxt.text
+        let email = emailTxt.text
+        let password = passwordTxt.text
         if(name?.isEmpty == true || email?.isEmpty == true || password?.isEmpty == true) {
-            showToast(controller: self, message: "Please fill all the fields", seconds: 2.0)
+            errorMessage.text = "Please fill all the fields"
+            errorMessage.isHidden = false
+            // Vibrate when error occurred
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
         } else {
             
-            SwiftOverlays.showTextOverlay(self.view, text: "Signing Up...")
+            if let superview = self.view.superview {
+                SwiftOverlays.showCenteredWaitOverlayWithText(superview, text: "Signing up...")
+            }
              
-            UserController.registerUser(withName: name?, email: email?, password: password?) { [weak weakSelf = self] (status) in
+            UserController.registerUser(withName: name!, email: email!, password: password!) { [weak weakSelf = self] (status) in
                 DispatchQueue.main.async {
+                    if let superview = self.view.superview {
+                        SwiftOverlays.removeAllOverlaysFromView(superview)
+                    }
                     
-                    SwiftOverlays.removeAllBlockingOverlays()
-                    
-                    if status == true
+                    if status == ""
                     {
                        // open the new page if creation is successful
                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -64,22 +73,16 @@ class CreateAccountViewController: UIViewController {
                        secondVC.modalTransitionStyle = .crossDissolve
                        
                        self.present(secondVC, animated: true, completion: nil)
+                    } else {
+                        
+                        //self.showToast(controller: self, message: status, seconds: 1.5)
+                        self.errorMessage.text = status
+                        self.errorMessage.isHidden = false
+                        // Vibrate when error occurred
+                        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
                     }
                 }
             }
-        }
-    }
-    
-    // MARK: Show Toast on create User clicked if fields are empty
-    func showToast(controller: UIViewController, message : String, seconds: Double) {
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        alert.view.backgroundColor = .black
-        alert.view.alpha = 0.5
-        alert.view.layer.cornerRadius = 15
-        
-        controller.present(alert, animated: true)
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
-            alert.dismiss(animated: true)
         }
     }
 }

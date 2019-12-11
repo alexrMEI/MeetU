@@ -11,7 +11,7 @@ target 'MeetU' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
-  pod 'SwiftOverlays'
+  pod 'SwiftOverlays', '~> 5.0.1'
   # add pods for any other desired Firebase products
   # https://firebase.google.com/docs/ios/setup#available-pods
   

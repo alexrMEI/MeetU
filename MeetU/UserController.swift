@@ -12,7 +12,7 @@ import Firebase
 class UserController {
     
     //MARK: Register User
-    class func registerUser(withName: String, email: String, password: String, completion: @escaping (Bool) -> Swift.Void) {
+    class func registerUser(withName: String, email: String, password: String, completion: @escaping (String) -> Swift.Void) {
         Auth.auth().createUser(withEmail: email, password: password, completion: { (authResult, error) in
             
             if error == nil {
@@ -21,7 +21,7 @@ class UserController {
                     if errr == nil {
                         let userInfo = ["email" : email, "password" : password]
                         UserDefaults.standard.set(userInfo, forKey: "userDetails")
-                        completion(true)
+                        completion("")
                     }
                 })
             }
@@ -31,22 +31,28 @@ class UserController {
                 switch err.code {
                 case AuthErrorCode.wrongPassword.rawValue:
                    print("wrong password")
+                    completion("Wrong password")
                 case AuthErrorCode.weakPassword.rawValue:
                     print("at least 6")
-                    self.showToast(controller: self, message: "Password must have at least 6 characters", seconds: 1.5)
+                    //self.showToast(controller: self, message: "Password must have at least 6 characters", seconds: 1.5)
+                    completion("Password must have at least 6 characters")
                 case AuthErrorCode.invalidEmail.rawValue:
                    print("invalid email")
-                    self.showToast(controller: self, message: "Invalid email", seconds: 1.5)
+                   //self.showToast(controller: self, message: "Invalid email", seconds: 1.5)
+                    completion("Invalid email")
                 case AuthErrorCode.accountExistsWithDifferentCredential.rawValue:
                    print("accountExistsWithDifferentCredential")
+                    //completion("Password must have at least 6 characters")
                 case AuthErrorCode.emailAlreadyInUse.rawValue: //<- Your Error
                    print("email is alreay in use")
-                    self.showToast(controller: self, message: "This email already exists", seconds: 1.5)
+                   //self.showToast(controller: self, message: "This email already exists", seconds: 1.5)
+                    completion("This email already exists")
                 default:
                    print("unknown error: \(err.localizedDescription)")
+                    //completion("Password must have at least 6 characters")
                 }
                 
-                completion(false)
+                //completion(false)
             }
         })
     }
@@ -120,7 +126,7 @@ class UserController {
     }
     
     // MARK: Show Toast if fields are empty
-    func showToast(controller: UIViewController, message : String, seconds: Double) {
+    /*func showToast(controller: UIViewController, message : String, seconds: Double) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
         alert.view.backgroundColor = .black
         alert.view.alpha = 0.5
@@ -130,5 +136,5 @@ class UserController {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
             alert.dismiss(animated: true)
         }
-    }
+    }*/
 }

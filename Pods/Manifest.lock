@@ -90,7 +90,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - Firebase/Database
-  - SwiftOverlays
+  - SwiftOverlays (~> 5.0.1)
 
 SPEC REPOS:
   trunk:
@@ -131,6 +131,6 @@ SPEC CHECKSUMS:
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   SwiftOverlays: ab459ea9194b0e96aaccaa00e9ead1bf6d46eef1
 
-PODFILE CHECKSUM: 1877845901e8b976c8df4d317ca344dde09ca80c
+PODFILE CHECKSUM: a765240f44f7fe923aeb7b53d60bded77f706ea7
 
 COCOAPODS: 1.8.4
