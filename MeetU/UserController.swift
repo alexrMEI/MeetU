@@ -8,8 +8,14 @@
 
 import Foundation
 import Firebase
+import GeoFire
 
 class UserController {
+    var items = [User]()
+    
+    var geoFireRef: DatabaseReference?
+    var geoFire: GeoFire?
+    var myQuery: GFQuery?
     
     //MARK: Register User
     class func registerUser(withName: String, email: String, password: String, completion: @escaping (String) -> Swift.Void) {
@@ -121,6 +127,82 @@ class UserController {
                         completion(user)
                     }
                 }).resume()
+            }
+        })
+    }
+    
+    // MARK: Get Users
+    func getUsers()  {
+
+        //SwiftOverlays.showTextOverlay(self.view, text: "Searching users...")
+        
+        if let id = Auth.auth().currentUser?.uid {
+            UserController.downloadAllUsers(exceptID: id, completion: {(user) in
+                
+                DispatchQueue.main.async {
+                    //SwiftOverlays.removeAllBlockingOverlays()
+                    self.items.append(user)
+                }
+            })
+        }
+    }
+    
+    // MARK: Get Users Location
+    func GetUsersLocation() {
+        // TO DO
+        geoFireRef = Database.database().reference().child("Geolocs")
+        
+        geoFire = GeoFire(firebaseRef: geoFireRef!)
+        
+        // TO DO
+        let userLat = UserDefaults.standard.value(forKey: "current_latitude") as! String
+        let userLong = UserDefaults.standard.value(forKey: "current_longitude") as! String
+        
+        let location:CLLocation = CLLocation(latitude: CLLocationDegrees(Double(userLat)!), longitude: CLLocationDegrees(Double(userLong)!))
+        
+        myQuery = geoFire?.query(at: location, withRadius: 100)
+        
+        myQuery?.observe(.keyEntered, with: { (key, location) in
+            
+           // print("KEY:\(String(describing: key)) and location:\(String(describing: location))")
+            
+            //SwiftOverlays.showTextOverlay(self.view, text: "Searching for nearby users...")
+            
+            if key != Auth.auth().currentUser?.uid
+            {
+                let ref = Database.database().reference().child("Users").child(key)
+                
+                ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                    let id = snapshot.key
+                    let data = snapshot.value as! [String: Any]
+                    let credentials = data["user_details"] as! [String: String]
+                    
+                    let name = credentials["name"]!
+                    let email = credentials["email"]!
+                    let latitude = credentials["current_latitude"]
+                    let longitude = credentials["current_longitude"]
+                    let link = URL.init(string: credentials["profilepic_url"]!)
+                    URLSession.shared.dataTask(with: link!, completionHandler: { (data, response, error) in
+                        if error == nil {
+                            let profilePic = UIImage.init(data: data!)
+                            let user = User.init(name: name, email: email, id: id, profilePic: profilePic!, latitude: latitude! , longitude:longitude! )
+                            
+                            DispatchQueue.main.async {
+                                //SwiftOverlays.removeAllBlockingOverlays()
+                                self.items.append(user)
+                                //self.tblUserList.reloadData()
+                            }
+                            
+                        }
+                    }).resume()
+                    
+                })
+            }
+            else
+            {
+                DispatchQueue.main.async {
+                    //SwiftOverlays.removeAllBlockingOverlays()
+                }
             }
         })
     }

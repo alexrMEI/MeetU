@@ -48,9 +48,9 @@ class MenuViewController: UIViewController {
             return
         }
         
-        UserController.info(forUserID: "asdad", completion: {(user) in
+        /*UserController.info(forUserID: "asdad", completion: {(user) in
             
-        })
+        })*/
         
         locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         
