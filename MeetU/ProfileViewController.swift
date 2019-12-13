@@ -8,27 +8,30 @@
 
 import Foundation
 import UIKit
+import os.log
 
-class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    //MARK: Properties
     @IBOutlet weak var profilePhoto: UIImageView!
+    @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var userPasswordTextField: UITextField!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let user = user {
-            profilePhoto.image = user.photo
-            profilePhoto.isUserInteractionEnabled = false
-        }
+        userNameTextField.delegate = self
+        userPasswordTextField.delegate = self
     }
     
-    //MARK: Actions
-    @IBAction func selectImageFromLibrary(_ sender: UITapGestureRecognizer) {
-        let imagePickerController = UIImagePickerController() // Only allow photos to be picked, not taken.
-        imagePickerController.sourceType = .photoLibrary
-        imagePickerController.delegate = self
-        present(imagePickerController, animated: true, completion: nil)
+    //MARK: UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // Hide the keyboard.
+        userNameTextField.resignFirstResponder()
+        userPasswordTextField.resignFirstResponder()
+        return true
     }
     
     //MARK: UIImagePickerControllerDelegate
@@ -40,12 +43,36 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     func imagePickerController(_ picker: UIImagePickerController,
     didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey :
     Any]) {
-    // The info dictionary may contain multiple representations of the image. You want to use the original.
         guard let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage   else {
                 fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
             }
         profilePhoto.image = selectedImage
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)
+    }
+    
+    //MARK: Actions
+    @IBAction func selectImageFromLibrary2(_ sender: UITapGestureRecognizer) {
+         // Hide the keyboard.
+         userNameTextField.resignFirstResponder()
+         userPasswordTextField.resignFirstResponder()
+        let imagePickerController = UIImagePickerController() // Only allow photos to be picked, not taken.
+        imagePickerController.sourceType = .photoLibrary
+        imagePickerController.delegate = self
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    
+    //MARK: Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        // Configure the destination view controller only when the save button is pressed.
+        guard let button = sender as? UIBarButtonItem, button === saveButton else {
+            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
+            return
+        }
+        let name = userNameTextField.text ?? ""
+        let password = userPasswordTextField.text ?? ""
+        let photo = profilePhoto.image
+        //user = User(name: name, photo: photo)
     }
 }

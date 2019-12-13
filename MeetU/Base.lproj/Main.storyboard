@@ -138,11 +138,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Ezw-4o-Clp" appends="YES" id="3G9-JT-byI"/>
-                                    <outletCollection property="gestureRecognizers" destination="Ezw-4o-Clp" appends="YES" id="tU4-Xb-qwS"/>
-                                    <outletCollection property="gestureRecognizers" destination="Ezw-4o-Clp" appends="YES" id="T7p-kG-KS1"/>
-                                </connections>
                             </label>
                             <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="mYE-NZ-skK">
                                 <rect key="frame" x="20" y="118.5" width="120" height="119.5"/>
@@ -153,15 +148,7 @@
                                     <constraint firstAttribute="width" secondItem="mYE-NZ-skK" secondAttribute="height" multiplier="1:1" id="qNi-g9-Pfv"/>
                                 </constraints>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Ezw-4o-Clp" appends="YES" id="oEi-NT-KDA"/>
-                                    <outletCollection property="gestureRecognizers" destination="Ezw-4o-Clp" appends="YES" id="BPS-Yh-biX"/>
-                                    <outletCollection property="gestureRecognizers" destination="Ezw-4o-Clp" appends="YES" id="BKm-3W-3Ww"/>
-                                    <outletCollection property="gestureRecognizers" destination="Ezw-4o-Clp" appends="YES" id="qf7-Xa-RmT"/>
-                                    <outletCollection property="gestureRecognizers" destination="Ezw-4o-Clp" appends="YES" id="STY-Ia-5TF"/>
-                                    <outletCollection property="gestureRecognizers" destination="Ezw-4o-Clp" appends="YES" id="kVY-2U-EuC"/>
-                                    <outletCollection property="gestureRecognizers" destination="Ezw-4o-Clp" appends="YES" id="n5g-zV-QC0"/>
-                                    <outletCollection property="gestureRecognizers" destination="Ezw-4o-Clp" appends="YES" id="t2H-Cj-Xk8"/>
-                                    <outletCollection property="gestureRecognizers" destination="Ezw-4o-Clp" appends="YES" id="vc2-kB-tyM"/>
+                                    <outletCollection property="gestureRecognizers" destination="Ezw-4o-Clp" appends="YES" id="cvI-sR-qfa"/>
                                 </connections>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qHF-YO-A4G">
@@ -216,15 +203,20 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PrA-Xq-iXY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="PEq-VP-M9w"/>
+                    <navigationItem key="navigationItem" id="PEq-VP-M9w">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="wxu-dP-8px"/>
+                    </navigationItem>
                     <connections>
-                        <outlet property="profilePhoto" destination="mYE-NZ-skK" id="2Ab-II-g5K"/>
+                        <outlet property="profilePhoto" destination="mYE-NZ-skK" id="gJF-sl-Xtb"/>
+                        <outlet property="saveButton" destination="wxu-dP-8px" id="OM9-Ls-zzl"/>
+                        <outlet property="userNameTextField" destination="qHF-YO-A4G" id="rZf-vf-oDr"/>
+                        <outlet property="userPasswordTextField" destination="a1S-lX-d3D" id="o7r-ZV-NUS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dvl-ia-Hdo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="Ezw-4o-Clp">
                     <connections>
-                        <action selector="selectImageFromLibrary:" destination="XYe-md-aeS" id="mmj-ah-fGC"/>
+                        <action selector="selectImageFromLibrary2:" destination="XYe-md-aeS" id="Y3j-aW-VnL"/>
                         <outlet property="delegate" destination="mYE-NZ-skK" id="mUE-Nd-Odm"/>
                     </connections>
                 </tapGestureRecognizer>
