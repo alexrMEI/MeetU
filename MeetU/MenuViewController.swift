@@ -11,12 +11,17 @@ import MapKit
 import CoreLocation
 import Firebase
 import FirebaseDatabase
+import GeoFire
 
 class MenuViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     
     let locationManager = CLLocationManager()
+    
+    var geoFireRef: DatabaseReference?
+    var geoFire: GeoFire?
+    var myQuery: GFQuery?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +34,81 @@ class MenuViewController: UIViewController {
         //}
         
         retriveCurrentLocation()
+        
+        geoFireRef = Database.database().reference().child("Geolocs")
+        
+        geoFire = GeoFire(firebaseRef: geoFireRef!)
+        
+        let userLat = "37.785834"// UserDefaults.standard.value(forKey: "current_latitude") as! String
+        let userLong = "-122.406417" // UserDefaults.standard.value(forKey: "current_longitude") as! String
+        
+        let location:CLLocation = CLLocation(latitude: CLLocationDegrees(Double(userLat)!), longitude: CLLocationDegrees(Double(userLong)!))
+        self.geoFire?.setLocation(location, forKey:Auth.auth().currentUser!.uid)
+        
+        getUsersLocation()
+    }
+    
+    // MARK: Try to use UserController func
+    func getUsersLocation() {
+        // TO DO
+        geoFireRef = Database.database().reference().child("Geolocs")
+        
+        geoFire = GeoFire(firebaseRef: geoFireRef!)
+        
+        // TO DO
+        let userLat = UserDefaults.standard.value(forKey: "current_latitude") as! String
+        let userLong = UserDefaults.standard.value(forKey: "current_longitude") as! String
+        
+        let location:CLLocation = CLLocation(latitude: CLLocationDegrees(Double(userLat)!), longitude: CLLocationDegrees(Double(userLong)!))
+        
+        myQuery = geoFire?.query(at: location, withRadius: 100)
+        
+        myQuery?.observe(.keyEntered, with: { (key, location) in
+            
+           // print("KEY:\(String(describing: key)) and location:\(String(describing: location))")
+            
+            //SwiftOverlays.showTextOverlay(self.view, text: "Searching for nearby users...")
+            
+            if key != Auth.auth().currentUser?.uid
+            {
+                let ref = Database.database().reference().child("Users").child(key)
+                
+                ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                    let id = snapshot.key
+                    let data = snapshot.value as! [String: Any]
+                    //let credentials = data["user_details"] as! [String: String]
+                    let credentials = data as! [String: String]
+                    
+                    let name = credentials["name"]!
+                    let email = credentials["email"]!
+                    let latitude = credentials["current_latitude"]
+                    let longitude = credentials["current_longitude"]
+                    let link = URL.init(string: credentials["profilepic_url"]!)
+                    URLSession.shared.dataTask(with: link!, completionHandler: { (data, response, error) in
+                        if error == nil {
+                            let profilePic = UIImage.init(data: data!)
+                            let user = User.init(name: name, email: email, id: id, profilePic: profilePic!, latitude: latitude! , longitude:longitude! )
+                            
+                            DispatchQueue.main.async {
+                                //SwiftOverlays.removeAllBlockingOverlays()
+                                //self.items.append(user)
+                                print(user)
+                                print(user.email)
+                                //self.tblUserList.reloadData()
+                            }
+                            
+                        }
+                    }).resume()
+                    
+                })
+            }
+            else
+            {
+                DispatchQueue.main.async {
+                    //SwiftOverlays.removeAllBlockingOverlays()
+                }
+            }
+        })
     }
     
     func retriveCurrentLocation(){
@@ -76,13 +156,25 @@ extension MenuViewController: CLLocationManagerDelegate{
         print("location manager authorization status changed")
         
         if (status == .authorizedWhenInUse || status == .authorizedAlways){
-            manager.requestLocation()
+            //manager.requestLocation()
+            manager.startUpdatingLocation()
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         // .requestLocation will only pass one location to the locations array
         // hence we can access it by taking the first element of the array
+        
+        let updatedLocation:CLLocation = locations.first!
+        
+        let newCoordinate: CLLocationCoordinate2D = updatedLocation.coordinate
+        
+        let usrDefaults:UserDefaults = UserDefaults.standard
+        
+        usrDefaults.set("\(newCoordinate.latitude)", forKey: "current_latitude")
+        usrDefaults.set("\(newCoordinate.longitude)", forKey: "current_longitude")
+        usrDefaults.synchronize()
+        
         if let location = locations.first {
             print("\(location.coordinate.latitude)")
             print("\(location.coordinate.longitude)")
@@ -118,5 +210,6 @@ extension MenuViewController: CLLocationManagerDelegate{
         // or there might be no GPS signal inside a building
      
         // might be a good idea to show an alert to user to ask them to walk to a place with GPS signal
+        print("Location Error:\(error.localizedDescription)")
     }
 }

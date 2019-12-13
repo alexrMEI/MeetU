@@ -22,7 +22,8 @@ class UserController {
         Auth.auth().createUser(withEmail: email, password: password, completion: { (authResult, error) in
             
             if error == nil {
-                let values = ["Name": withName, "Email": email]
+                //let values = ["Name": withName, "Email": email]
+                let values = ["name": withName, "email": email, "profilepic_url": "","current_latitude":"","current_longitude":""]
                 Database.database().reference().child("Users").child((authResult?.user.uid)!).updateChildValues(values, withCompletionBlock: { (errr, _) in
                     if errr == nil {
                         let userInfo = ["email" : email, "password" : password]
@@ -190,6 +191,8 @@ class UserController {
                             DispatchQueue.main.async {
                                 //SwiftOverlays.removeAllBlockingOverlays()
                                 self.items.append(user)
+                                print(user)
+                                print(user.email)
                                 //self.tblUserList.reloadData()
                             }
                             
