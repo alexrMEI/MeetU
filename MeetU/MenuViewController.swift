@@ -35,17 +35,17 @@ class MenuViewController: UIViewController {
         
         retriveCurrentLocation()
         
-        geoFireRef = Database.database().reference().child("Geolocs")
+        /*geoFireRef = Database.database().reference().child("Geolocs")
         
         geoFire = GeoFire(firebaseRef: geoFireRef!)
         
-        let userLat = "37.785834"// UserDefaults.standard.value(forKey: "current_latitude") as! String
-        let userLong = "-122.406417" // UserDefaults.standard.value(forKey: "current_longitude") as! String
-        
+        let userLat = UserDefaults.standard.value(forKey: "current_latitude") as! String
+        let userLong = UserDefaults.standard.value(forKey: "current_longitude") as! String
+        print("/(userLat) - /(userLong)")
         let location:CLLocation = CLLocation(latitude: CLLocationDegrees(Double(userLat)!), longitude: CLLocationDegrees(Double(userLong)!))
         self.geoFire?.setLocation(location, forKey:Auth.auth().currentUser!.uid)
         
-        getUsersLocation()
+        getUsersLocation()*/
     }
     
     // MARK: Try to use UserController func
@@ -81,19 +81,27 @@ class MenuViewController: UIViewController {
                     
                     let name = credentials["name"]!
                     let email = credentials["email"]!
-                    let latitude = credentials["current_latitude"]
-                    let longitude = credentials["current_longitude"]
-                    let link = URL.init(string: credentials["profilepic_url"]!)
+                    let latitude = credentials["current_latitude"] ?? "0"
+                    let longitude = credentials["current_longitude"] ?? "0"
+                    /*guard let link = URL.init(string: credentials["profilepic_url"]!) else {
+                        URL.init(string: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fipc.digital%2Ficon-user-default%2F&psig=AOvVaw0jQrpOXTD5ycDKfr7FGioR&ust=1576412225151000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKjriamPteYCFQAAAAAdAAAAABAD")
+                    }*/
+                    let link = URL.init(string: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fipc.digital%2Ficon-user-default%2F&psig=AOvVaw0jQrpOXTD5ycDKfr7FGioR&ust=1576412225151000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKjriamPteYCFQAAAAAdAAAAABAD")
+    
                     URLSession.shared.dataTask(with: link!, completionHandler: { (data, response, error) in
                         if error == nil {
-                            let profilePic = UIImage.init(data: data!)
-                            let user = User.init(name: name, email: email, id: id, profilePic: profilePic!, latitude: latitude! , longitude:longitude! )
+                            //let profilePic = UIImage.init(data: data!)
+                            //let profilePic: UIImage = UIImage(data: data!)!
+                            //let user = User.init(name: name, email: email, id: id, profilePic: profilePic, latitude: latitude , longitude:longitude )
                             
                             DispatchQueue.main.async {
                                 //SwiftOverlays.removeAllBlockingOverlays()
                                 //self.items.append(user)
-                                print(user)
-                                print(user.email)
+                                print("olaaaaaa")
+                                print("\(name) - \(email) - \(latitude) - \(longitude)")
+                                self.ShowNearbyUsers(Double(latitude)!, Double(longitude)!, name)
+                                //print(user)
+                                //print(user.email)
                                 //self.tblUserList.reloadData()
                             }
                             
@@ -175,6 +183,8 @@ extension MenuViewController: CLLocationManagerDelegate{
         usrDefaults.set("\(newCoordinate.longitude)", forKey: "current_longitude")
         usrDefaults.synchronize()
         
+        userAuthLocation()
+        
         if let location = locations.first {
             print("\(location.coordinate.latitude)")
             print("\(location.coordinate.longitude)")
@@ -201,7 +211,7 @@ extension MenuViewController: CLLocationManagerDelegate{
             var ref: DatabaseReference!
             ref = Database.database().reference()
             // TODO - colocar user.uid dinamico
-            ref.child("Users").child("XiEGVhTdMdMklM5OAfHIrNXSZj93").child("Location").setValue(["Latitude": location.latitude, "Longitude": location.longitude])
+            //ref.child("Users").child("XiEGVhTdMdMklM5OAfHIrNXSZj93").child("Location").setValue(["Latitude": location.latitude, "Longitude": location.longitude])
         }
     }
     
@@ -211,5 +221,39 @@ extension MenuViewController: CLLocationManagerDelegate{
      
         // might be a good idea to show an alert to user to ask them to walk to a place with GPS signal
         print("Location Error:\(error.localizedDescription)")
+    }
+    
+    func userAuthLocation () {
+        geoFireRef = Database.database().reference().child("Geolocs")
+        
+        geoFire = GeoFire(firebaseRef: geoFireRef!)
+        
+        let userLat = UserDefaults.standard.value(forKey: "current_latitude") as! String
+        let userLong = UserDefaults.standard.value(forKey: "current_longitude") as! String
+        
+        let ref = Database.database().reference().child("Users").child(Auth.auth().currentUser!.uid)
+        ref.updateChildValues(["current_latitude": userLat, "current_longitude": userLong])
+        
+        print(Auth.auth().currentUser!.uid)
+
+        let location:CLLocation = CLLocation(latitude: CLLocationDegrees(Double(userLat)!), longitude: CLLocationDegrees(Double(userLong)!))
+        self.geoFire?.setLocation(location, forKey:Auth.auth().currentUser!.uid)
+        
+        getUsersLocation()
+    }
+    
+    func ShowNearbyUsers(_ latitude: Double, _ longitude: Double, _ name: String) {
+        //Map Kit
+        let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        
+        let annotation = MKPointAnnotation()
+        
+        annotation.coordinate = location
+        
+        annotation.title = name
+        
+        //annotation.subtitle = "Your Name"
+            
+        mapView.addAnnotation(annotation)
     }
 }

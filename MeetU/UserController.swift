@@ -92,11 +92,11 @@ class UserController {
     class func info(forUserID: String, completion: @escaping (User) -> Swift.Void) {
         Database.database().reference().child("Users").child(forUserID).observeSingleEvent(of: .value, with: { (snapshot) in
             if let data = snapshot.value as? [String: String] {
-                let name = data["Name"]!
-                let email = data["Email"]!
-                let link = URL.init(string: data["ProfilePic"]!)
-                let latitude = data["Latitude"]
-                let longitude = data["Longitude"]
+                let name = data["name"]!
+                let email = data["email"]!
+                let link = URL.init(string: data["profilepic_url"]!)
+                let latitude = data["current_latitude"]
+                let longitude = data["current_longitude"]
                 
                 URLSession.shared.dataTask(with: link!, completionHandler: { (data, response, error) in
                     if error == nil {
