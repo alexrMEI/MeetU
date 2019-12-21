@@ -66,6 +66,8 @@
 		75B026F42385CC6D0093F06E /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		75B026F62385E1F00093F06E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		75B4920E239AEA9E0069A84F /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		75C2F5B723AE353F00E5FA08 /* LocationESTG_2.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LocationESTG_2.gpx; sourceTree = "<group>"; };
+		75C2F5B823AE4C7A00E5FA08 /* LocationESTG_3.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LocationESTG_3.gpx; sourceTree = "<group>"; };
 		75D6AEBA2385C51600F16C00 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		848E306E1539FCD6BA7696E2 /* Pods-MeetU.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetU.debug.xcconfig"; path = "Target Support Files/Pods-MeetU/Pods-MeetU.debug.xcconfig"; sourceTree = "<group>"; };
 		B40A6BB523870DC600B8DC48 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +147,8 @@
 				B40A6BB7238717A000B8DC48 /* LocationESTG.gpx */,
 				75B4920E239AEA9E0069A84F /* UserController.swift */,
 				B47EC6E023A5080D00E4CCEC /* LocationESTG_1.gpx */,
+				75C2F5B723AE353F00E5FA08 /* LocationESTG_2.gpx */,
+				75C2F5B823AE4C7A00E5FA08 /* LocationESTG_3.gpx */,
 			);
 			path = MeetU;
 			sourceTree = "<group>";

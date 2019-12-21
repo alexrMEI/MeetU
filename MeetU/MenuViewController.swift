@@ -22,6 +22,7 @@ class MenuViewController: UIViewController {
     var geoFireRef: DatabaseReference?
     var geoFire: GeoFire?
     var myQuery: GFQuery?
+    let radius: Double = 100
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +62,7 @@ class MenuViewController: UIViewController {
         
         let location:CLLocation = CLLocation(latitude: CLLocationDegrees(Double(userLat)!), longitude: CLLocationDegrees(Double(userLong)!))
         
-        myQuery = geoFire?.query(at: location, withRadius: 100)
+        myQuery = geoFire?.query(at: location, withRadius: self.radius)
         
         myQuery?.observe(.keyEntered, with: { (key, location) in
             
@@ -158,7 +159,7 @@ class MenuViewController: UIViewController {
     }*/
 }
 
-extension MenuViewController: CLLocationManagerDelegate{
+extension MenuViewController: CLLocationManagerDelegate, MKMapViewDelegate {
     // called when the authorization status is changed for the core location permission
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         print("location manager authorization status changed")
@@ -192,7 +193,7 @@ extension MenuViewController: CLLocationManagerDelegate{
             //Map Kit
             let location = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             
-            let span = MKCoordinateSpan(latitudeDelta: 0.005, longitudeDelta: 0.005)
+            let span = MKCoordinateSpan(latitudeDelta: 0.003, longitudeDelta: 0.003)
             
             let region = MKCoordinateRegion(center: location, span: span)
             
@@ -207,6 +208,8 @@ extension MenuViewController: CLLocationManagerDelegate{
             annotation.subtitle = "Your Name"
                 
             mapView.addAnnotation(annotation)
+            
+            self.addRadiusCircle(location: CLLocation(latitude: location.latitude, longitude: location.longitude))
             
             var ref: DatabaseReference!
             ref = Database.database().reference()
@@ -256,4 +259,40 @@ extension MenuViewController: CLLocationManagerDelegate{
             
         mapView.addAnnotation(annotation)
     }
+    
+    func addRadiusCircle(location: CLLocation){
+        for ov in mapView.overlays {
+            mapView.removeOverlay(ov)
+        }
+        self.mapView.delegate = self
+        let circle = MKCircle(center: location.coordinate, radius: self.radius)
+        self.mapView.addOverlay(circle)
+        
+    }
+
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        if overlay is MKCircle {
+            let circle = MKCircleRenderer(overlay: overlay)
+            circle.strokeColor = UIColor.blue
+            circle.fillColor = UIColor(red: 0, green: 0, blue: 255, alpha: 0.1)
+            circle.lineWidth = 1
+            return circle
+        } else {
+            return MKPolylineRenderer()
+        }
+    }
 }
+
+/*extension MenuViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        guard overlay is MKCircle else {
+            return MKOverlayRenderer()
+        }
+        
+        let circle = MKCircleRenderer(overlay: overlay)
+        circle.strokeColor = UIColor.green
+        circle.fillColor = UIColor.blue
+        circle.lineWidth = 1
+        return circle
+    }
+}*/
