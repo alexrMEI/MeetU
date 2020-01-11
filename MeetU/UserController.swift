@@ -7,7 +7,9 @@
 //
 
 import Foundation
+import Firebase
 import UIKit
+
 
 class UserController {
     
@@ -18,4 +20,16 @@ class UserController {
         self.name = name
         self.email = email
     }
+    
+    func updateUser(name: String, email:String, password: String, completion: @escaping (String)-> Swift.Void) {
+        
+        
+        /*User user = Auth.auth().currentUser
+        Auth.auth().updateCurrentUser(user) { (Error?) in
+            
+        }
+        
+        Auth.auth().updateCurrentUser(user, completion: {authre})*/
+    }
+    
 }

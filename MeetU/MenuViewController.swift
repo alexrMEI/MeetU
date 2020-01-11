@@ -63,7 +63,7 @@ class MenuViewController: UIViewController {
         print("locations = \(locValue.latitude) \(locValue.longitude)")
         
         
-    }*/
+    }*/    
 }
 
 extension MenuViewController: CLLocationManagerDelegate{

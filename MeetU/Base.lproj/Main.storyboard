@@ -204,7 +204,11 @@
                         <viewLayoutGuide key="safeArea" id="PrA-Xq-iXY"/>
                     </view>
                     <navigationItem key="navigationItem" id="PEq-VP-M9w">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="wxu-dP-8px"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="wxu-dP-8px">
+                            <connections>
+                                <action selector="unwindToMenu:" destination="Gjv-Lh-Gcb" id="cqs-oI-VdH"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="profilePhoto" destination="mYE-NZ-skK" id="gJF-sl-Xtb"/>
@@ -214,6 +218,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dvl-ia-Hdo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Gjv-Lh-Gcb" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer id="Ezw-4o-Clp">
                     <connections>
                         <action selector="selectImageFromLibrary2:" destination="XYe-md-aeS" id="Y3j-aW-VnL"/>

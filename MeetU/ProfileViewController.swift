@@ -53,13 +53,17 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     //MARK: Actions
     @IBAction func selectImageFromLibrary2(_ sender: UITapGestureRecognizer) {
-         // Hide the keyboard.
-         userNameTextField.resignFirstResponder()
-         userPasswordTextField.resignFirstResponder()
+        // Hide the keyboard.
+        userNameTextField.resignFirstResponder()
+        userPasswordTextField.resignFirstResponder()
         let imagePickerController = UIImagePickerController() // Only allow photos to be picked, not taken.
         imagePickerController.sourceType = .photoLibrary
         imagePickerController.delegate = self
         present(imagePickerController, animated: true, completion: nil)
+    }
+
+    @IBAction func unwindToMenu(_ sender: UIStoryboardSegue) {
+        
     }
     
     //MARK: Navigation
@@ -73,6 +77,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         let name = userNameTextField.text ?? ""
         let password = userPasswordTextField.text ?? ""
         let photo = profilePhoto.image
-        //user = User(name: name, photo: photo)
+        user = User(name: name, email: password, photo: photo) //INCORRETO!!!!!!
     }
 }
