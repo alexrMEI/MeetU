@@ -149,7 +149,7 @@ class UserController {
     }
     
     // MARK: Get Users Location
-    func GetUsersLocation() {
+    func GetUsersLocation() -> [User] {
         // TO DO
         geoFireRef = Database.database().reference().child("Geolocs")
         
@@ -208,6 +208,7 @@ class UserController {
                 }
             }
         })
+        return self.items
     }
     
     // MARK: Show Toast if fields are empty

@@ -9,9 +9,21 @@
 import UIKit
 
 class NearbyUserListTableViewController: UITableViewController {
-
+    var users = [User]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // ---------- TODO --------------
+        /*self.users = UserController.GetUsersLocation()
+        guard let user1 =
+        guard let meal1 = Meal(name: "Caprese Salad", photo: photo1, rating: 4) else {
+            fatalError("Unable to instantiate meal1") }
+        guard let meal2 = Meal(name: "Chicken and Potatoes", photo: photo2, rating: 5) else {
+            fatalError("Unable to instantiate meal2") }
+        guard let meal3 = Meal(name: "Pasta with Meatballs", photo: photo3, rating: 3) else {
+            fatalError("Unable to instantiate meal3") }
+        meals += [meal1, meal2, meal3]*/
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -24,7 +36,7 @@ class NearbyUserListTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -33,8 +45,19 @@ class NearbyUserListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath)
-        cell.textLabel?.text = "test"
+        // Table view cells are reused and should be dequeued using a cell identifier.
+        let cellIdentifier = "NearbyUserTableViewCell"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as? NearbyUserTableViewCell else {
+            fatalError("The dequeued cell is not an instance of MealTableViewCell.")
+        }
+        
+        // Fetches the appropriate meal for the data source layout.
+        //let meal = meals[indexPath.row]
+        
+        cell.name.text = "ola"
+        /*cell.photoImageView.image = meal.photo
+        cell.ratingControl.rating = meal.rating*/
+        
         return cell
     }
     
