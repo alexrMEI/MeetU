@@ -187,6 +187,8 @@ extension MenuViewController: CLLocationManagerDelegate, MKMapViewDelegate {
         userAuthLocation()
         
         if let location = locations.first {
+            let allAnnotations = self.mapView.annotations
+            self.mapView.removeAnnotations(allAnnotations)
             print("\(location.coordinate.latitude)")
             print("\(location.coordinate.longitude)")
             
