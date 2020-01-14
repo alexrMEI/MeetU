@@ -7,13 +7,24 @@
 //
 
 import Foundation
+import Firebase
 
 class User {
-    var name: String
-    var email: String
+    //MARK: Properties
+    let name: String
+    let email: String
+    let id: String
+    var profilePic: UIImage
+    var latitude: String
+    var longitude : String
     
-    init(name: String, email: String) {
+    //MARK: Init
+    init(name: String, email: String, id: String, profilePic: UIImage, latitude:String, longitude:String) {
         self.name = name
         self.email = email
+        self.id = id
+        self.profilePic = profilePic
+        self.latitude = latitude
+        self.longitude = longitude
     }
 }
