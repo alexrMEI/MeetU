@@ -67,7 +67,7 @@ class CreateAccountViewController: UIViewController {
                     {
                        // open the new page if creation is successful
                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                       let secondVC = storyboard.instantiateViewController(identifier: "MenuViewController")
+                       let secondVC = storyboard.instantiateViewController(identifier: "TabBarController")
                        
                        secondVC.modalPresentationStyle = .fullScreen
                        secondVC.modalTransitionStyle = .crossDissolve

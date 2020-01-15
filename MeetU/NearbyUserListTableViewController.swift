@@ -15,8 +15,12 @@ class NearbyUserListTableViewController: UITableViewController {
         super.viewDidLoad()
         
         // ---------- TODO --------------
-        /*self.users = UserController.GetUsersLocation()
-        guard let user1 =
+        
+        UserController.shared.GetUsersLocation(completion: {(user) in
+            self.users.append(user)
+        })
+        
+        /*guard let user1 =
         guard let meal1 = Meal(name: "Caprese Salad", photo: photo1, rating: 4) else {
             fatalError("Unable to instantiate meal1") }
         guard let meal2 = Meal(name: "Chicken and Potatoes", photo: photo2, rating: 5) else {
@@ -41,7 +45,7 @@ class NearbyUserListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 3
+        return self.users.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

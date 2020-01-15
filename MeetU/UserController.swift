@@ -9,9 +9,14 @@
 import Foundation
 import Firebase
 import GeoFire
+import os.log
 
 class UserController {
     var items = [User]()
+    
+    static let shared = UserController()
+    
+    init(){}
     
     var geoFireRef: DatabaseReference?
     var geoFire: GeoFire?
@@ -149,7 +154,7 @@ class UserController {
     }
     
     // MARK: Get Users Location
-    func GetUsersLocation() -> [User] {
+    func GetUsersLocation(completion: @escaping (User) -> Swift.Void) {
         // TO DO
         geoFireRef = Database.database().reference().child("Geolocs")
         
@@ -176,30 +181,44 @@ class UserController {
                 ref.observeSingleEvent(of: .value, with: { (snapshot) in
                     let id = snapshot.key
                     let data = snapshot.value as! [String: Any]
-                    let credentials = data["user_details"] as! [String: String]
+                    //let credentials = data["user_details"] as! [String: String]
+                    let credentials = data as! [String: String]
                     
                     let name = credentials["name"]!
                     let email = credentials["email"]!
-                    let latitude = credentials["current_latitude"]
-                    let longitude = credentials["current_longitude"]
-                    let link = URL.init(string: credentials["profilepic_url"]!)
-                    URLSession.shared.dataTask(with: link!, completionHandler: { (data, response, error) in
+                    let latitude = credentials["current_latitude"] ?? "0"
+                    let longitude = credentials["current_longitude"] ?? "0"
+                    //let link = URL.init(string: credentials["profilepic_url"]!)
+                    guard let url = URL(string: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fipc.digital%2Ficon-user-default%2F&psig=AOvVaw0jQrpOXTD5ycDKfr7FGioR&ust=1576412225151000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKjriamPteYCFQAAAAAdAAAAABAD") else {
+                        os_log("Invalid URL.", log: OSLog.default, type: .error)
+                        return
+                    }
+                    
+                    URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
                         if error == nil {
-                            let profilePic = UIImage.init(data: data!)
-                            let user = User.init(name: name, email: email, id: id, profilePic: profilePic!, latitude: latitude! , longitude:longitude! )
+                            
+                            //var profilePic :UIImage
+                            
+                            //let url = URL(string: "https://cdn.arstechnica.net/wp-content/uploads/2018/06/macOS-Mojave-Dynamic-Wallpaper-transition.jpg")!
+                            //var profilePic: UIImage// = self.downloadImage(from: url)
+                            
+                            
+                            let profilePic :UIImage = UIImage()
+                            
+                            //let profilePic = UIImage.init(data: data!)
+                            let user = User.init(name: name, email: email, id: id, profilePic: profilePic, latitude: latitude , longitude:longitude )
                             
                             DispatchQueue.main.async {
                                 //SwiftOverlays.removeAllBlockingOverlays()
                                 self.items.append(user)
-                                print(user)
-                                print(user.email)
+                                completion(user)
                                 //self.tblUserList.reloadData()
                             }
                             
                         }
                     }).resume()
-                    
                 })
+                
             }
             else
             {
@@ -208,9 +227,8 @@ class UserController {
                 }
             }
         })
-        return self.items
     }
-    
+
     // MARK: Show Toast if fields are empty
     /*func showToast(controller: UIViewController, message : String, seconds: Double) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)

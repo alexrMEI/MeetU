@@ -423,7 +423,7 @@
             </objects>
             <point key="canvasLocation" x="2048" y="869"/>
         </scene>
-        <!--Item-->
+        <!--About-->
         <scene sceneID="SAN-Qa-X6r">
             <objects>
                 <viewController id="7dt-3C-ZsH" sceneMemberID="viewController">
@@ -462,7 +462,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="VDH-Wo-ucd"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="info.circle" catalog="system" id="4wd-0N-sFY"/>
+                    <tabBarItem key="tabBarItem" title="About" image="info.circle" catalog="system" id="4wd-0N-sFY"/>
                     <navigationItem key="navigationItem" id="CAn-kH-2s5"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
@@ -470,7 +470,7 @@
             </objects>
             <point key="canvasLocation" x="1140.5797101449277" y="1593.75"/>
         </scene>
-        <!--Item-->
+        <!--Settings-->
         <scene sceneID="rZ4-bq-oqo">
             <objects>
                 <viewController id="dbi-f6-KPi" sceneMemberID="viewController">
@@ -510,7 +510,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="CRq-QN-hQv"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="gear" catalog="system" id="ePM-CT-0SL"/>
+                    <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="ePM-CT-0SL"/>
                     <navigationItem key="navigationItem" id="P30-B0-bLV"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
@@ -663,10 +663,11 @@
         <!--Tab Bar Controller-->
         <scene sceneID="JyF-ct-wYl">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="Nsy-61-ZSK" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabBarController" automaticallyAdjustsScrollViewInsets="NO" id="Nsy-61-ZSK" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="zlz-ax-1km"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="MCP-Wd-Puq">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
