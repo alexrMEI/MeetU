@@ -10,6 +10,10 @@ import Firebase
 import GeoFire
 
 class UserController {
+    
+    static let sharedUserController = UserController()
+    init(){}
+    
     var items = [User]()
     
     var geoFireRef: DatabaseReference?
@@ -63,6 +67,11 @@ class UserController {
         })
     }
     
+    //MARK: Update User
+    /*class func registerUser(withName: String, email: String, password: String, completion: @escaping (String) -> Swift.Void) {
+        
+    }*/
+    
     //MARK: Login User
     class func loginUser(withEmail: String, password: String, completion: @escaping (Bool) -> Swift.Void) {
         Auth.auth().signIn(withEmail: withEmail, password: password, completion: { (user, error) in
@@ -88,7 +97,7 @@ class UserController {
     }
     
     //MARK: User Info
-    class func info(forUserID: String, completion: @escaping (User) -> Swift.Void) {
+    class func info(forUserID: String, completion: @escaping (User)) {
         Database.database().reference().child("Users").child(forUserID).observeSingleEvent(of: .value, with: { (snapshot) in
             if let data = snapshot.value as? [String: String] {
                 let name = data["name"]!
@@ -124,7 +133,7 @@ class UserController {
                     if error == nil {
                         let profilePic = UIImage.init(data: data!)
                         let user = User.init(name: name, email: email, id: id, profilePic: profilePic!, latitude: latitude! , longitude:longitude! )
-                        completion(user)
+                        completion(user ?? default value)
                     }
                 }).resume()
             }
@@ -189,9 +198,9 @@ class UserController {
                             
                             DispatchQueue.main.async {
                                 //SwiftOverlays.removeAllBlockingOverlays()
-                                self.items.append(user)
+                                self.items.append(user ?? <#default value#>)
                                 print(user)
-                                print(user.email)
+                                print(user?.email)
                                 //self.tblUserList.reloadData()
                             }
                             

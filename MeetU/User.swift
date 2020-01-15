@@ -12,6 +12,7 @@ import Foundation
 import Firebase
 
 class User: NSObject, NSCoding {
+    
     //MARK: Properties
     let name: String
     let email: String
@@ -19,10 +20,12 @@ class User: NSObject, NSCoding {
     var profilePic: UIImage
     var latitude: String
     var longitude : String
-    static let photo = "photo"
 
     //MARK: Init
-    init(name: String, email: String, id: String, profilePic: UIImage, latitude:String, longitude:String) {
+    init?(name: String, email: String, id: String, profilePic: UIImage?, latitude:String, longitude:String) {
+        if name.isEmpty || email.isEmpty {
+            return nil
+        }
         self.name = name
         self.email = email
         self.id = id
@@ -30,18 +33,10 @@ class User: NSObject, NSCoding {
         self.latitude = latitude
         self.longitude = longitude
     }
-    init?(name: String, email: String, photo: UIImage?) {
-        if name.isEmpty || email.isEmpty {
-            return nil
-        }
-        self.name = name
-        self.email = email
-        self.photo = photo
-    }
 
-    func encode(with coder: NSCoder) {
+    /*func encode(with coder: NSCoder) {
         coder.encode(name, forKey: PropertyKey.name)
-        coder.encode(photo, forKey: PropertyKey.photo)
+        coder.encode(profilePic, forKey: PropertyKey.profilePic)
         coder.encode(email, forKey: PropertyKey.email)
     }
 
@@ -56,5 +51,5 @@ class User: NSObject, NSCoding {
         }
         let photo = coder.decodeObject(forKey: PropertyKey.photo) as? UIImage
         self.init(name: name, email: email, photo: photo)
-    }
+    }*/
 }

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import os.log
+import Firebase
 
 class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -22,8 +23,16 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         userNameTextField.delegate = self
         userPasswordTextField.delegate = self
+        
+        user = UserDefaults.standard.value(forKey: "userDetails") as? User
+        print(user?.email)
+        
+        //sharedUserController
+        //profilePhoto = user?.profilePic
+        //userNameTextField = user?.name
     }
     
     //MARK: UITextFieldDelegate
@@ -62,7 +71,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         present(imagePickerController, animated: true, completion: nil)
     }
 
-    @IBAction func unwindToMenu(_ sender: UIStoryboardSegue) {
+    @IBAction func save(_ sender: UIStoryboardSegue) {
         
     }
     
