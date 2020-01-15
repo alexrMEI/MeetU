@@ -8,19 +8,28 @@
 
 import UIKit
 import os.log
+import Foundation
+import Firebase
 
 class User: NSObject, NSCoding {
-        
-    var name: String
-    var email: String
-    var photo: UIImage?
-    
-    struct PropertyKey {
-        static let name = "name"
-        static let email = "email"
-        static let photo = "photo"
+    //MARK: Properties
+    let name: String
+    let email: String
+    let id: String
+    var profilePic: UIImage
+    var latitude: String
+    var longitude : String
+    static let photo = "photo"
+
+    //MARK: Init
+    init(name: String, email: String, id: String, profilePic: UIImage, latitude:String, longitude:String) {
+        self.name = name
+        self.email = email
+        self.id = id
+        self.profilePic = profilePic
+        self.latitude = latitude
+        self.longitude = longitude
     }
-    
     init?(name: String, email: String, photo: UIImage?) {
         if name.isEmpty || email.isEmpty {
             return nil
@@ -29,13 +38,13 @@ class User: NSObject, NSCoding {
         self.email = email
         self.photo = photo
     }
-    
+
     func encode(with coder: NSCoder) {
         coder.encode(name, forKey: PropertyKey.name)
         coder.encode(photo, forKey: PropertyKey.photo)
         coder.encode(email, forKey: PropertyKey.email)
     }
-    
+
     required convenience init?(coder: NSCoder) {
         guard let name = coder.decodeObject(forKey: PropertyKey.name) as? String else {
             os_log("Unable to decode the name for a User object.", log: OSLog.default, type: .debug)
