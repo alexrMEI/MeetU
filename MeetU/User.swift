@@ -16,16 +16,24 @@ class User {
     let name: String
     let email: String
     let id: String
-    var profilePic: UIImage
+    var profilePic: UIImage?
     var latitude: String
     var longitude : String
 
     //MARK: Init
-    init(name: String, email: String, id: String, profilePic: UIImage?, latitude:String, longitude:String) {
+    init(name: String, email: String, id: String, profilePic: UIImage, latitude:String, longitude:String) {
         self.name = name
         self.email = email
         self.id = id
-        self.profilePic = (profilePic ?? nil)!
+        self.profilePic = profilePic
+        self.latitude = latitude
+        self.longitude = longitude
+    }
+    
+    init(name: String, email: String, id: String, latitude:String, longitude:String) {
+        self.name = name
+        self.email = email
+        self.id = id
         self.latitude = latitude
         self.longitude = longitude
     }

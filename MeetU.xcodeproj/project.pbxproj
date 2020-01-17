@@ -20,6 +20,7 @@
 		75D6AEBB2385C51600F16C00 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75D6AEBA2385C51600F16C00 /* GoogleService-Info.plist */; };
 		A8B4A85BBF2F7545B35F0A84 /* Pods_MeetU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48EA7310C895DCFA6D967A93 /* Pods_MeetU.framework */; };
 		B40A6BB623870DC600B8DC48 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40A6BB523870DC600B8DC48 /* MenuViewController.swift */; };
+		B47F30A923D26DC300F3164E /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47F30A823D26DC300F3164E /* ProfileEditViewController.swift */; };
 		B4BF32A12385D38C007D68F0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BF32A02385D38C007D68F0 /* LoginViewController.swift */; };
 		B4FC28FB239AE8770095C555 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FC28FA239AE8770095C555 /* UserController.swift */; };
 		B4FC28FD239B09B90095C555 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FC28FC239B09B90095C555 /* ProfileViewController.swift */; };
@@ -72,6 +73,7 @@
 		B40A6BB523870DC600B8DC48 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		B40A6BB7238717A000B8DC48 /* LocationESTG.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LocationESTG.gpx; sourceTree = "<group>"; };
 		B47EC6E023A5080D00E4CCEC /* LocationESTG_1.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LocationESTG_1.gpx; sourceTree = "<group>"; };
+		B47F30A823D26DC300F3164E /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		B4BF32A02385D38C007D68F0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B4FC28FA239AE8770095C555 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		B4FC28FC239B09B90095C555 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -147,6 +149,7 @@
 				B40A6BB523870DC600B8DC48 /* MenuViewController.swift */,
 				B40A6BB7238717A000B8DC48 /* LocationESTG.gpx */,
 				B4FC28FC239B09B90095C555 /* ProfileViewController.swift */,
+				B47F30A823D26DC300F3164E /* ProfileEditViewController.swift */,
 				75B4920E239AEA9E0069A84F /* UserController.swift */,
 				B47EC6E023A5080D00E4CCEC /* LocationESTG_1.gpx */,
 				75C2F5B723AE353F00E5FA08 /* LocationESTG_2.gpx */,
@@ -438,6 +441,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				75603D6C236B61AC00D81813 /* ViewController.swift in Sources */,
+				B47F30A923D26DC300F3164E /* ProfileEditViewController.swift in Sources */,
 				B4FC28FB239AE8770095C555 /* UserController.swift in Sources */,
 				75603D68236B61AC00D81813 /* AppDelegate.swift in Sources */,
 				75B026F72385E1F00093F06E /* User.swift in Sources */,

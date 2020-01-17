@@ -27,11 +27,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vEO-i9-7Bd">
-                                <rect key="frame" x="154" y="424" width="240" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                            </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="i6n-ty-9NX">
                                 <rect key="frame" x="154" y="340" width="240" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -71,6 +66,11 @@
                                     <segue destination="a1b-fN-s3g" kind="show" id="XF3-og-Wev"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vEO-i9-7Bd">
+                                <rect key="frame" x="147" y="419" width="240" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -154,6 +154,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kbr-Zn-49V">
+                                <rect key="frame" x="186" y="320" width="112" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -173,11 +180,12 @@
                     <navigationItem key="navigationItem" id="PEq-VP-M9w">
                         <barButtonItem key="rightBarButtonItem" systemItem="edit" id="AxH-QF-A3p">
                             <connections>
-                                <segue destination="20W-9h-B9a" kind="show" id="wcX-WY-zCc"/>
+                                <segue destination="20W-9h-B9a" kind="show" identifier="editSegue" id="wcX-WY-zCc"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="emailLabel" destination="Kbr-Zn-49V" id="ibq-cX-MZ5"/>
                         <outlet property="profilePhoto" destination="mYE-NZ-skK" id="gJF-sl-Xtb"/>
                     </connections>
                 </viewController>
@@ -640,7 +648,7 @@
         <!--ProfileEdit View Controller-->
         <scene sceneID="5cI-pn-Sc6">
             <objects>
-                <viewController title="ProfileEdit View Controller" id="20W-9h-B9a" customClass="ProfileViewController" customModule="MeetU" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="ProfileEdit View Controller" id="20W-9h-B9a" customClass="ProfileEditViewController" customModule="MeetU" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kEU-il-71u">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -653,19 +661,22 @@
                                     <constraint firstAttribute="width" secondItem="wKl-5j-cut" secondAttribute="height" multiplier="1:1" id="5E1-6x-xjr"/>
                                     <constraint firstAttribute="width" constant="120" id="PSO-DA-AEf"/>
                                 </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="rYb-oy-dtf" appends="YES" id="zmN-UW-04h"/>
-                                </connections>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YsE-sx-TEy">
                                 <rect key="frame" x="142" y="318" width="252" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="editName:" destination="20W-9h-B9a" eventType="editingDidEnd" id="iIJ-p4-Dhz"/>
+                                </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zeR-gq-pR3">
                                 <rect key="frame" x="142" y="392" width="252" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <connections>
+                                    <action selector="editPassword:" destination="20W-9h-B9a" eventType="editingDidEnd" id="mEL-pL-GAv"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXp-xO-Bju">
                                 <rect key="frame" x="70" y="318" width="52" height="24"/>
@@ -707,23 +718,17 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="dxo-OS-hXI">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="c5H-wV-ghd"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="c5H-wV-ghd">
+                            <connections>
+                                <action selector="cancelAction:" destination="20W-9h-B9a" id="FH8-Ly-Zrg"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="GYm-kh-LEO"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="profilePhoto" destination="wKl-5j-cut" id="7gV-wd-UgC"/>
-                        <outlet property="userNameTextField" destination="YsE-sx-TEy" id="zTA-qx-Xgu"/>
-                        <outlet property="userPasswordTextField" destination="zeR-gq-pR3" id="Svg-bp-s1s"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kui-C2-HiJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="rYb-oy-dtf">
-                    <connections>
-                        <action selector="selectImageFromLibrary2:" destination="20W-9h-B9a" id="ZSI-sn-IPm"/>
-                        <outlet property="delegate" destination="wKl-5j-cut" id="rOU-uF-e1v"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="rYb-oy-dtf"/>
             </objects>
             <point key="canvasLocation" x="-30" y="1594"/>
         </scene>
