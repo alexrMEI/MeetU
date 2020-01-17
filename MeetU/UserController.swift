@@ -13,6 +13,7 @@ import os.log
 
 class UserController {
     var items = [User]()
+    let group = DispatchGroup()
     
     static let shared = UserController()
     
@@ -154,12 +155,10 @@ class UserController {
     }
     
     // MARK: Get Users Location
-    func GetUsersLocation(completion: @escaping (User) -> Swift.Void) {
+    func GetUsersLocation() -> [User] {
         // TO DO
         geoFireRef = Database.database().reference().child("Geolocs")
-        
         geoFire = GeoFire(firebaseRef: geoFireRef!)
-        
         // TO DO
         let userLat = UserDefaults.standard.value(forKey: "current_latitude") as! String
         let userLong = UserDefaults.standard.value(forKey: "current_longitude") as! String
@@ -169,11 +168,12 @@ class UserController {
         myQuery = geoFire?.query(at: location, withRadius: 100)
         
         myQuery?.observe(.keyEntered, with: { (key, location) in
+            print("CHEGUEI!!!")
             
            // print("KEY:\(String(describing: key)) and location:\(String(describing: location))")
             
             //SwiftOverlays.showTextOverlay(self.view, text: "Searching for nearby users...")
-            
+            self.group.enter()
             if key != Auth.auth().currentUser?.uid
             {
                 let ref = Database.database().reference().child("Users").child(key)
@@ -211,7 +211,8 @@ class UserController {
                             DispatchQueue.main.async {
                                 //SwiftOverlays.removeAllBlockingOverlays()
                                 self.items.append(user)
-                                completion(user)
+                                self.group.leave()
+                                //completion(user)
                                 //self.tblUserList.reloadData()
                             }
                             
@@ -227,6 +228,10 @@ class UserController {
                 }
             }
         })
+        self.group.wait()
+        print("all Done")
+        print(self.items.count)
+        return self.items
     }
 
     // MARK: Show Toast if fields are empty

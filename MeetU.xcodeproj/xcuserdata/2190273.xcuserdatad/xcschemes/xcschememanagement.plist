@@ -4,10 +4,33 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>MeetU 1.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>24</integer>
+		</dict>
 		<key>MeetU.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>21</integer>
+			<integer>23</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>75603D63236B61AC00D81813</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>75603D79236B61AE00D81813</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>75603D84236B61AE00D81813</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

@@ -7,18 +7,29 @@
 //
 
 import UIKit
+import Firebase
+import GeoFire
+import os.log
 
 class NearbyUserListTableViewController: UITableViewController {
     var users = [User]()
+    
+    var geoFireRef: DatabaseReference?
+    var geoFire: GeoFire?
+    var myQuery: GFQuery?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // ---------- TODO --------------
         
-        UserController.shared.GetUsersLocation(completion: {(user) in
+    /*UserController.shared.GetUsersLocation(completion: {(user) in
+            print("entrei")
             self.users.append(user)
         })
+        print("sai")*/
+        
+        self.users = UserController.shared.GetUsersLocation()
         
         /*guard let user1 =
         guard let meal1 = Meal(name: "Caprese Salad", photo: photo1, rating: 4) else {
@@ -34,6 +45,82 @@ class NearbyUserListTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    // MARK: Get Users Location
+    func GetUsersLocation() {
+        // TO DO
+        geoFireRef = Database.database().reference().child("Geolocs")
+        
+        geoFire = GeoFire(firebaseRef: geoFireRef!)
+        
+        // TO DO
+        let userLat = UserDefaults.standard.value(forKey: "current_latitude") as! String
+        let userLong = UserDefaults.standard.value(forKey: "current_longitude") as! String
+        
+        let location:CLLocation = CLLocation(latitude: CLLocationDegrees(Double(userLat)!), longitude: CLLocationDegrees(Double(userLong)!))
+        
+        myQuery = geoFire?.query(at: location, withRadius: 100)
+        
+        myQuery?.observe(.keyEntered, with: { (key, location) in
+            
+           // print("KEY:\(String(describing: key)) and location:\(String(describing: location))")
+            
+            //SwiftOverlays.showTextOverlay(self.view, text: "Searching for nearby users...")
+            if key != Auth.auth().currentUser?.uid
+            {
+                let ref = Database.database().reference().child("Users").child(key)
+                
+                ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                    let id = snapshot.key
+                    let data = snapshot.value as! [String: Any]
+                    //let credentials = data["user_details"] as! [String: String]
+                    let credentials = data as! [String: String]
+                    
+                    let name = credentials["name"]!
+                    let email = credentials["email"]!
+                    let latitude = credentials["current_latitude"] ?? "0"
+                    let longitude = credentials["current_longitude"] ?? "0"
+                    //let link = URL.init(string: credentials["profilepic_url"]!)
+                    guard let url = URL(string: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fipc.digital%2Ficon-user-default%2F&psig=AOvVaw0jQrpOXTD5ycDKfr7FGioR&ust=1576412225151000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKjriamPteYCFQAAAAAdAAAAABAD") else {
+                        os_log("Invalid URL.", log: OSLog.default, type: .error)
+                        return
+                    }
+                    
+                    URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+                        if error == nil {
+                            
+                            //var profilePic :UIImage
+                            
+                            //let url = URL(string: "https://cdn.arstechnica.net/wp-content/uploads/2018/06/macOS-Mojave-Dynamic-Wallpaper-transition.jpg")!
+                            //var profilePic: UIImage// = self.downloadImage(from: url)
+                            
+                            
+                            let profilePic :UIImage = UIImage()
+                            
+                            //let profilePic = UIImage.init(data: data!)
+                            let user = User.init(name: name, email: email, id: id, profilePic: profilePic, latitude: latitude , longitude:longitude )
+                            
+                            DispatchQueue.main.async {
+                                //SwiftOverlays.removeAllBlockingOverlays()
+                                //self.items.append(user)
+                                //self.group.leave()
+                                //completion(user)
+                                //self.tblUserList.reloadData()
+                            }
+                            
+                        }
+                    }).resume()
+                })
+                
+            }
+            else
+            {
+                DispatchQueue.main.async {
+                    //SwiftOverlays.removeAllBlockingOverlays()
+                }
+            }
+        })
     }
 
     // MARK: - Table view data source
