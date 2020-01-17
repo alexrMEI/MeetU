@@ -5,16 +5,18 @@
 //  Created by Ricardo Miguel da Silva Rodrigues on 06/12/2019.
 //  Copyright © 2019 MeetU Inc. All rights reserved.
 //
+
 import Foundation
 import Firebase
 import GeoFire
+import os.log
 
 class UserController {
-    
-    static let sharedUserController = UserController()
-    init(){}
-    
     var items = [User]()
+    
+    static let shared = UserController()
+    
+    init(){}
     
     var geoFireRef: DatabaseReference?
     var geoFire: GeoFire?
@@ -67,11 +69,6 @@ class UserController {
         })
     }
     
-    //MARK: Update User
-    /*class func registerUser(withName: String, email: String, password: String, completion: @escaping (String) -> Swift.Void) {
-        
-    }*/
-    
     //MARK: Login User
     class func loginUser(withEmail: String, password: String, completion: @escaping (Bool) -> Swift.Void) {
         Auth.auth().signIn(withEmail: withEmail, password: password, completion: { (user, error) in
@@ -97,7 +94,7 @@ class UserController {
     }
     
     //MARK: User Info
-    class func info(forUserID: String, completion: @escaping (User)) {
+    class func info(forUserID: String, completion: @escaping (User) -> Swift.Void) {
         Database.database().reference().child("Users").child(forUserID).observeSingleEvent(of: .value, with: { (snapshot) in
             if let data = snapshot.value as? [String: String] {
                 let name = data["name"]!
@@ -133,7 +130,7 @@ class UserController {
                     if error == nil {
                         let profilePic = UIImage.init(data: data!)
                         let user = User.init(name: name, email: email, id: id, profilePic: profilePic!, latitude: latitude! , longitude:longitude! )
-                        completion(user ?? default value)
+                        completion(user)
                     }
                 }).resume()
             }
@@ -157,7 +154,7 @@ class UserController {
     }
     
     // MARK: Get Users Location
-    func GetUsersLocation() {
+    func GetUsersLocation(completion: @escaping (User) -> Swift.Void) {
         // TO DO
         geoFireRef = Database.database().reference().child("Geolocs")
         
@@ -184,30 +181,44 @@ class UserController {
                 ref.observeSingleEvent(of: .value, with: { (snapshot) in
                     let id = snapshot.key
                     let data = snapshot.value as! [String: Any]
-                    let credentials = data["user_details"] as! [String: String]
+                    //let credentials = data["user_details"] as! [String: String]
+                    let credentials = data as! [String: String]
                     
                     let name = credentials["name"]!
                     let email = credentials["email"]!
-                    let latitude = credentials["current_latitude"]
-                    let longitude = credentials["current_longitude"]
-                    let link = URL.init(string: credentials["profilepic_url"]!)
-                    URLSession.shared.dataTask(with: link!, completionHandler: { (data, response, error) in
+                    let latitude = credentials["current_latitude"] ?? "0"
+                    let longitude = credentials["current_longitude"] ?? "0"
+                    //let link = URL.init(string: credentials["profilepic_url"]!)
+                    guard let url = URL(string: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fipc.digital%2Ficon-user-default%2F&psig=AOvVaw0jQrpOXTD5ycDKfr7FGioR&ust=1576412225151000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKjriamPteYCFQAAAAAdAAAAABAD") else {
+                        os_log("Invalid URL.", log: OSLog.default, type: .error)
+                        return
+                    }
+                    
+                    URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
                         if error == nil {
-                            let profilePic = UIImage.init(data: data!)
-                            let user = User.init(name: name, email: email, id: id, profilePic: profilePic!, latitude: latitude! , longitude:longitude! )
+                            
+                            //var profilePic :UIImage
+                            
+                            //let url = URL(string: "https://cdn.arstechnica.net/wp-content/uploads/2018/06/macOS-Mojave-Dynamic-Wallpaper-transition.jpg")!
+                            //var profilePic: UIImage// = self.downloadImage(from: url)
+                            
+                            
+                            let profilePic :UIImage = UIImage()
+                            
+                            //let profilePic = UIImage.init(data: data!)
+                            let user = User.init(name: name, email: email, id: id, profilePic: profilePic, latitude: latitude , longitude:longitude )
                             
                             DispatchQueue.main.async {
                                 //SwiftOverlays.removeAllBlockingOverlays()
-                                self.items.append(user ?? <#default value#>)
-                                print(user)
-                                print(user?.email)
+                                self.items.append(user)
+                                completion(user)
                                 //self.tblUserList.reloadData()
                             }
                             
                         }
                     }).resume()
-                    
                 })
+                
             }
             else
             {
@@ -217,7 +228,7 @@ class UserController {
             }
         })
     }
-    
+
     // MARK: Show Toast if fields are empty
     /*func showToast(controller: UIViewController, message : String, seconds: Double) {
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
@@ -230,4 +241,4 @@ class UserController {
             alert.dismiss(animated: true)
         }
     }*/
-}
+} 

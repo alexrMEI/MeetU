@@ -8,7 +8,6 @@
 
 import Foundation
 import UIKit
-import os.log
 import Firebase
 
 class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -63,6 +62,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     //MARK: Actions
     @IBAction func selectImageFromLibrary2(_ sender: UITapGestureRecognizer) {
         // Hide the keyboard.
+        print("HEYyyyyyy")
         userNameTextField.resignFirstResponder()
         userPasswordTextField.resignFirstResponder()
         let imagePickerController = UIImagePickerController() // Only allow photos to be picked, not taken.
@@ -80,12 +80,11 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         super.prepare(for: segue, sender: sender)
         // Configure the destination view controller only when the save button is pressed.
         guard let button = sender as? UIBarButtonItem, button === saveButton else {
-            os_log("The save button was not pressed, cancelling", log: OSLog.default, type: .debug)
             return
         }
         let name = userNameTextField.text ?? ""
         let password = userPasswordTextField.text ?? ""
         let photo = profilePhoto.image
-        user = User(name: name, email: password, photo: photo) //INCORRETO!!!!!!
+        //user = User(name: name, email: password, photo: photo) //INCORRETO!!!!!!
     }
 }

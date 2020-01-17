@@ -6,16 +6,13 @@ target 'MeetU' do
   use_frameworks!
 
   # Pods for MeetU
-  # add the Firebase pod for Google Analytics
   pod 'Firebase/Analytics'
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
   pod 'SwiftOverlays', '~> 5.0.1'
   pod ‘GeoFire’, :git => ‘https://github.com/firebase/geofire-objc.git'
-  # add pods for any other desired Firebase products
-  # https://firebase.google.com/docs/ios/setup#available-pods
-  
+
   target 'MeetUTests' do
     inherit! :search_paths
     # Pods for testing
