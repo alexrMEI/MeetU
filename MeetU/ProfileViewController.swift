@@ -15,22 +15,26 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     //MARK: Properties
     @IBOutlet weak var profilePhoto: UIImageView!
     @IBOutlet weak var emailLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
     
-    
+    let group = DispatchGroup()
+    let userUID = Auth.auth().currentUser?.uid
     var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        user = User.init(name: "asd", email: "asd@asd.com", id: "123asd", latitude: "12-223", longitude: "123123-123123")
-       
-        print("ASDASD \(user)")
+        group.enter()
+        Database.database().reference().child("Users").child(userUID!).observeSingleEvent(of: .value, with: {(snapshot) in
+            self.user = User.init(user: snapshot.value as! Dictionary<String, String>, id: self.userUID!)
+            self.group.leave()
+        })
         
-        emailLabel.text = user?.email
-        
-        //sharedUserController
-        //profilePhoto = user?.profilePic
-        //userNameTextField = user?.name
+        group.notify(queue: .main){
+            self.emailLabel.text = self.user?.email
+            self.nameLabel.text = self.user?.name
+            self.profilePhoto.image = self.base64Decode(base64String: self.user?.profilePic)
+        }
     }
     
     //MARK: UITextFieldDelegate
@@ -41,38 +45,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         return true
     } */
     
-    //MARK: UIImagePickerControllerDelegate
-    /* func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
-    {
-        dismiss(animated: true, completion: nil)
-    } */
-    
-    /* func imagePickerController(_ picker: UIImagePickerController,
-    didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey :
-    Any]) {
-        guard let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage   else {
-                fatalError("Expected a dictionary containing an image, but was provided the following: \(info)")
-            }
-        profilePhoto.image = selectedImage
-        // Dismiss the picker.
-        dismiss(animated: true, completion: nil)
-    }
-    
-    //MARK: Actions
-    @IBAction func selectImageFromLibrary2(_ sender: UITapGestureRecognizer) {
-        // Hide the keyboard.
-        print("HEYyyyyyy")
-        userNameTextField.resignFirstResponder()
-        userPasswordTextField.resignFirstResponder()
-        let imagePickerController = UIImagePickerController() // Only allow photos to be picked, not taken.
-        imagePickerController.sourceType = .photoLibrary
-        imagePickerController.delegate = self
-        present(imagePickerController, animated: true, completion: nil)
-    } */
-
-    @IBAction func save(_ sender: UIStoryboardSegue) {
-        
-    }
     
     //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -80,6 +52,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             if let viewController = segue.destination as? ProfileEditViewController {
               if(user != nil){
                 viewController.user = user!
+                viewController.profilePicDecoded = profilePhoto.image!
                }
             }
         }
@@ -93,5 +66,16 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         let password = userPasswordTextField.text ?? ""
         let photo = profilePhoto.image */
         //user = User(name: name, email: password, photo: photo) //INCORRETO!!!!!!
+    }
+    
+    func base64Decode(base64String: String?) -> UIImage{
+      if (base64String?.isEmpty)! {
+          return #imageLiteral(resourceName: "user_icon")
+      }else {
+          let temp = base64String?.components(separatedBy: ",")
+          let dataDecoded : Data = Data(base64Encoded: temp![1], options: .ignoreUnknownCharacters)!
+          let decodedImage = UIImage(data: dataDecoded)
+          return decodedImage!
+      }
     }
 }

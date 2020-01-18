@@ -28,7 +28,7 @@ class UserController {
             
             if error == nil {
                 //let values = ["Name": withName, "Email": email]
-                let values = ["name": withName, "email": email, "profilepic_url": "","current_latitude":"","current_longitude":""]
+                let values = ["name": withName, "email": email, "profilepic": "","current_latitude":"","current_longitude":""]
                 Database.database().reference().child("Users").child((authResult?.user.uid)!).updateChildValues(values, withCompletionBlock: { (errr, _) in
                     if errr == nil {
                         let userInfo = ["email" : email, "password" : password]
@@ -99,23 +99,17 @@ class UserController {
             if let data = snapshot.value as? [String: String] {
                 let name = data["name"]!
                 let email = data["email"]!
-                let link = URL.init(string: data["profilepic_url"]!)
+                let profilePic = data["profilepic"]!
                 let latitude = data["current_latitude"]
                 let longitude = data["current_longitude"]
-                
-                URLSession.shared.dataTask(with: link!, completionHandler: { (data, response, error) in
-                    if error == nil {
-                        let profilePic = UIImage.init(data: data!)
-                        let user = User.init(name: name, email: email, id: forUserID, profilePic: profilePic!, latitude: latitude! , longitude:longitude!)
-                        completion(user)
-                    }
-                }).resume()
+                let user = User.init(name: name, email: email, id: forUserID, profilePic: profilePic, latitude: latitude!, longitude:longitude!)
+                completion(user)
             }
         })
     }
     
     //MARK: Download all Users
-    class func downloadAllUsers(exceptID: String, completion: @escaping (User) -> Swift.Void) {
+    /*class func downloadAllUsers(exceptID: String, completion: @escaping (User) -> Swift.Void) {
         Database.database().reference().child("Users").observe(.childAdded, with: { (snapshot) in
             let id = snapshot.key
             let data = snapshot.value as! [String: Any]
@@ -125,20 +119,15 @@ class UserController {
                 let email = credentials["email"]!
                 let latitude = credentials["Latitude"]
                 let longitude = credentials["Longitude"]
-                let link = URL.init(string: credentials["ProfilePic"]!)
-                URLSession.shared.dataTask(with: link!, completionHandler: { (data, response, error) in
-                    if error == nil {
-                        let profilePic = UIImage.init(data: data!)
-                        let user = User.init(name: name, email: email, id: id, profilePic: profilePic!, latitude: latitude! , longitude:longitude! )
-                        completion(user)
-                    }
-                }).resume()
+                let profilePic = credentials["ProfilePic"]!
+                let user = User.init(name: name, email: email, id: id, profilePic: profilePic, latitude: latitude! , longitude:longitude! )
+                completion(user)
             }
         })
-    }
+    }*/
     
     // MARK: Get Users
-    func getUsers()  {
+    /*func getUsers()  {
 
         //SwiftOverlays.showTextOverlay(self.view, text: "Searching users...")
         
@@ -151,7 +140,7 @@ class UserController {
                 }
             })
         }
-    }
+    }*/
     
     // MARK: Get Users Location
     func GetUsersLocation(completion: @escaping (User) -> Swift.Void) {
@@ -174,8 +163,8 @@ class UserController {
             
             //SwiftOverlays.showTextOverlay(self.view, text: "Searching for nearby users...")
             
-            if key != Auth.auth().currentUser?.uid
-            {
+            if key != Auth.auth().currentUser?.uid {
+                
                 let ref = Database.database().reference().child("Users").child(key)
                 
                 ref.observeSingleEvent(of: .value, with: { (snapshot) in
@@ -188,40 +177,17 @@ class UserController {
                     let email = credentials["email"]!
                     let latitude = credentials["current_latitude"] ?? "0"
                     let longitude = credentials["current_longitude"] ?? "0"
-                    //let link = URL.init(string: credentials["profilepic_url"]!)
-                    guard let url = URL(string: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fipc.digital%2Ficon-user-default%2F&psig=AOvVaw0jQrpOXTD5ycDKfr7FGioR&ust=1576412225151000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKjriamPteYCFQAAAAAdAAAAABAD") else {
-                        os_log("Invalid URL.", log: OSLog.default, type: .error)
-                        return
+                    let profilePic = credentials["profilepic"]!
+                    let user = User.init(name: name, email: email, id: id, profilePic: profilePic, latitude: latitude, longitude:longitude )
+                            
+                    DispatchQueue.main.async {
+                        //SwiftOverlays.removeAllBlockingOverlays()
+                        self.items.append(user)
+                        completion(user)
+                        //self.tblUserList.reloadData()
                     }
-                    
-                    URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-                        if error == nil {
-                            
-                            //var profilePic :UIImage
-                            
-                            //let url = URL(string: "https://cdn.arstechnica.net/wp-content/uploads/2018/06/macOS-Mojave-Dynamic-Wallpaper-transition.jpg")!
-                            //var profilePic: UIImage// = self.downloadImage(from: url)
-                            
-                            
-                            let profilePic :UIImage = UIImage()
-                            
-                            //let profilePic = UIImage.init(data: data!)
-                            let user = User.init(name: name, email: email, id: id, profilePic: profilePic, latitude: latitude , longitude:longitude )
-                            
-                            DispatchQueue.main.async {
-                                //SwiftOverlays.removeAllBlockingOverlays()
-                                self.items.append(user)
-                                completion(user)
-                                //self.tblUserList.reloadData()
-                            }
-                            
-                        }
-                    }).resume()
                 })
-                
-            }
-            else
-            {
+            } else {
                 DispatchQueue.main.async {
                     //SwiftOverlays.removeAllBlockingOverlays()
                 }

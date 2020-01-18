@@ -16,12 +16,12 @@ class User {
     let name: String
     let email: String
     let id: String
-    var profilePic: UIImage?
-    var latitude: String
-    var longitude : String
+    var profilePic: String?
+    var latitude: String?
+    var longitude : String?
 
     //MARK: Init
-    init(name: String, email: String, id: String, profilePic: UIImage, latitude:String, longitude:String) {
+    init(name: String, email: String, id: String, profilePic: String, latitude:String, longitude:String) {
         self.name = name
         self.email = email
         self.id = id
@@ -29,12 +29,11 @@ class User {
         self.latitude = latitude
         self.longitude = longitude
     }
-    
-    init(name: String, email: String, id: String, latitude:String, longitude:String) {
-        self.name = name
-        self.email = email
+
+    init(user: Dictionary<String, String>, id: String) {
+        self.name = user["name"]!
+        self.email = user["email"]!
+        self.profilePic = user["profilepic_url"]!
         self.id = id
-        self.latitude = latitude
-        self.longitude = longitude
     }
 }
