@@ -26,6 +26,8 @@ class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
         //if CLLocationManager.locationServicesEnabled() {

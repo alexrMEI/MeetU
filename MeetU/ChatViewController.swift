@@ -37,7 +37,7 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate,
         //messageInputBar.sendButton.setTitleColor(.primary, for: .normal)
         
         self.user2Name = "riky"
-        self.user2UID = "6AtznPqjviUKieCbLdLh4PqW4zi2"
+        self.user2UID = "Qq4neJIRlWgRb448k5pxnxSVrWE3"
         
         messageInputBar.delegate = self
         messagesCollectionView.messagesDataSource = self

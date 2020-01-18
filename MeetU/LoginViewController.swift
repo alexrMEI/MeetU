@@ -9,29 +9,65 @@
 import UIKit
 
 import Firebase
+import SwiftOverlays
+import AudioToolbox
 
 @objc(LoginViewController)
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
-
+    @IBOutlet weak var errorMessage: UILabel!
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
+        self.errorMessage.isHidden = true
         self.view.endEditing(true)
     }
     
     @IBAction func login(_ sender: UIButton) {
-        guard let email = self.emailField.text else {
-            print("email can't be empty")
+        if self.emailField.text == "" {
+            self.errorMessage.text = "Email can't be empty"
+            self.errorMessage.isHidden = false
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             return
         }
-        guard let password = self.passwordField.text else {
-            print("password can't be empty")
+        
+        if self.passwordField.text == "" {
+            self.errorMessage.text = "Password can't be empty"
+            self.errorMessage.isHidden = false
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             return
         }
+        
+        if let superview = self.view.superview {
+            SwiftOverlays.showCenteredWaitOverlayWithText(superview, text: "Logging in...")
+        }
+        
+        let email = self.emailField.text!
+        let password = self.passwordField.text!
+        
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] user, error in
           guard let strongSelf = self else { return }
-          // ...
+          
+            if error == nil && user != nil {
+                let userInfo = ["email" : email, "password" : password]
+                UserDefaults.standard.set(userInfo, forKey: "userDetails")
+                
+                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                let secondVC = storyboard.instantiateViewController(identifier: "TabBarController")
+                
+                secondVC.modalPresentationStyle = .fullScreen
+                secondVC.modalTransitionStyle = .crossDissolve
+                
+                strongSelf.present(secondVC, animated: true, completion: nil)
+            } else {
+                strongSelf.errorMessage.isHidden = false
+                strongSelf.errorMessage.text = "Incorrect account name or password"
+            }
+            
+            if let superview = strongSelf.view.superview {
+                SwiftOverlays.removeAllOverlaysFromView(superview)
+            }
         }
         Analytics.logEvent(AnalyticsEventLogin, parameters: [
             AnalyticsParameterMethod: method

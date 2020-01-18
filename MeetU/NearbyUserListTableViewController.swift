@@ -24,19 +24,14 @@ class NearbyUserListTableViewController: UITableViewController {
         
         // ---------- TODO --------------
         group.enter()
-        print(group)
         
         UserController.shared.GetUsersLocation(group: group, completion: {(user) in
-            print("entrei \(user)")
+            
             self.users.append(user)
             self.group.leave()
-        
-            print(self.group)
         })
-        print("TESTE!!!!!")
         
         group.notify(queue: .main) {
-            print("ad")
             self.tableView.reloadData()
         }
         //self.users.append(User(name: "Ola1", email: "ola1@g.com", id: "1", profilePic: UIImage(), latitude: "", longitude: ""))
@@ -162,7 +157,7 @@ class NearbyUserListTableViewController: UITableViewController {
         // Fetches the appropriate meal for the data source layout.
         let user = users[indexPath.row]
         
-        //cell.name.text = "ola"
+        //cell.name.text = "hello"
         cell.name.text = user.name
         /*cell.photoImageView.image = meal.photo
         cell.ratingControl.rating = meal.rating*/
