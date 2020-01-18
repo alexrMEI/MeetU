@@ -13,6 +13,7 @@ import os.log
 
 class NearbyUserListTableViewController: UITableViewController {
     var users = [User]()
+    var group = DispatchGroup()
     
     var geoFireRef: DatabaseReference?
     var geoFire: GeoFire?
@@ -22,15 +23,25 @@ class NearbyUserListTableViewController: UITableViewController {
         super.viewDidLoad()
         
         // ---------- TODO --------------
+        group.enter()
+        print(group)
         
-        UserController.shared.GetUsersLocation(completion: {(user) in
-            //print("entrei")
+        UserController.shared.GetUsersLocation(group: group, completion: {(user) in
+            print("entrei \(user)")
             self.users.append(user)
-        })
+            self.group.leave()
         
-        self.users.append(User(name: "Ola1", email: "ola1@g.com", id: "1", profilePic: UIImage(), latitude: "", longitude: ""))
-        self.users.append(User(name: "Ola2", email: "ola2@g.com", id: "2", profilePic: UIImage(), latitude: "", longitude: ""))
-        self.users.append(User(name: "Ola3", email: "ola3@g.com", id: "3", profilePic: UIImage(), latitude: "", longitude: ""))
+            print(self.group)
+        })
+        print("TESTE!!!!!")
+        
+        group.notify(queue: .main) {
+            print("ad")
+            self.tableView.reloadData()
+        }
+        //self.users.append(User(name: "Ola1", email: "ola1@g.com", id: "1", profilePic: UIImage(), latitude: "", longitude: ""))
+        //self.users.append(User(name: "Ola2", email: "ola2@g.com", id: "2", profilePic: UIImage(), latitude: "", longitude: ""))
+        //self.users.append(User(name: "Ola3", email: "ola3@g.com", id: "3", profilePic: UIImage(), latitude: "", longitude: ""))
 
         //print("sai")
         

@@ -13,8 +13,7 @@ import os.log
 
 class UserController {
     var items = [User]()
-    let group = DispatchGroup()
-    
+
     static let shared = UserController()
     
     init(){}
@@ -155,8 +154,9 @@ class UserController {
     }
     
     // MARK: Get Users Location
-    func GetUsersLocation(completion: @escaping (User) -> Swift.Void) {
+    func GetUsersLocation(group: DispatchGroup, completion: @escaping (User) -> Swift.Void) {
         // TO DO
+        var number = 1;
         geoFireRef = Database.database().reference().child("Geolocs")
         geoFire = GeoFire(firebaseRef: geoFireRef!)
         // TO DO
@@ -179,10 +179,14 @@ class UserController {
         print("depois2")*/
                 
         myQuery?.observe(.keyEntered, with: { (key, location) in
+            print(key, location)
            // print("KEY:\(String(describing: key)) and location:\(String(describing: location))")
 
             //SwiftOverlays.showTextOverlay(self.view, text: "Searching for nearby users...")
-            //self.group.enter()
+            group.enter()
+            number = number + 1
+
+            print(group)
             if key != Auth.auth().currentUser?.uid
             {
                 let ref = Database.database().reference().child("Users").child(key)
@@ -198,12 +202,26 @@ class UserController {
                     let latitude = credentials["current_latitude"] ?? "0"
                     let longitude = credentials["current_longitude"] ?? "0"
                     //let link = URL.init(string: credentials["profilepic_url"]!)
-                    guard let url = URL(string: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fipc.digital%2Ficon-user-default%2F&psig=AOvVaw0jQrpOXTD5ycDKfr7FGioR&ust=1576412225151000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKjriamPteYCFQAAAAAdAAAAABAD") else {
+                    /* guard let url = URL(string: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fipc.digital%2Ficon-user-default%2F&psig=AOvVaw0jQrpOXTD5ycDKfr7FGioR&ust=1576412225151000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKjriamPteYCFQAAAAAdAAAAABAD") else {
                         os_log("Invalid URL.", log: OSLog.default, type: .error)
                         return
-                    }
+                    } */
                     
-                    URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+                    // TODO: CHANGE PROFILEPIC
+                    let user = User.init(name: name, email: email, id: id, profilePic: UIImage(), latitude: latitude , longitude:longitude )
+                    
+                    //SwiftOverlays.removeAllBlockingOverlays()
+                    // self.items.append(user)
+                    //self.group.leave()
+                    
+                    number = number - 1
+                    completion(user)
+                    if (number == 1) {
+                        group.leave()
+                    }
+                    //self.tblUserList.reloadData()
+                    
+                    /* URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
                         if error == nil {
                             
                             //var profilePic :UIImage
@@ -221,25 +239,27 @@ class UserController {
                                 //SwiftOverlays.removeAllBlockingOverlays()
                                 self.items.append(user)
                                 //self.group.leave()
+                                
+                                group.leave()
                                 completion(user)
                                 //self.tblUserList.reloadData()
                             }
                             
                         }
-                    }).resume()
+                    }).resume() */
                 })
-                
             }
             else
             {
-                DispatchQueue.main.async {
-                    //SwiftOverlays.removeAllBlockingOverlays()
+                group.leave()
+                number = number - 1
+                print(group)
+                if (number == 1) {
+                    group.leave()
                 }
+                
             }
         })
-        myQuery?.observeReady {
-            print(self.items.count)
-        }
         /*self.group.wait()
         print("all Done")
         print(self.items.count)

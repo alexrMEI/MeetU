@@ -342,6 +342,9 @@
                     <tabBarItem key="tabBarItem" title="Chat Now" image="person.3.fill" catalog="system" id="QGh-lU-VLp"/>
                     <navigationItem key="navigationItem" id="8hY-Bz-VLM"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="tableView" destination="d3O-zZ-zJ8" id="9yD-NI-YHh"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5K2-vM-xLf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
