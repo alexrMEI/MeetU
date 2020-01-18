@@ -21,9 +21,12 @@
 		75B4920F239AEA9E0069A84F /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75B4920E239AEA9E0069A84F /* UserController.swift */; };
 		75D6AEBB2385C51600F16C00 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 75D6AEBA2385C51600F16C00 /* GoogleService-Info.plist */; };
 		A8B4A85BBF2F7545B35F0A84 /* Pods_MeetU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 48EA7310C895DCFA6D967A93 /* Pods_MeetU.framework */; };
+		B402CD7D23D369A90013F8D3 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B402CD7C23D369A90013F8D3 /* Message.swift */; };
+		B402CD7F23D369C40013F8D3 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = B402CD7E23D369C40013F8D3 /* Chat.swift */; };
 		B40A6BB623870DC600B8DC48 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40A6BB523870DC600B8DC48 /* MenuViewController.swift */; };
 		B42D063B23D32CCF00A033BA /* NearbyUserTableCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42D063A23D32CCF00A033BA /* NearbyUserTableCellDelegate.swift */; };
 		B42D063D23D32F5000A033BA /* FavouriteControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42D063C23D32F5000A033BA /* FavouriteControl.swift */; };
+		B42D063F23D3568F00A033BA /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42D063E23D3568F00A033BA /* ChatViewController.swift */; };
 		B48EA1CC23D26ABD00D6B6CF /* NearbyUserListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48EA1CB23D26ABC00D6B6CF /* NearbyUserListTableViewController.swift */; };
 		B48EA1CE23D26ACE00D6B6CF /* NearbyUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48EA1CD23D26ACE00D6B6CF /* NearbyUserTableViewCell.swift */; };
 		B4BF32A12385D38C007D68F0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BF32A02385D38C007D68F0 /* LoginViewController.swift */; };
@@ -74,10 +77,13 @@
 		75C2F5B823AE4C7A00E5FA08 /* LocationESTG_3.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LocationESTG_3.gpx; sourceTree = "<group>"; };
 		75D6AEBA2385C51600F16C00 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		848E306E1539FCD6BA7696E2 /* Pods-MeetU.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetU.debug.xcconfig"; path = "Target Support Files/Pods-MeetU/Pods-MeetU.debug.xcconfig"; sourceTree = "<group>"; };
+		B402CD7C23D369A90013F8D3 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		B402CD7E23D369C40013F8D3 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		B40A6BB523870DC600B8DC48 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		B40A6BB7238717A000B8DC48 /* LocationESTG.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LocationESTG.gpx; sourceTree = "<group>"; };
 		B42D063A23D32CCF00A033BA /* NearbyUserTableCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyUserTableCellDelegate.swift; sourceTree = "<group>"; };
 		B42D063C23D32F5000A033BA /* FavouriteControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteControl.swift; sourceTree = "<group>"; };
+		B42D063E23D3568F00A033BA /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		B47EC6E023A5080D00E4CCEC /* LocationESTG_1.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LocationESTG_1.gpx; sourceTree = "<group>"; };
 		B48EA1CB23D26ABC00D6B6CF /* NearbyUserListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyUserListTableViewController.swift; sourceTree = "<group>"; };
 		B48EA1CD23D26ACE00D6B6CF /* NearbyUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyUserTableViewCell.swift; sourceTree = "<group>"; };
@@ -161,6 +167,9 @@
 				75C2F5B823AE4C7A00E5FA08 /* LocationESTG_3.gpx */,
 				B42D063A23D32CCF00A033BA /* NearbyUserTableCellDelegate.swift */,
 				B42D063C23D32F5000A033BA /* FavouriteControl.swift */,
+				B42D063E23D3568F00A033BA /* ChatViewController.swift */,
+				B402CD7C23D369A90013F8D3 /* Message.swift */,
+				B402CD7E23D369C40013F8D3 /* Chat.swift */,
 			);
 			path = MeetU;
 			sourceTree = "<group>";
@@ -456,9 +465,12 @@
 				B48EA1CE23D26ACE00D6B6CF /* NearbyUserTableViewCell.swift in Sources */,
 				75B026F72385E1F00093F06E /* User.swift in Sources */,
 				75603D6A236B61AC00D81813 /* SceneDelegate.swift in Sources */,
+				B42D063F23D3568F00A033BA /* ChatViewController.swift in Sources */,
 				B4BF32A12385D38C007D68F0 /* LoginViewController.swift in Sources */,
 				B40A6BB623870DC600B8DC48 /* MenuViewController.swift in Sources */,
 				B42D063D23D32F5000A033BA /* FavouriteControl.swift in Sources */,
+				B402CD7F23D369C40013F8D3 /* Chat.swift in Sources */,
+				B402CD7D23D369A90013F8D3 /* Message.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
