@@ -155,7 +155,7 @@ class UserController {
     }
     
     // MARK: Get Users Location
-    func GetUsersLocation() -> [User] {
+    func GetUsersLocation(completion: @escaping (User) -> Swift.Void) {
         // TO DO
         geoFireRef = Database.database().reference().child("Geolocs")
         geoFire = GeoFire(firebaseRef: geoFireRef!)
@@ -167,13 +167,22 @@ class UserController {
         
         myQuery = geoFire?.query(at: location, withRadius: 100)
         
+        /*print("antes")
+        myQuery?.observe(.keyEntered) { (key: String!, venueLocation: CLLocation!) in
+           print(".keyEntered")
+        }
+        print("depois")
+        myQuery?.observeReady {
+           print(".observeReady")
+        }
+        
+        print("depois2")*/
+                
         myQuery?.observe(.keyEntered, with: { (key, location) in
-            print("CHEGUEI!!!")
-            
            // print("KEY:\(String(describing: key)) and location:\(String(describing: location))")
-            
+
             //SwiftOverlays.showTextOverlay(self.view, text: "Searching for nearby users...")
-            self.group.enter()
+            //self.group.enter()
             if key != Auth.auth().currentUser?.uid
             {
                 let ref = Database.database().reference().child("Users").child(key)
@@ -211,8 +220,8 @@ class UserController {
                             DispatchQueue.main.async {
                                 //SwiftOverlays.removeAllBlockingOverlays()
                                 self.items.append(user)
-                                self.group.leave()
-                                //completion(user)
+                                //self.group.leave()
+                                completion(user)
                                 //self.tblUserList.reloadData()
                             }
                             
@@ -228,10 +237,13 @@ class UserController {
                 }
             }
         })
-        self.group.wait()
+        myQuery?.observeReady {
+            print(self.items.count)
+        }
+        /*self.group.wait()
         print("all Done")
         print(self.items.count)
-        return self.items
+        return self.items*/
     }
 
     // MARK: Show Toast if fields are empty

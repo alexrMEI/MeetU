@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hCC-yl-NQP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hCC-yl-NQP">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -44,11 +44,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="rectangle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="h3B-kw-7Kc">
-                                <rect key="frame" x="-30" y="843" width="474" height="17.5"/>
+                                <rect key="frame" x="-30" y="843" width="474" height="18"/>
                                 <color key="tintColor" red="0.61408353826814888" green="0.84234568669274612" blue="0.51341547103019114" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vDc-Pg-t4a">
-                                <rect key="frame" x="190" y="528.5" width="34" height="33"/>
+                                <rect key="frame" x="190" y="528.5" width="34" height="33.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="vDc-Pg-t4a" secondAttribute="height" multiplier="1:1" id="F9Q-M9-8eQ"/>
                                 </constraints>
@@ -139,7 +139,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="mYE-NZ-skK">
-                                <rect key="frame" x="20" y="118.5" width="120" height="119"/>
+                                <rect key="frame" x="20" y="118.5" width="120" height="119.5"/>
                                 <color key="tintColor" red="0.61408353829999995" green="0.84234568669999998" blue="0.51341547099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="MUq-KS-qGl"/>
@@ -291,24 +291,34 @@
                                 <rect key="frame" x="0.0" y="28" width="414" height="70"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="l67-2I-5TJ" id="gFT-LN-1N0">
-                                    <rect key="frame" x="0.0" y="0.0" width="383" height="70"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="382.5" height="70"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.crop.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="2Wa-gt-k35">
-                                            <rect key="frame" x="13" y="5.5" width="60" height="59"/>
+                                            <rect key="frame" x="13" y="5.5" width="60" height="59.5"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="2Wa-gt-k35" secondAttribute="height" multiplier="1:1" id="UWd-bO-Bo8"/>
                                                 <constraint firstAttribute="width" constant="60" id="cqj-fT-Pem"/>
                                             </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" restorationIdentifier="textLabel" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pML-YJ-nmi">
-                                            <rect key="frame" x="113" y="23" width="52" height="24"/>
+                                            <rect key="frame" x="113" y="23" width="51.5" height="24"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ROP-dr-JkG" customClass="FavouriteControl" customModule="MeetU" customModuleProvider="target">
+                                            <rect key="frame" x="282.5" y="0.0" width="70" height="70"/>
+                                            <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="ROP-dr-JkG" secondAttribute="height" multiplier="1:1" id="Ie0-5U-HjZ"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="ROP-dr-JkG" secondAttribute="trailing" constant="30" id="LGG-7n-dBy"/>
+                                        <constraint firstItem="ROP-dr-JkG" firstAttribute="centerY" secondItem="gFT-LN-1N0" secondAttribute="centerY" id="QL6-Ze-x0o"/>
+                                        <constraint firstItem="ROP-dr-JkG" firstAttribute="height" secondItem="gFT-LN-1N0" secondAttribute="height" id="Ykm-Xe-yYQ"/>
                                         <constraint firstItem="2Wa-gt-k35" firstAttribute="height" secondItem="gFT-LN-1N0" secondAttribute="height" multiplier="0.857143" id="eWW-Ws-Sny"/>
                                         <constraint firstItem="2Wa-gt-k35" firstAttribute="centerY" secondItem="gFT-LN-1N0" secondAttribute="centerY" id="jzP-E9-5fb"/>
                                         <constraint firstItem="pML-YJ-nmi" firstAttribute="centerY" secondItem="gFT-LN-1N0" secondAttribute="centerY" id="kmR-m7-NqZ"/>
@@ -317,6 +327,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="FavouriteControl" destination="ROP-dr-JkG" id="3M4-Iq-l7e"/>
                                     <outlet property="Name" destination="pML-YJ-nmi" id="kZn-0j-6Q6"/>
                                     <outlet property="name" destination="pML-YJ-nmi" id="HAD-1V-Ps4"/>
                                     <segue destination="EzR-ka-gCz" kind="show" id="p28-pP-Cg8"/>
@@ -351,7 +362,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.circle.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rfJ-OA-Kkk">
-                                <rect key="frame" x="304" y="98.5" width="100" height="99"/>
+                                <rect key="frame" x="304" y="98.5" width="100" height="99.5"/>
                                 <color key="tintColor" red="0.61408353829999995" green="0.84234568669999998" blue="0.51341547099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="HE2-gK-ATA">
@@ -566,7 +577,7 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="74h-Ce-Bke">
-                                <rect key="frame" x="190" y="576.5" width="34" height="33"/>
+                                <rect key="frame" x="190" y="576.5" width="34" height="33.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="74h-Ce-Bke" secondAttribute="height" multiplier="1:1" id="JUK-X4-YcM"/>
                                 </constraints>
@@ -684,15 +695,15 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.right.circle.fill" catalog="system" width="64" height="60"/>
-        <image name="gear" catalog="system" width="64" height="58"/>
-        <image name="info.circle" catalog="system" width="64" height="60"/>
+        <image name="arrow.right.circle.fill" catalog="system" width="64" height="62"/>
+        <image name="gear" catalog="system" width="64" height="60"/>
+        <image name="info.circle" catalog="system" width="64" height="62"/>
         <image name="line.horizontal.3" catalog="system" width="64" height="32"/>
         <image name="paperplane.fill" catalog="system" width="64" height="60"/>
-        <image name="person.3.fill" catalog="system" width="71" height="34"/>
-        <image name="person.circle.fill" catalog="system" width="64" height="60"/>
-        <image name="person.crop.circle" catalog="system" width="64" height="60"/>
-        <image name="person.crop.circle.fill" catalog="system" width="64" height="60"/>
-        <image name="rectangle.fill" catalog="system" width="64" height="46"/>
+        <image name="person.3.fill" catalog="system" width="72" height="35"/>
+        <image name="person.circle.fill" catalog="system" width="64" height="62"/>
+        <image name="person.crop.circle" catalog="system" width="64" height="62"/>
+        <image name="person.crop.circle.fill" catalog="system" width="64" height="62"/>
+        <image name="rectangle.fill" catalog="system" width="64" height="48"/>
     </resources>
 </document>

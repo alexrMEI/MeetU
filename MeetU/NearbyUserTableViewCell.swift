@@ -10,6 +10,11 @@ import UIKit
 
 class NearbyUserTableViewCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var FavouriteControl: FavouriteControl!
+    
+    weak var delegate: NearbyUserTableCellDelegate?
+    
+    private var token: NSKeyValueObservation?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -21,5 +26,19 @@ class NearbyUserTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-
+    
+    var user: User? {
+        willSet{
+            token?.invalidate()
+        }
+        
+        didSet{
+            name?.text = user?.name
+            token = user?.observe(\.name) {[weak self] object, change in
+                if let cell = self{
+                    cell.delegate?.didUpdateObject(for: cell)
+                }
+            }
+        }
+    }
 }
