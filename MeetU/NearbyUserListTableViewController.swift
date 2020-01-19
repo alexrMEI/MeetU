@@ -170,7 +170,6 @@ class NearbyUserListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = storyboard?.instantiateViewController(identifier: "ChatVC") as? ChatViewController
         let user = users[indexPath.row]
-        print("BRL \(user.name) \(user.id)")
         vc?.user2Name = user.name
         vc?.user2UID = user.id
         self.navigationController?.pushViewController(vc!, animated: true)
