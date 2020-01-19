@@ -55,7 +55,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
             }
         }
         if (segue.identifier == "logoutSegue") {
-            if let viewController = segue.destination as? LoginViewController {
+            if segue.destination is LoginViewController {
        
             }
         }
