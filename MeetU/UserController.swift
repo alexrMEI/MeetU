@@ -139,14 +139,9 @@ class UserController {
     
     // MARK: Get Users
     func getUsers()  {
-
-        //SwiftOverlays.showTextOverlay(self.view, text: "Searching users...")
-        
         if let id = Auth.auth().currentUser?.uid {
-            UserController.downloadAllUsers(exceptID: id, completion: {(user) in
-                
+            UserController.downloadAllUsers(exceptID: id, completion: {(user) in                
                 DispatchQueue.main.async {
-                    //SwiftOverlays.removeAllBlockingOverlays()
                     self.items.append(user)
                 }
             })
@@ -166,23 +161,10 @@ class UserController {
         let location:CLLocation = CLLocation(latitude: CLLocationDegrees(Double(userLat)!), longitude: CLLocationDegrees(Double(userLong)!))
         
         myQuery = geoFire?.query(at: location, withRadius: 100)
-        
-        /*print("antes")
-        myQuery?.observe(.keyEntered) { (key: String!, venueLocation: CLLocation!) in
-           print(".keyEntered")
-        }
-        print("depois")
-        myQuery?.observeReady {
-           print(".observeReady")
-        }
-        
-        print("depois2")*/
                 
         myQuery?.observe(.keyEntered, with: { (key, location) in
             print(key, location)
-           // print("KEY:\(String(describing: key)) and location:\(String(describing: location))")
 
-            //SwiftOverlays.showTextOverlay(self.view, text: "Searching for nearby users...")
             group.enter()
             number = number + 1
 
@@ -194,59 +176,64 @@ class UserController {
                 ref.observeSingleEvent(of: .value, with: { (snapshot) in
                     let id = snapshot.key
                     let data = snapshot.value as! [String: Any]
-                    //let credentials = data["user_details"] as! [String: String]
-                    let credentials = data as! [String: String]
-                    
-                    let name = credentials["name"]!
-                    let email = credentials["email"]!
-                    let latitude = credentials["current_latitude"] ?? "0"
-                    let longitude = credentials["current_longitude"] ?? "0"
-                    //let link = URL.init(string: credentials["profilepic_url"]!)
-                    /* guard let url = URL(string: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fipc.digital%2Ficon-user-default%2F&psig=AOvVaw0jQrpOXTD5ycDKfr7FGioR&ust=1576412225151000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKjriamPteYCFQAAAAAdAAAAABAD") else {
-                        os_log("Invalid URL.", log: OSLog.default, type: .error)
-                        return
-                    } */
-                    
-                    // TODO: CHANGE PROFILEPIC
-                    let user = User.init(name: name, email: email, id: id, profilePic: UIImage(), latitude: latitude , longitude:longitude )
-                    
-                    //SwiftOverlays.removeAllBlockingOverlays()
-                    // self.items.append(user)
-                    //self.group.leave()
-                    
-                    number = number - 1
-                    completion(user)
-                    if (number == 1) {
-                        group.leave()
-                    }
-                    //self.tblUserList.reloadData()
-                    
-                    /* URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-                        if error == nil {
-                            
-                            //var profilePic :UIImage
-                            
-                            //let url = URL(string: "https://cdn.arstechnica.net/wp-content/uploads/2018/06/macOS-Mojave-Dynamic-Wallpaper-transition.jpg")!
-                            //var profilePic: UIImage// = self.downloadImage(from: url)
-                            
-                            
-                            let profilePic :UIImage = UIImage()
-                            
-                            //let profilePic = UIImage.init(data: data!)
-                            let user = User.init(name: name, email: email, id: id, profilePic: profilePic, latitude: latitude , longitude:longitude )
-                            
-                            DispatchQueue.main.async {
-                                //SwiftOverlays.removeAllBlockingOverlays()
-                                self.items.append(user)
-                                //self.group.leave()
-                                
-                                group.leave()
-                                completion(user)
-                                //self.tblUserList.reloadData()
-                            }
-                            
+                    if !(data["favouriteUsers"] is [String]) {
+                        //let credentials = data["user_details"] as! [String: String]
+                        let credentials = data as! [String: String]
+                        
+                        let name = credentials["name"]!
+                        let email = credentials["email"]!
+                        let latitude = credentials["current_latitude"] ?? "0"
+                        let longitude = credentials["current_longitude"] ?? "0"
+                        //let link = URL.init(string: credentials["profilepic_url"]!)
+                        /* guard let url = URL(string: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fipc.digital%2Ficon-user-default%2F&psig=AOvVaw0jQrpOXTD5ycDKfr7FGioR&ust=1576412225151000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKjriamPteYCFQAAAAAdAAAAABAD") else {
+                         os_log("Invalid URL.", log: OSLog.default, type: .error)
+                         return
+                         } */
+                        
+                        // TODO: CHANGE PROFILEPIC
+                        let user = User.init(name: name, email: email, id: id, profilePic: UIImage(), latitude: latitude , longitude:longitude )
+                        
+                        number = number - 1
+                        completion(user)
+                        if (number == 1) {
+                            group.leave()
                         }
-                    }).resume() */
+                        //self.tblUserList.reloadData()
+                        
+                        /* URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+                         if error == nil {
+                         
+                         //var profilePic :UIImage
+                         
+                         //let url = URL(string: "https://cdn.arstechnica.net/wp-content/uploads/2018/06/macOS-Mojave-Dynamic-Wallpaper-transition.jpg")!
+                         //var profilePic: UIImage// = self.downloadImage(from: url)
+                         
+                         
+                         let profilePic :UIImage = UIImage()
+                         
+                         //let profilePic = UIImage.init(data: data!)
+                         let user = User.init(name: name, email: email, id: id, profilePic: profilePic, latitude: latitude , longitude:longitude )
+                         
+                         DispatchQueue.main.async {
+                         //SwiftOverlays.removeAllBlockingOverlays()
+                         self.items.append(user)
+                         //self.group.leave()
+                         
+                         group.leave()
+                         completion(user)
+                         //self.tblUserList.reloadData()
+                         }
+                         
+                         }
+                         }).resume() */
+                    } else {
+                        number = number - 1
+                        group.leave()
+                        if (number == 1) {
+                            group.leave()
+                        }
+                        
+                    }
                 })
             }
             else
@@ -266,16 +253,30 @@ class UserController {
         return self.items*/
     }
 
-    // MARK: Show Toast if fields are empty
-    /*func showToast(controller: UIViewController, message : String, seconds: Double) {
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        alert.view.backgroundColor = .black
-        alert.view.alpha = 0.5
-        alert.view.layer.cornerRadius = 15
+    // MARK: Update favourite users list
+    func updateFavouriteUsers(userId: String, isSelectedUser: Bool){
+        let group : DispatchGroup = DispatchGroup()
+        group.enter()
+        var usersArray : [String] = [String]()
+        Database.database().reference().child("Users").child("\(Auth.auth().currentUser!.uid)").child("favouriteUsers")
+         .observeSingleEvent(of: .value, with: { (snapshot) in
+            if (snapshot.value != nil){
+                usersArray.append(snapshot.value as! String)
+                group.leave()
+            }
+            print(usersArray.count)
+        })
         
-        controller.present(alert, animated: true)
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
-            alert.dismiss(animated: true)
+        group.notify(queue: .main){
+            if isSelectedUser {
+                usersArray.append(userId)
+                
+            }else{
+                usersArray.removeAll(where: {$0 == userId})
+            }
+            Database.database().reference().child("Users").child("\(Auth.auth().currentUser!.uid)").child("favouriteUsers")
+            .setValue(usersArray)
         }
-    }*/
+        print("FIM")
+    }
 }

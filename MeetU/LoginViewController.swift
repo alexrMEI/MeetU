@@ -28,6 +28,7 @@ class LoginViewController: UIViewController {
         if self.emailField.text == "" {
             self.errorMessage.text = "Email can't be empty"
             self.errorMessage.isHidden = false
+            // Vibrate when error occurred
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             return
         }
@@ -35,6 +36,7 @@ class LoginViewController: UIViewController {
         if self.passwordField.text == "" {
             self.errorMessage.text = "Password can't be empty"
             self.errorMessage.isHidden = false
+            // Vibrate when error occurred
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             return
         }
@@ -63,6 +65,8 @@ class LoginViewController: UIViewController {
             } else {
                 strongSelf.errorMessage.isHidden = false
                 strongSelf.errorMessage.text = "Incorrect account name or password"
+                // Vibrate when error occurred
+                AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             }
             
             if let superview = strongSelf.view.superview {

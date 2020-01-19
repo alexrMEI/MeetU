@@ -30,25 +30,9 @@ class MenuViewController: UIViewController {
         
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
-        //if CLLocationManager.locationServicesEnabled() {
-            locationManager.delegate = self
-            //locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
-            //locationManager.startUpdatingLocation()
-        //}
+        locationManager.delegate = self
         
         retriveCurrentLocation()
-        
-        /*geoFireRef = Database.database().reference().child("Geolocs")
-        
-        geoFire = GeoFire(firebaseRef: geoFireRef!)
-        
-        let userLat = UserDefaults.standard.value(forKey: "current_latitude") as! String
-        let userLong = UserDefaults.standard.value(forKey: "current_longitude") as! String
-        print("/(userLat) - /(userLong)")
-        let location:CLLocation = CLLocation(latitude: CLLocationDegrees(Double(userLat)!), longitude: CLLocationDegrees(Double(userLong)!))
-        self.geoFire?.setLocation(location, forKey:Auth.auth().currentUser!.uid)
-        
-        getUsersLocation()*/
     }
     
     // MARK: Try to use UserController func
@@ -79,38 +63,39 @@ class MenuViewController: UIViewController {
                 ref.observeSingleEvent(of: .value, with: { (snapshot) in
                     let id = snapshot.key
                     let data = snapshot.value as! [String: Any]
-                    //let credentials = data["user_details"] as! [String: String]
-                    let credentials = data as! [String: String]
-                    
-                    let name = credentials["name"]!
-                    let email = credentials["email"]!
-                    let latitude = credentials["current_latitude"] ?? "0"
-                    let longitude = credentials["current_longitude"] ?? "0"
-                    /*guard let link = URL.init(string: credentials["profilepic_url"]!) else {
-                        URL.init(string: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fipc.digital%2Ficon-user-default%2F&psig=AOvVaw0jQrpOXTD5ycDKfr7FGioR&ust=1576412225151000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKjriamPteYCFQAAAAAdAAAAABAD")
-                    }*/
-                    let link = URL.init(string: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fipc.digital%2Ficon-user-default%2F&psig=AOvVaw0jQrpOXTD5ycDKfr7FGioR&ust=1576412225151000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKjriamPteYCFQAAAAAdAAAAABAD")
-    
-                    URLSession.shared.dataTask(with: link!, completionHandler: { (data, response, error) in
-                        if error == nil {
-                            //let profilePic = UIImage.init(data: data!)
-                            //let profilePic: UIImage = UIImage(data: data!)!
-                            //let user = User.init(name: name, email: email, id: id, profilePic: profilePic, latitude: latitude , longitude:longitude )
-                            
-                            DispatchQueue.main.async {
-                                //SwiftOverlays.removeAllBlockingOverlays()
-                                //self.items.append(user)
-                                print("olaaaaaa")
-                                print("\(name) - \(email) - \(latitude) - \(longitude)")
-                                self.ShowNearbyUsers(Double(latitude)!, Double(longitude)!, name)
-                                //print(user)
-                                //print(user.email)
-                                //self.tblUserList.reloadData()
+                    if !(data["favouriteUsers"] is [String]) {
+                        //let credentials = data["user_details"] as! [String: String]
+                        let credentials = data as! [String: String]
+                        
+                        let name = credentials["name"]!
+                        let email = credentials["email"]!
+                        let latitude = credentials["current_latitude"] ?? "0"
+                        let longitude = credentials["current_longitude"] ?? "0"
+                        /*guard let link = URL.init(string: credentials["profilepic_url"]!) else {
+                         URL.init(string: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fipc.digital%2Ficon-user-default%2F&psig=AOvVaw0jQrpOXTD5ycDKfr7FGioR&ust=1576412225151000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKjriamPteYCFQAAAAAdAAAAABAD")
+                         }*/
+                        let link = URL.init(string: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fipc.digital%2Ficon-user-default%2F&psig=AOvVaw0jQrpOXTD5ycDKfr7FGioR&ust=1576412225151000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKjriamPteYCFQAAAAAdAAAAABAD")
+                        
+                        URLSession.shared.dataTask(with: link!, completionHandler: { (data, response, error) in
+                            if error == nil {
+                                //let profilePic = UIImage.init(data: data!)
+                                //let profilePic: UIImage = UIImage(data: data!)!
+                                //let user = User.init(name: name, email: email, id: id, profilePic: profilePic, latitude: latitude , longitude:longitude )
+                                
+                                DispatchQueue.main.async {
+                                    //SwiftOverlays.removeAllBlockingOverlays()
+                                    //self.items.append(user)
+                                    print("olaaaaaa")
+                                    print("\(name) - \(email) - \(latitude) - \(longitude)")
+                                    self.ShowNearbyUsers(Double(latitude)!, Double(longitude)!, name)
+                                    //print(user)
+                                    //print(user.email)
+                                    //self.tblUserList.reloadData()
+                                }
+                                
                             }
-                            
-                        }
-                    }).resume()
-                    
+                        }).resume()
+                    }
                 })
             }
             else
@@ -258,8 +243,6 @@ extension MenuViewController: CLLocationManagerDelegate, MKMapViewDelegate {
         annotation.coordinate = location
         
         annotation.title = name
-        
-        //annotation.subtitle = "Your Name"
             
         mapView.addAnnotation(annotation)
     }
@@ -286,17 +269,3 @@ extension MenuViewController: CLLocationManagerDelegate, MKMapViewDelegate {
         }
     }
 }
-
-/*extension MenuViewController: MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
-        guard overlay is MKCircle else {
-            return MKOverlayRenderer()
-        }
-        
-        let circle = MKCircleRenderer(overlay: overlay)
-        circle.strokeColor = UIColor.green
-        circle.fillColor = UIColor.blue
-        circle.lineWidth = 1
-        return circle
-    }
-}*/

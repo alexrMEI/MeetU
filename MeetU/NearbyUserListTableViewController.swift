@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import GeoFire
+import SwiftOverlays
 import os.log
 
 class NearbyUserListTableViewController: UITableViewController {
@@ -22,34 +23,22 @@ class NearbyUserListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // ---------- TODO --------------
         group.enter()
-        
         UserController.shared.GetUsersLocation(group: group, completion: {(user) in
-            
+            if let superview = self.view.superview {
+                SwiftOverlays.showCenteredWaitOverlayWithText(superview, text: "Searching for nearby users...")
+            }
             self.users.append(user)
             self.group.leave()
         })
         
         group.notify(queue: .main) {
             self.tableView.reloadData()
+            
+            if let superview = self.view.superview {
+                SwiftOverlays.removeAllOverlaysFromView(superview)
+            }
         }
-        //self.users.append(User(name: "Ola1", email: "ola1@g.com", id: "1", profilePic: UIImage(), latitude: "", longitude: ""))
-        //self.users.append(User(name: "Ola2", email: "ola2@g.com", id: "2", profilePic: UIImage(), latitude: "", longitude: ""))
-        //self.users.append(User(name: "Ola3", email: "ola3@g.com", id: "3", profilePic: UIImage(), latitude: "", longitude: ""))
-
-        //print("sai")
-        
-        //self.users = UserController.shared.GetUsersLocation()
-        
-        /*guard let user1 =
-        guard let meal1 = Meal(name: "Caprese Salad", photo: photo1, rating: 4) else {
-            fatalError("Unable to instantiate meal1") }
-        guard let meal2 = Meal(name: "Chicken and Potatoes", photo: photo2, rating: 5) else {
-            fatalError("Unable to instantiate meal2") }
-        guard let meal3 = Meal(name: "Pasta with Meatballs", photo: photo3, rating: 3) else {
-            fatalError("Unable to instantiate meal3") }
-        meals += [meal1, meal2, meal3]*/
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -75,9 +64,6 @@ class NearbyUserListTableViewController: UITableViewController {
         
         myQuery?.observe(.keyEntered, with: { (key, location) in
             
-           // print("KEY:\(String(describing: key)) and location:\(String(describing: location))")
-            
-            //SwiftOverlays.showTextOverlay(self.view, text: "Searching for nearby users...")
             if key != Auth.auth().currentUser?.uid
             {
                 let ref = Database.database().reference().child("Users").child(key)
@@ -137,12 +123,10 @@ class NearbyUserListTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return self.users.count
         //return 3
     }
@@ -159,6 +143,7 @@ class NearbyUserListTableViewController: UITableViewController {
         
         //cell.name.text = "hello"
         cell.name.text = user.name
+        cell.user = user
         /*cell.photoImageView.image = meal.photo
         cell.ratingControl.rating = meal.rating*/
         

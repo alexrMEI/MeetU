@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable class FavouriteControl: UIStackView {
-
+    
     //MARK: Properties
     @IBInspectable var starSize: CGSize = CGSize(width: 44.0, height: 44.0) {
         didSet {
@@ -22,7 +22,7 @@ import UIKit
         }
     }
     
-    private var ratingButtons = [UIButton]()
+    private var favouriteButton = [UIButton]()
     
     var rating = 0 {
         didSet {
@@ -45,11 +45,11 @@ import UIKit
     
     private func setupButtons() {
         // clear any existing buttons
-        for button in ratingButtons {
+        for button in favouriteButton {
             removeArrangedSubview(button)
             button.removeFromSuperview()
         }
-        ratingButtons.removeAll()
+        favouriteButton.removeAll()
         
         // Load Button Images
         let bundle = Bundle(for: type(of: self))
@@ -85,7 +85,7 @@ import UIKit
             // Add the button to the stack
             addArrangedSubview(button)
             // Add the new button to the rating button array
-            ratingButtons.append(button)
+            favouriteButton.append(button)
         }
         
         updateButtonSelectionStates()
@@ -94,13 +94,12 @@ import UIKit
     //MARK: Button Action
     
     @objc func ratingButtonTapped(button: UIButton) {
-        guard let index = ratingButtons.index(of: button) else {
-            fatalError("The button, \(button), is not in the ratingButtons array: \(ratingButtons)")
+        guard let viewCell = self.findSuperViewOfType(superView: UITableViewCell.self, view: button.superview!) as? NearbyUserTableViewCell else{
+            fatalError("The view is not UITableViewCell")
         }
         
-        print("index: \(button)")
         // Calculate the rating of the selected button
-        let selectedRating = index + 1
+        let selectedRating = 1
         
         if selectedRating == rating {
             // If the selected star represents the current rating, reset the rating to 0.
@@ -110,15 +109,30 @@ import UIKit
             rating = selectedRating
         }
         
+        UserController.shared.updateFavouriteUsers(userId: viewCell.user!.id, isSelectedUser: rating == 1)
         
-        let selectedIndex = IndexPath(row: button.tag, section: 0)
-        print(selectedIndex)
     }
     
     private func updateButtonSelectionStates() {
-        for (index, button) in ratingButtons.enumerated() {
+        for (index, button) in favouriteButton.enumerated() {
             // If the index of a button is less than the rating, that button should be selected.
             button.isSelected = index < rating
         }
+    }
+    
+    func findSuperViewOfType<T>(superView: T.Type, view: UIView) -> UIView? {
+    
+        var xsuperView : UIView!  = view
+        var foundSuperView : UIView!
+
+        while (xsuperView != nil && foundSuperView == nil) {
+
+            if xsuperView.self is T {
+                foundSuperView = xsuperView
+            } else {
+                xsuperView = xsuperView.superview
+            }
+        }
+        return foundSuperView
     }
 }
