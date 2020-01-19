@@ -161,12 +161,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="spO-Rw-POk">
+                                <rect key="frame" x="179" y="533" width="62" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Logout"/>
+                                <connections>
+                                    <action selector="logout:" destination="XYe-md-aeS" eventType="touchUpInside" id="0hg-7N-d4F"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="h0J-8e-jm5" firstAttribute="top" secondItem="PrA-Xq-iXY" secondAttribute="top" constant="65" id="6DD-ML-s5o">
                                 <variation key="heightClass=compact-widthClass=regular" constant="75"/>
                             </constraint>
+                            <constraint firstItem="spO-Rw-POk" firstAttribute="leading" secondItem="PrA-Xq-iXY" secondAttribute="leading" constant="179" id="AA1-Ap-Vda"/>
                             <constraint firstItem="mYE-NZ-skK" firstAttribute="top" secondItem="PrA-Xq-iXY" secondAttribute="top" constant="30" id="UEb-MV-9U5"/>
                             <constraint firstItem="KBa-gL-KS0" firstAttribute="leading" secondItem="PrA-Xq-iXY" secondAttribute="leading" constant="70" id="W86-S1-stJ"/>
                             <constraint firstItem="h0J-8e-jm5" firstAttribute="leading" secondItem="mYE-NZ-skK" secondAttribute="trailing" constant="50" id="W8E-hB-DU9"/>
@@ -174,6 +183,8 @@
                             <constraint firstItem="KBa-gL-KS0" firstAttribute="top" secondItem="PrA-Xq-iXY" secondAttribute="top" constant="230" id="bx8-kO-ZT7">
                                 <variation key="heightClass=compact-widthClass=regular" constant="180"/>
                             </constraint>
+                            <constraint firstItem="PrA-Xq-iXY" firstAttribute="bottom" secondItem="spO-Rw-POk" secondAttribute="bottom" constant="293" id="gXk-mD-2Iy"/>
+                            <constraint firstItem="PrA-Xq-iXY" firstAttribute="trailing" secondItem="spO-Rw-POk" secondAttribute="trailing" constant="173" id="liP-ie-m7r"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PrA-Xq-iXY"/>
                     </view>

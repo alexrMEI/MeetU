@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -31,13 +32,22 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIImageP
     }
         
     @IBAction func saveUser(_ sender: Any) {
+        print("entrei no save")
+        let update = Auth.auth().currentUser?.createProfileChangeRequest()
+        update?.displayName = "teste de mudança de nome"
+        update?.commitChanges(completion: { (error) in
+            if let error = error {
+                print("ERROROOOORORORORO\(error.localizedDescription)")
+            }
+        })
         selectedImageBase64 = base64Encode(profilePhoto: profilePhoto.image)
         if(profilePicOldBase64.elementsEqual(selectedImageBase64) == false) {
+            
             /*Database.database().reference().child("Users").child(userUID!).observeSingleEvent(of: .value, with: {(snapshot) in
                 self.user = User.init(user: snapshot.value as! Dictionary<String, String>, id: self.userUID!)
                 self.group.leave()
             })*/
-            print(selectedImageBase64)
+            //print(selectedImageBase64)
         }
     }
     

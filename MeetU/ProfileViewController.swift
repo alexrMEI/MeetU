@@ -78,4 +78,14 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
           return decodedImage!
       }
     }
+    
+    @IBAction func logout(_ sender: Any) {
+        if Auth.auth().currentUser != nil {
+            do {
+                try Auth.auth().signOut()
+            }
+            catch {
+            }
+        }
+    }
 }
