@@ -18,6 +18,7 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate,
     var currentUser = Auth.auth().currentUser!
     private var docReference: DocumentReference?
     var messages: [Message] = []
+    
     //I've fetched the profile of user 2 in previous class from which //I'm navigating to chat view. So make sure you have the following //three variables information when you are on this class.
     var user2Name: String?
     var user2ImgUrl: String?
@@ -36,8 +37,8 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate,
         //messageInputBar.inputTextView.tintColor = .primary
         //messageInputBar.sendButton.setTitleColor(.primary, for: .normal)
         
-        self.user2Name = "riky"
-        self.user2UID = "Qq4neJIRlWgRb448k5pxnxSVrWE3"
+        //self.user2Name = "riky"
+        //self.user2UID = "eA9OFsBVydPvnKAvXVC6DscpJkL2"
         
         messageInputBar.delegate = self
         messagesCollectionView.messagesDataSource = self

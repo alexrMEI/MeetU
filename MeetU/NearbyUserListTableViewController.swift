@@ -167,6 +167,15 @@ class NearbyUserListTableViewController: UITableViewController {
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = storyboard?.instantiateViewController(identifier: "ChatVC") as? ChatViewController
+        let user = users[indexPath.row]
+        print("BRL \(user.name) \(user.id)")
+        vc?.user2Name = user.name
+        vc?.user2UID = user.id
+        self.navigationController?.pushViewController(vc!, animated: true)
+    }
+    
     func didLoadObject(for cell: NearbyUserTableViewCell){
         if let indexPath = tableView.indexPath(for: cell){
             tableView.reloadRows(at: [indexPath], with: .fade)
