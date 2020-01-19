@@ -45,8 +45,6 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         return true
     } */
     
-    
-    //MARK: Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "editSegue") {
             if let viewController = segue.destination as? ProfileEditViewController {
@@ -56,16 +54,11 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
                }
             }
         }
-        
-        /* super.prepare(for: segue, sender: sender)
-        // Configure the destination view controller only when the save button is pressed.
-        guard let button = sender as? UIBarButtonItem, button === saveButton else {
-            return
+        if (segue.identifier == "logoutSegue") {
+            if let viewController = segue.destination as? LoginViewController {
+       
+            }
         }
-        let name = userNameTextField.text ?? ""
-        let password = userPasswordTextField.text ?? ""
-        let photo = profilePhoto.image */
-        //user = User(name: name, email: password, photo: photo) //INCORRETO!!!!!!
     }
     
     func base64Decode(base64String: String?) -> UIImage{
@@ -80,12 +73,8 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     }
     
     @IBAction func logout(_ sender: Any) {
-        if Auth.auth().currentUser != nil {
-            do {
-                try Auth.auth().signOut()
-            }
-            catch {
-            }
+        UserController.logOutUser { (true) in
+            print("Fiz logout")
         }
     }
 }

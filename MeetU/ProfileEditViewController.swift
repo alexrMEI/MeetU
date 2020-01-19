@@ -15,6 +15,7 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIImageP
     @IBOutlet weak var editedName: UITextField!
     @IBOutlet weak var editedPassword: UITextField!
     @IBOutlet weak var editedEmail: UITextField!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
     
     var user: User!
     var profilePicDecoded: UIImage!
@@ -49,6 +50,18 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIImageP
             })*/
             //print(selectedImageBase64)
         }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        // Configure the destination view controller only when the save button is pressed.
+        guard let button = sender as? UIBarButtonItem, button === saveButton else {
+            return
+        }
+        //let name = userNameTextField.text ?? ""
+        //let password = userPasswordTextField.text ?? ""
+        //let photo = profilePhoto.image */
+        //user = User(name: name, email: password, photo: photo) //INCORRETO!!!!!!
     }
     
     func base64Encode(profilePhoto: UIImage?) -> String{
