@@ -255,17 +255,23 @@ class UserController {
 
     // MARK: Update favourite users list
     func updateFavouriteUsers(userId: String, isSelectedUser: Bool){
-        let group : DispatchGroup = DispatchGroup()
-        group.enter()
+        let group = DispatchGroup()
         var usersArray : [String] = [String]()
-        Database.database().reference().child("Users").child("\(Auth.auth().currentUser!.uid)").child("favouriteUsers")
-         .observeSingleEvent(of: .value, with: { (snapshot) in
-            if (snapshot.value != nil){
-                usersArray.append(snapshot.value as! String)
+        let userID = Auth.auth().currentUser?.uid
+        //Database.database().reference().child("Users").child("\(Auth.auth().currentUser!.uid)").child("favouriteUsers")
+        //.observeSingleEvent(of: .value, with: { (snapshot) in
+        
+        group.enter()
+        
+        Database.database().reference().child("Users").child(userID!).child("favouriteUsers")
+            .observeSingleEvent(of: .value, with: { (snapshot) in
+                if (snapshot.value != nil && snapshot.exists()){
+                    //usersArray.append(snapshot.value as! String)
+                    usersArray = snapshot.value as! [String]
+                }
                 group.leave()
-            }
-            print(usersArray.count)
-        })
+                print(usersArray.count)
+            })
         
         group.notify(queue: .main){
             if isSelectedUser {
@@ -275,7 +281,7 @@ class UserController {
                 usersArray.removeAll(where: {$0 == userId})
             }
             Database.database().reference().child("Users").child("\(Auth.auth().currentUser!.uid)").child("favouriteUsers")
-            .setValue(usersArray)
+                .setValue(usersArray)
         }
         print("FIM")
     }

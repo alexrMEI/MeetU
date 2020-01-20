@@ -318,7 +318,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ROP-dr-JkG" customClass="FavouriteControl" customModule="MeetU" customModuleProvider="target">
-                                            <rect key="frame" x="282.5" y="0.0" width="70" height="70"/>
+                                            <rect key="frame" x="308.5" y="13" width="44" height="44"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="ROP-dr-JkG" secondAttribute="height" multiplier="1:1" id="Ie0-5U-HjZ"/>
@@ -328,7 +328,6 @@
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="ROP-dr-JkG" secondAttribute="trailing" constant="30" id="LGG-7n-dBy"/>
                                         <constraint firstItem="ROP-dr-JkG" firstAttribute="centerY" secondItem="gFT-LN-1N0" secondAttribute="centerY" id="QL6-Ze-x0o"/>
-                                        <constraint firstItem="ROP-dr-JkG" firstAttribute="height" secondItem="gFT-LN-1N0" secondAttribute="height" id="Ykm-Xe-yYQ"/>
                                         <constraint firstItem="2Wa-gt-k35" firstAttribute="height" secondItem="gFT-LN-1N0" secondAttribute="height" multiplier="0.857143" id="eWW-Ws-Sny"/>
                                         <constraint firstItem="2Wa-gt-k35" firstAttribute="centerY" secondItem="gFT-LN-1N0" secondAttribute="centerY" id="jzP-E9-5fb"/>
                                         <constraint firstItem="pML-YJ-nmi" firstAttribute="centerY" secondItem="gFT-LN-1N0" secondAttribute="centerY" id="kmR-m7-NqZ"/>
