@@ -23,7 +23,7 @@ class NearbyUserListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        group.enter()
+        /*group.enter()
         UserController.shared.GetUsersLocation(group: group, completion: {(user) in
             if let superview = self.view.superview {
                 SwiftOverlays.showCenteredWaitOverlayWithText(superview, text: "Searching for nearby users...")
@@ -38,7 +38,7 @@ class NearbyUserListTableViewController: UITableViewController {
             if let superview = self.view.superview {
                 SwiftOverlays.removeAllOverlaysFromView(superview)
             }
-        }
+        }*/
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -97,6 +97,33 @@ class NearbyUserListTableViewController: UITableViewController {
     func didLoadObject(for cell: NearbyUserTableViewCell){
         if let indexPath = tableView.indexPath(for: cell){
             tableView.reloadRows(at: [indexPath], with: .fade)
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if UserController.shared.darkMode {
+            overrideUserInterfaceStyle = .dark
+        } else {
+            overrideUserInterfaceStyle = .light
+        }
+        
+        self.users.removeAll()
+        
+        group.enter()
+        UserController.shared.GetUsersLocation(group: group, completion: {(user) in
+            if let superview = self.view.superview {
+                SwiftOverlays.showCenteredWaitOverlayWithText(superview, text: "Searching for nearby users...")
+            }
+            self.users.append(user)
+            self.group.leave()
+        })
+        
+        group.notify(queue: .main) {
+            self.tableView.reloadData()
+            
+            if let superview = self.view.superview {
+                SwiftOverlays.removeAllOverlaysFromView(superview)
+            }
         }
     }
 

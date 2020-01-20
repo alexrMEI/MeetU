@@ -193,5 +193,21 @@ class ChatViewController: MessagesViewController, InputBarAccessoryViewDelegate,
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if UserController.shared.darkMode {
+            overrideUserInterfaceStyle = .dark
+            messageInputBar.inputTextView.textColor = .white
+            messageInputBar.inputTextView.placeholderLabel.textColor = .white
+            messageInputBar.backgroundView.backgroundColor = .systemBackground
+            messagesCollectionView.backgroundColor = .systemBackground
+        } else {
+            overrideUserInterfaceStyle = .light
+            messageInputBar.inputTextView.textColor = .black
+            messageInputBar.inputTextView.placeholderLabel.textColor = .black
+            messageInputBar.backgroundView.backgroundColor = .systemBackground
+            messagesCollectionView.backgroundColor = .systemBackground
+        }
+    }
+    
     
 }

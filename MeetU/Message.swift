@@ -42,7 +42,6 @@ extension Message {
             else {return nil}
         
         self.init(id: id, content: content, created: created, senderID: senderID, senderName:senderName)
-        
     }
 }
 

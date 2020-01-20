@@ -24,6 +24,8 @@
 		B402CD7D23D369A90013F8D3 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B402CD7C23D369A90013F8D3 /* Message.swift */; };
 		B402CD7F23D369C40013F8D3 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = B402CD7E23D369C40013F8D3 /* Chat.swift */; };
 		B40A6BB623870DC600B8DC48 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40A6BB523870DC600B8DC48 /* MenuViewController.swift */; };
+		B42B1AEC23D63E0900C26820 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42B1AEB23D63E0900C26820 /* SettingsViewController.swift */; };
+		B42B1AEE23D6449F00C26820 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42B1AED23D6449F00C26820 /* AboutViewController.swift */; };
 		B42D063B23D32CCF00A033BA /* NearbyUserTableCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42D063A23D32CCF00A033BA /* NearbyUserTableCellDelegate.swift */; };
 		B42D063D23D32F5000A033BA /* FavouriteControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42D063C23D32F5000A033BA /* FavouriteControl.swift */; };
 		B42D063F23D3568F00A033BA /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B42D063E23D3568F00A033BA /* ChatViewController.swift */; };
@@ -81,6 +83,8 @@
 		B402CD7E23D369C40013F8D3 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		B40A6BB523870DC600B8DC48 /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		B40A6BB7238717A000B8DC48 /* LocationESTG.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LocationESTG.gpx; sourceTree = "<group>"; };
+		B42B1AEB23D63E0900C26820 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		B42B1AED23D6449F00C26820 /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		B42D063A23D32CCF00A033BA /* NearbyUserTableCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearbyUserTableCellDelegate.swift; sourceTree = "<group>"; };
 		B42D063C23D32F5000A033BA /* FavouriteControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouriteControl.swift; sourceTree = "<group>"; };
 		B42D063E23D3568F00A033BA /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +174,8 @@
 				B42D063E23D3568F00A033BA /* ChatViewController.swift */,
 				B402CD7C23D369A90013F8D3 /* Message.swift */,
 				B402CD7E23D369C40013F8D3 /* Chat.swift */,
+				B42B1AEB23D63E0900C26820 /* SettingsViewController.swift */,
+				B42B1AED23D6449F00C26820 /* AboutViewController.swift */,
 			);
 			path = MeetU;
 			sourceTree = "<group>";
@@ -463,7 +469,9 @@
 				B42D063B23D32CCF00A033BA /* NearbyUserTableCellDelegate.swift in Sources */,
 				75603D68236B61AC00D81813 /* AppDelegate.swift in Sources */,
 				B48EA1CE23D26ACE00D6B6CF /* NearbyUserTableViewCell.swift in Sources */,
+				B42B1AEC23D63E0900C26820 /* SettingsViewController.swift in Sources */,
 				75B026F72385E1F00093F06E /* User.swift in Sources */,
+				B42B1AEE23D6449F00C26820 /* AboutViewController.swift in Sources */,
 				75603D6A236B61AC00D81813 /* SceneDelegate.swift in Sources */,
 				B42D063F23D3568F00A033BA /* ChatViewController.swift in Sources */,
 				B4BF32A12385D38C007D68F0 /* LoginViewController.swift in Sources */,

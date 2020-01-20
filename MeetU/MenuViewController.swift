@@ -26,13 +26,13 @@ class MenuViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.setHidesBackButton(true, animated: true)
+        /*self.navigationItem.setHidesBackButton(true, animated: true)
         
         locationManager.requestAlwaysAuthorization()
         locationManager.requestWhenInUseAuthorization()
         locationManager.delegate = self
         
-        retriveCurrentLocation()
+        retriveCurrentLocation()*/
     }
     
     // MARK: Try to use UserController func
@@ -267,5 +267,21 @@ extension MenuViewController: CLLocationManagerDelegate, MKMapViewDelegate {
         } else {
             return MKPolylineRenderer()
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        
+        if UserController.shared.darkMode {
+            overrideUserInterfaceStyle = .dark
+        } else {
+            overrideUserInterfaceStyle = .light
+        }
+        
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.delegate = self
+        
+        retriveCurrentLocation()
     }
 }

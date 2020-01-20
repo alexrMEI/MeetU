@@ -22,6 +22,8 @@ class UserController {
     var geoFire: GeoFire?
     var myQuery: GFQuery?
     
+    var darkMode :Bool = false
+    
     //MARK: Register User
     class func registerUser(withName: String, email: String, password: String, completion: @escaping (String) -> Swift.Void) {
         Auth.auth().createUser(withEmail: email, password: password, completion: { (authResult, error) in

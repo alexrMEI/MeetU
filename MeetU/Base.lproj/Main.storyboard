@@ -454,7 +454,7 @@
         <!--About-->
         <scene sceneID="SAN-Qa-X6r">
             <objects>
-                <viewController id="7dt-3C-ZsH" sceneMemberID="viewController">
+                <viewController id="7dt-3C-ZsH" customClass="AboutViewController" customModule="MeetU" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Arh-Ty-OZ3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -501,7 +501,7 @@
         <!--Settings-->
         <scene sceneID="rZ4-bq-oqo">
             <objects>
-                <viewController id="dbi-f6-KPi" sceneMemberID="viewController">
+                <viewController id="dbi-f6-KPi" customClass="SettingsViewController" customModule="MeetU" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="svB-3J-giA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -515,6 +515,9 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="H7Z-0p-qnb">
                                 <rect key="frame" x="315" y="178" width="51" height="31"/>
                                 <color key="tintColor" red="0.61408353829999995" green="0.84234568669999998" blue="0.51341547099999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="setDarkMode:" destination="dbi-f6-KPi" eventType="valueChanged" id="FmT-u4-Q9e"/>
+                                </connections>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dark Mode" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLD-py-h9h">
                                 <rect key="frame" x="65" y="181" width="96" height="24"/>
@@ -541,6 +544,9 @@
                     <tabBarItem key="tabBarItem" title="Settings" image="gear" catalog="system" id="ePM-CT-0SL"/>
                     <navigationItem key="navigationItem" id="P30-B0-bLV"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="darkModeSwitch" destination="H7Z-0p-qnb" id="78L-qw-e3I"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cN2-ql-y01" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
