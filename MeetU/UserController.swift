@@ -283,6 +283,29 @@ class UserController {
             Database.database().reference().child("Users").child("\(Auth.auth().currentUser!.uid)").child("favouriteUsers")
                 .setValue(usersArray)
         }
-        print("FIM")
+    }
+    
+    func getFavouriteUsers(completion: @escaping ([String]) -> Swift.Void) {
+        let group = DispatchGroup()
+        var usersArray : [String] = [String]()
+        let userID = Auth.auth().currentUser?.uid
+        
+        group.enter()
+        
+        Database.database().reference().child("Users").child(userID!).child("favouriteUsers")
+            .observeSingleEvent(of: .value, with: { (snapshot) in
+                if (snapshot.value != nil && snapshot.exists()){
+                    //usersArray.append(snapshot.value as! String)
+                    usersArray = snapshot.value as! [String]
+                    completion(usersArray)
+                }
+                group.leave()
+                print(usersArray.count)
+            })
+        
+        group.notify(queue: .main){
+            print("DONE")
+        }
+        print("OMG")
     }
 }

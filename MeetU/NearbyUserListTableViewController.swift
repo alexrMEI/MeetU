@@ -47,78 +47,6 @@ class NearbyUserListTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
     
-    // MARK: Get Users Location
-    func GetUsersLocation() {
-        // TO DO
-        geoFireRef = Database.database().reference().child("Geolocs")
-        
-        geoFire = GeoFire(firebaseRef: geoFireRef!)
-        
-        // TO DO
-        let userLat = UserDefaults.standard.value(forKey: "current_latitude") as! String
-        let userLong = UserDefaults.standard.value(forKey: "current_longitude") as! String
-        
-        let location:CLLocation = CLLocation(latitude: CLLocationDegrees(Double(userLat)!), longitude: CLLocationDegrees(Double(userLong)!))
-        
-        myQuery = geoFire?.query(at: location, withRadius: 100)
-        
-        myQuery?.observe(.keyEntered, with: { (key, location) in
-            
-            if key != Auth.auth().currentUser?.uid
-            {
-                let ref = Database.database().reference().child("Users").child(key)
-                
-                ref.observeSingleEvent(of: .value, with: { (snapshot) in
-                    let id = snapshot.key
-                    let data = snapshot.value as! [String: Any]
-                    //let credentials = data["user_details"] as! [String: String]
-                    let credentials = data as! [String: String]
-                    
-                    let name = credentials["name"]!
-                    let email = credentials["email"]!
-                    let latitude = credentials["current_latitude"] ?? "0"
-                    let longitude = credentials["current_longitude"] ?? "0"
-                    //let link = URL.init(string: credentials["profilepic_url"]!)
-                    guard let url = URL(string: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fipc.digital%2Ficon-user-default%2F&psig=AOvVaw0jQrpOXTD5ycDKfr7FGioR&ust=1576412225151000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKjriamPteYCFQAAAAAdAAAAABAD") else {
-                        os_log("Invalid URL.", log: OSLog.default, type: .error)
-                        return
-                    }
-                    
-                    URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-                        if error == nil {
-                            
-                            //var profilePic :UIImage
-                            
-                            //let url = URL(string: "https://cdn.arstechnica.net/wp-content/uploads/2018/06/macOS-Mojave-Dynamic-Wallpaper-transition.jpg")!
-                            //var profilePic: UIImage// = self.downloadImage(from: url)
-                            
-                            
-                            let profilePic :UIImage = UIImage()
-                            
-                            //let profilePic = UIImage.init(data: data!)
-                            let user = User.init(name: name, email: email, id: id, profilePic: profilePic, latitude: latitude , longitude:longitude )
-                            
-                            DispatchQueue.main.async {
-                                //SwiftOverlays.removeAllBlockingOverlays()
-                                //self.items.append(user)
-                                //self.group.leave()
-                                //completion(user)
-                                //self.tblUserList.reloadData()
-                            }
-                            
-                        }
-                    }).resume()
-                })
-                
-            }
-            else
-            {
-                DispatchQueue.main.async {
-                    //SwiftOverlays.removeAllBlockingOverlays()
-                }
-            }
-        })
-    }
 
     // MARK: - Table view data source
 
@@ -141,14 +69,20 @@ class NearbyUserListTableViewController: UITableViewController {
         // Fetches the appropriate meal for the data source layout.
         let user = users[indexPath.row]
         
-        //cell.name.text = "hello"
         cell.name.text = user.name
         cell.user = user
+                
+        UserController.shared.getFavouriteUsers(completion: {(usersId) in
+            for u in usersId {
+                if (user.id == u) {
+                    cell.FavouriteControl.rating = 1
+                }
+            }
+        })
+
         /*cell.photoImageView.image = meal.photo
         cell.ratingControl.rating = meal.rating*/
-        
-        cell.FavouriteControl.tag = indexPath.row
-        
+                
         return cell
     }
     
