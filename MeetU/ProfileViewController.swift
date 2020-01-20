@@ -33,7 +33,7 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         group.notify(queue: .main){
             self.emailLabel.text = self.user?.email
             self.nameLabel.text = self.user?.name
-            self.profilePhoto.image = self.base64Decode(base64String: self.user?.profilePic)
+            self.profilePhoto.image = UserController.shared.base64Decode(base64String: self.user?.profilePic)
         }
     }
     
@@ -54,14 +54,21 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
                }
             }
         }
-        if (segue.identifier == "logoutSegue") {
-            if segue.destination is LoginViewController {
-       
-            }
-        }
     }
     
-    func base64Decode(base64String: String?) -> UIImage{
+    @IBAction func unwindToUserProfile(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? ProfileEditViewController, let user = sourceViewController.user {
+            //sourceViewController.saveUser(user: user)
+            print(user.name)
+            self.emailLabel.text = user.email
+            self.nameLabel.text = user.name
+            self.profilePhoto.image = UserController.shared.base64Decode(base64String: user.profilePic)
+        }
+        /*if let sourceViewController = sender.source as? ProfileEditViewController {
+        }*/
+    }
+    
+    /*func base64Decode(base64String: String?) -> UIImage{
       if (base64String?.isEmpty)! {
           return #imageLiteral(resourceName: "user_icon")
       }else {
@@ -70,11 +77,11 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
           let decodedImage = UIImage(data: dataDecoded)
           return decodedImage!
       }
-    }
+    }*/
     
     @IBAction func logout(_ sender: Any) {
         UserController.logOutUser { (true) in
-            print("Fiz logout")
+            print("Successfull logout")
         }
     }
 }

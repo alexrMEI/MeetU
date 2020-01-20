@@ -32,9 +32,9 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIImageP
         profilePicOldBase64 = user.profilePic
     }
         
-    @IBAction func saveUser(_ sender: Any) {
+    /*@IBAction func saveUser(_ sender: Any) {
    
-        selectedImageBase64 = base64Encode(profilePhoto: profilePhoto.image)
+        selectedImageBase64 = UserController.shared.base64Encode(profilePhoto: profilePhoto.image)
         if(profilePicOldBase64.elementsEqual(selectedImageBase64) == false) {
             Database.database().reference().child("Users/\(self.user!.id)/profilepic_url").setValue(selectedImageBase64)
         }
@@ -42,7 +42,22 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIImageP
         if(editedName.text!.elementsEqual(self.user.name) == false) {
             Database.database().reference().child("Users/\(self.user!.id)/name").setValue(editedName.text)
         }
-    }
+    
+        self.dismiss(animated: true, completion: nil)
+    }*/
+    
+    func saveUser() {
+    
+         selectedImageBase64 = UserController.shared.base64Encode(profilePhoto: profilePhoto.image)
+         if(profilePicOldBase64.elementsEqual(selectedImageBase64) == false) {
+             Database.database().reference().child("Users/\(self.user!.id)/profilepic_url").setValue(selectedImageBase64)
+         }
+         
+         if(editedName.text!.elementsEqual(self.user.name) == false) {
+             Database.database().reference().child("Users/\(self.user!.id)/name").setValue(editedName.text)
+         }
+
+     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
@@ -50,17 +65,8 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIImageP
         guard let button = sender as? UIBarButtonItem, button === saveButton else {
             return
         }
-        //let name = userNameTextField.text ?? ""
-        //let password = userPasswordTextField.text ?? ""
-        //let photo = profilePhoto.image */
-        //user = User(name: name, email: password, photo: photo) //INCORRETO!!!!!!
-    }
-    
-    func base64Encode(profilePhoto: UIImage?) -> String{
-        var profilePhotoData: Data = (profilePhoto?.pngData())!
-        var profilePhotoNewBase64: String = profilePhotoData.base64EncodedString()
-        profilePhotoNewBase64 = "data:image/png;base64,\(profilePhotoNewBase64)"
-        return profilePhotoNewBase64
+        saveUser()
+        user = User(name: editedName.text!, email: user.email, id: user.id, profilePic: selectedImageBase64, latitude: user.latitude ?? "", longitude: user.longitude ?? "")
     }
     
     @IBAction func editName(_ sender: Any) {
@@ -71,7 +77,6 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIImageP
 
     @IBAction func cancelAction(_ sender: Any) {
         navigationController?.popViewController(animated: true)
-
         dismiss(animated: true, completion: nil)
     }
     

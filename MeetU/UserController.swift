@@ -207,4 +207,24 @@ class UserController {
             alert.dismiss(animated: true)
         }
     }*/
+    
+    // MARK: Image Encode and Decode
+    
+    func base64Decode(base64String: String?) -> UIImage{
+      if (base64String?.isEmpty)! {
+          return #imageLiteral(resourceName: "user_icon")
+      }else {
+          let temp = base64String?.components(separatedBy: ",")
+          let dataDecoded : Data = Data(base64Encoded: temp![1], options: .ignoreUnknownCharacters)!
+          let decodedImage = UIImage(data: dataDecoded)
+          return decodedImage!
+      }
+    }
+    
+    func base64Encode(profilePhoto: UIImage?) -> String{
+        let profilePhotoData: Data = (profilePhoto?.pngData())!
+        var profilePhotoBase64: String = profilePhotoData.base64EncodedString()
+        profilePhotoBase64 = "data:image/png;base64,\(profilePhotoBase64)"
+        return profilePhotoBase64
+    }
 } 
