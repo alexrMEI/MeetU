@@ -22,6 +22,8 @@ class UserController {
     var geoFire: GeoFire?
     var myQuery: GFQuery?
     
+    var darkMode :Bool = false
+    
     //MARK: Register User
     class func registerUser(withName: String, email: String, password: String, completion: @escaping (String) -> Swift.Void) {
         Auth.auth().createUser(withEmail: email, password: password, completion: { (authResult, error) in
@@ -108,47 +110,12 @@ class UserController {
         })
     }
     
-    //MARK: Download all Users
-    /*class func downloadAllUsers(exceptID: String, completion: @escaping (User) -> Swift.Void) {
-        Database.database().reference().child("Users").observe(.childAdded, with: { (snapshot) in
-            let id = snapshot.key
-            let data = snapshot.value as! [String: Any]
-            let credentials = data["user_details"] as! [String: String]
-            if id != exceptID {
-                let name = credentials["name"]!
-                let email = credentials["email"]!
-                let latitude = credentials["Latitude"]
-                let longitude = credentials["Longitude"]
-                let profilePic = credentials["ProfilePic"]!
-                let user = User.init(name: name, email: email, id: id, profilePic: profilePic, latitude: latitude! , longitude:longitude! )
-                completion(user)
-            }
-        })
-    }*/
-    
-    // MARK: Get Users
-    /*func getUsers()  {
-
-        //SwiftOverlays.showTextOverlay(self.view, text: "Searching users...")
-        
-        if let id = Auth.auth().currentUser?.uid {
-            UserController.downloadAllUsers(exceptID: id, completion: {(user) in
-                
-                DispatchQueue.main.async {
-                    //SwiftOverlays.removeAllBlockingOverlays()
-                    self.items.append(user)
-                }
-            })
-        }
-    }*/
-    
     // MARK: Get Users Location
-    func GetUsersLocation(completion: @escaping (User) -> Swift.Void) {
+    /*func GetUsersLocation(group: DispatchGroup, completion: @escaping (User) -> Swift.Void) {
         // TO DO
+        var number = 1;
         geoFireRef = Database.database().reference().child("Geolocs")
-        
         geoFire = GeoFire(firebaseRef: geoFireRef!)
-        
         // TO DO
         let userLat = UserDefaults.standard.value(forKey: "current_latitude") as! String
         let userLong = UserDefaults.standard.value(forKey: "current_longitude") as! String
@@ -156,69 +123,227 @@ class UserController {
         let location:CLLocation = CLLocation(latitude: CLLocationDegrees(Double(userLat)!), longitude: CLLocationDegrees(Double(userLong)!))
         
         myQuery = geoFire?.query(at: location, withRadius: 100)
-        
-        myQuery?.observe(.keyEntered, with: { (key, location) in
-            
-           // print("KEY:\(String(describing: key)) and location:\(String(describing: location))")
-            
-            //SwiftOverlays.showTextOverlay(self.view, text: "Searching for nearby users...")
-            
-            if key != Auth.auth().currentUser?.uid {
                 
+        myQuery?.observe(.keyEntered, with: { (key, location) in
+            print(key, location)
+
+            group.enter()
+            number = number + 1
+
+            print(group)
+            if key != Auth.auth().currentUser?.uid
+            {
                 let ref = Database.database().reference().child("Users").child(key)
                 
                 ref.observeSingleEvent(of: .value, with: { (snapshot) in
                     let id = snapshot.key
                     let data = snapshot.value as! [String: Any]
-                    //let credentials = data["user_details"] as! [String: String]
-                    let credentials = data as! [String: String]
-                    
-                    let name = credentials["name"]!
-                    let email = credentials["email"]!
-                    let latitude = credentials["current_latitude"] ?? "0"
-                    let longitude = credentials["current_longitude"] ?? "0"
-                    let profilePic = credentials["profilepic"]!
-                    let user = User.init(name: name, email: email, id: id, profilePic: profilePic, latitude: latitude, longitude:longitude )
-                            
-                    DispatchQueue.main.async {
-                        //SwiftOverlays.removeAllBlockingOverlays()
-                        self.items.append(user)
+                    if !(data["favouriteUsers"] is [String]) {
+                        //let credentials = data["user_details"] as! [String: String]
+                        let credentials = data as! [String: String]
+                        
+                        let name = credentials["name"]!
+                        let email = credentials["email"]!
+                        let latitude = credentials["current_latitude"] ?? "0"
+                        let longitude = credentials["current_longitude"] ?? "0"
+                        let profilePic = credentials["profilepic"] ?? ""
+
+                        let user = User.init(name: name, email: email, id: id, profilePic: profilePic, latitude: latitude , longitude:longitude )
+                        
+                        number = number - 1
                         completion(user)
-                        //self.tblUserList.reloadData()
+                        if (number == 1) {
+                            group.leave()
+                        }
+                    } else {
+                        number = number - 1
+                        group.leave()
+                        if (number == 1) {
+                            group.leave()
+                        }
                     }
                 })
-            } else {
-                DispatchQueue.main.async {
-                    //SwiftOverlays.removeAllBlockingOverlays()
+            }
+            else
+            {
+                group.leave()
+                number = number - 1
+                print(group)
+                if (number == 1) {
+                    group.leave()
                 }
+                
             }
         })
-    }
-
-    // MARK: Show Toast if fields are empty
-    /*func showToast(controller: UIViewController, message : String, seconds: Double) {
-        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        alert.view.backgroundColor = .black
-        alert.view.alpha = 0.5
-        alert.view.layer.cornerRadius = 15
-        
-        controller.present(alert, animated: true)
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds) {
-            alert.dismiss(animated: true)
-        }
     }*/
     
-    // MARK: Image Encode and Decode
+    func GetUsersLocation(group: DispatchGroup, completion: @escaping (User) -> Swift.Void) {
+        // TO DO
+        var number = 1;
+        geoFireRef = Database.database().reference().child("Geolocs")
+        geoFire = GeoFire(firebaseRef: geoFireRef!)
+        // TO DO
+        let userLat = UserDefaults.standard.value(forKey: "current_latitude") as! String
+        let userLong = UserDefaults.standard.value(forKey: "current_longitude") as! String
+        
+        let location:CLLocation = CLLocation(latitude: CLLocationDegrees(Double(userLat)!), longitude: CLLocationDegrees(Double(userLong)!))
+        
+        myQuery = geoFire?.query(at: location, withRadius: 100)
+                
+        myQuery?.observe(.keyEntered, with: { (key, location) in
+            print(key, location)
+
+            group.enter()
+            number = number + 1
+
+            print(group)
+            if key != Auth.auth().currentUser?.uid
+            {
+                let ref = Database.database().reference().child("Users").child(key)
+                
+                ref.observeSingleEvent(of: .value, with: { (snapshot) in
+                    let id = snapshot.key
+                    let data = snapshot.value as! [String: Any]
+                    if !(data["favouriteUsers"] is [String]) {
+                        //let credentials = data["user_details"] as! [String: String]
+                        let credentials = data as! [String: String]
+                        
+                        let name = credentials["name"]!
+                        let email = credentials["email"]!
+                        let latitude = credentials["current_latitude"] ?? "0"
+                        let longitude = credentials["current_longitude"] ?? "0"
+                        //let link = URL.init(string: credentials["profilepic_url"]!)
+                        /* guard let url = URL(string: "https://www.google.com/url?sa=i&url=https%3A%2F%2Fipc.digital%2Ficon-user-default%2F&psig=AOvVaw0jQrpOXTD5ycDKfr7FGioR&ust=1576412225151000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKjriamPteYCFQAAAAAdAAAAABAD") else {
+                         os_log("Invalid URL.", log: OSLog.default, type: .error)
+                         return
+                         } */
+                        
+                        // TODO: CHANGE PROFILEPIC
+                        let user = User.init(name: name, email: email, id: id, profilePic: "", latitude: latitude , longitude:longitude )
+                        
+                        number = number - 1
+                        completion(user)
+                        if (number == 1) {
+                            group.leave()
+                        }
+                        //self.tblUserList.reloadData()
+                        
+                        /* URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+                         if error == nil {
+                         
+                         //var profilePic :UIImage
+                         
+                         //let url = URL(string: "https://cdn.arstechnica.net/wp-content/uploads/2018/06/macOS-Mojave-Dynamic-Wallpaper-transition.jpg")!
+                         //var profilePic: UIImage// = self.downloadImage(from: url)
+                         
+                         
+                         let profilePic :UIImage = UIImage()
+                         
+                         //let profilePic = UIImage.init(data: data!)
+                         let user = User.init(name: name, email: email, id: id, profilePic: profilePic, latitude: latitude , longitude:longitude )
+                         
+                         DispatchQueue.main.async {
+                         //SwiftOverlays.removeAllBlockingOverlays()
+                         self.items.append(user)
+                         //self.group.leave()
+                         
+                         group.leave()
+                         completion(user)
+                         //self.tblUserList.reloadData()
+                         }
+                         
+                         }
+                         }).resume() */
+                    } else {
+                        number = number - 1
+                        group.leave()
+                        if (number == 1) {
+                            group.leave()
+                        }
+                        
+                    }
+                })
+            }
+            else
+            {
+                group.leave()
+                number = number - 1
+                print(group)
+                if (number == 1) {
+                    group.leave()
+                }
+                
+            }
+        })
+        /*self.group.wait()
+        print("all Done")
+        print(self.items.count)
+        return self.items*/
+    }
+
+    // MARK: Update favourite users list
+    func updateFavouriteUsers(userId: String, isSelectedUser: Bool){
+        let group = DispatchGroup()
+        var usersArray : [String] = [String]()
+        let userID = Auth.auth().currentUser?.uid
+        
+        group.enter()
+        
+        Database.database().reference().child("Users").child(userID!).child("favouriteUsers")
+            .observeSingleEvent(of: .value, with: { (snapshot) in
+                if (snapshot.value != nil && snapshot.exists()){
+                    usersArray = snapshot.value as! [String]
+                }
+                group.leave()
+                print(usersArray.count)
+            })
+        
+        group.notify(queue: .main){
+            if isSelectedUser {
+                usersArray.append(userId)
+                
+            }else{
+                usersArray.removeAll(where: {$0 == userId})
+            }
+            Database.database().reference().child("Users").child("\(Auth.auth().currentUser!.uid)").child("favouriteUsers")
+                .setValue(usersArray)
+        }
+    }
     
+    func getFavouriteUsers(completion: @escaping ([String]) -> Swift.Void) {
+        let group = DispatchGroup()
+        var usersArray : [String] = [String]()
+        let userID = Auth.auth().currentUser?.uid
+        
+        group.enter()
+        Database.database().reference().child("Users").child(userID!).child("favouriteUsers")
+            .observeSingleEvent(of: .value, with: { (snapshot) in
+                if (snapshot.value != nil && snapshot.exists()){
+                    usersArray = snapshot.value as! [String]
+                    completion(usersArray)
+                }
+                group.leave()
+                print(usersArray.count)
+            })
+        
+        group.notify(queue: .main){
+            print("DONE")
+        }
+    }
+    
+    // MARK: Image Encode and Decode
     func base64Decode(base64String: String?) -> UIImage{
-      if (base64String?.isEmpty)! {
-          return #imageLiteral(resourceName: "user_icon")
-      }else {
-          let temp = base64String?.components(separatedBy: ",")
-          let dataDecoded : Data = Data(base64Encoded: temp![1], options: .ignoreUnknownCharacters)!
-          let decodedImage = UIImage(data: dataDecoded)
-          return decodedImage!
-      }
+        if (base64String == nil){
+            return #imageLiteral(resourceName: "user_icon")
+        }
+        if (base64String?.isEmpty)! {
+            return #imageLiteral(resourceName: "user_icon")
+        }else {
+            let temp = base64String?.components(separatedBy: ",")
+            let dataDecoded : Data = Data(base64Encoded: temp![1], options: .ignoreUnknownCharacters)!
+            let decodedImage = UIImage(data: dataDecoded)
+            return decodedImage!
+        }
     }
     
     func base64Encode(profilePhoto: UIImage?) -> String{

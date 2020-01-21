@@ -11,14 +11,15 @@ import os.log
 import Foundation
 import Firebase
 
-class User {
+class User: NSObject  {
     //MARK: Properties
-    let name: String
+    @objc dynamic var name: String
     let email: String
     let id: String
     var profilePic: String?
     var latitude: String?
     var longitude : String?
+    var favouriteUsers: [String]
 
     //MARK: Init
     init(name: String, email: String, id: String, profilePic: String, latitude:String, longitude:String) {
@@ -28,12 +29,14 @@ class User {
         self.profilePic = profilePic
         self.latitude = latitude
         self.longitude = longitude
+        self.favouriteUsers = [String]()
     }
 
     init(user: Dictionary<String, String>, id: String) {
         self.name = user["name"]!
         self.email = user["email"]!
-        self.profilePic = user["profilepic_url"]!
+        self.profilePic = user["profilepic"]!
         self.id = id
+        self.favouriteUsers = [String]()
     }
 }

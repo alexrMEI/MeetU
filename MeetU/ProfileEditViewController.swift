@@ -31,26 +31,12 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIImageP
         profilePhoto.image = profilePicDecoded
         profilePicOldBase64 = user.profilePic
     }
-        
-    /*@IBAction func saveUser(_ sender: Any) {
-   
-        selectedImageBase64 = UserController.shared.base64Encode(profilePhoto: profilePhoto.image)
-        if(profilePicOldBase64.elementsEqual(selectedImageBase64) == false) {
-            Database.database().reference().child("Users/\(self.user!.id)/profilepic_url").setValue(selectedImageBase64)
-        }
-        
-        if(editedName.text!.elementsEqual(self.user.name) == false) {
-            Database.database().reference().child("Users/\(self.user!.id)/name").setValue(editedName.text)
-        }
-    
-        self.dismiss(animated: true, completion: nil)
-    }*/
     
     func saveUser() {
     
          selectedImageBase64 = UserController.shared.base64Encode(profilePhoto: profilePhoto.image)
          if(profilePicOldBase64.elementsEqual(selectedImageBase64) == false) {
-             Database.database().reference().child("Users/\(self.user!.id)/profilepic_url").setValue(selectedImageBase64)
+             Database.database().reference().child("Users/\(self.user!.id)/profilepic").setValue(selectedImageBase64)
          }
          
          if(editedName.text!.elementsEqual(self.user.name) == false) {
@@ -134,5 +120,15 @@ class ProfileEditViewController: UIViewController, UITextFieldDelegate, UIImageP
         profilePhoto.image = selectedImage
         // Dismiss the picker.
         dismiss(animated: true, completion: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        
+        if UserController.shared.darkMode {
+            overrideUserInterfaceStyle = .dark
+        } else {
+            overrideUserInterfaceStyle = .light
+        }
     }
 }

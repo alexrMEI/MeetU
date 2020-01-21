@@ -26,7 +26,19 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
         
         group.enter()
         Database.database().reference().child("Users").child(userUID!).observeSingleEvent(of: .value, with: {(snapshot) in
-            self.user = User.init(user: snapshot.value as! Dictionary<String, String>, id: self.userUID!)
+            let data = snapshot.value as! [String: Any]
+            if !(data["favouriteUsers"] is [String]) {
+                let credentials = data as! [String: String]
+                
+                let name = credentials["name"]!
+                let email = credentials["email"]!
+                let latitude = credentials["current_latitude"] ?? "0"
+                let longitude = credentials["current_longitude"] ?? "0"
+                let profilePic = credentials["profilepic"] ?? ""
+
+                self.user = User.init(name: name, email: email, id: self.userUID!, profilePic: profilePic, latitude: latitude , longitude:longitude )
+            }
+            //self.user = User.init(user: snapshot.value as! Dictionary<String, String>, id: self.userUID!)
             self.group.leave()
         })
         
@@ -82,6 +94,16 @@ class ProfileViewController: UIViewController, UITextFieldDelegate, UIImagePicke
     @IBAction func logout(_ sender: Any) {
         UserController.logOutUser { (true) in
             print("Successfull logout")
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationItem.setHidesBackButton(true, animated: true)
+        
+        if UserController.shared.darkMode {
+            overrideUserInterfaceStyle = .dark
+        } else {
+            overrideUserInterfaceStyle = .light
         }
     }
 }

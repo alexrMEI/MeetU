@@ -22,6 +22,16 @@
 		B40A6BB623870DC600B8DC48 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B40A6BB523870DC600B8DC48 /* MenuViewController.swift */; };
 		B47F30A923D26DC300F3164E /* ProfileEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B47F30A823D26DC300F3164E /* ProfileEditViewController.swift */; };
 		B4BF32A12385D38C007D68F0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BF32A02385D38C007D68F0 /* LoginViewController.swift */; };
+		B4F28C0F23D66E090095FDAA /* NearbyUserTableCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F28C0623D66E070095FDAA /* NearbyUserTableCellDelegate.swift */; };
+		B4F28C1023D66E090095FDAA /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F28C0723D66E070095FDAA /* AboutViewController.swift */; };
+		B4F28C1123D66E090095FDAA /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F28C0823D66E080095FDAA /* ChatViewController.swift */; };
+		B4F28C1223D66E090095FDAA /* NearbyUserListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F28C0923D66E080095FDAA /* NearbyUserListTableViewController.swift */; };
+		B4F28C1323D66E090095FDAA /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F28C0A23D66E080095FDAA /* Chat.swift */; };
+		B4F28C1423D66E090095FDAA /* FavouriteControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F28C0B23D66E080095FDAA /* FavouriteControl.swift */; };
+		B4F28C1523D66E090095FDAA /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F28C0C23D66E080095FDAA /* Message.swift */; };
+		B4F28C1623D66E090095FDAA /* NearbyUserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F28C0D23D66E090095FDAA /* NearbyUserTableViewCell.swift */; };
+		B4F28C1723D66E090095FDAA /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F28C0E23D66E090095FDAA /* SettingsViewController.swift */; };
+		B4F28C1923D66EC50095FDAA /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F28C1823D66EC50095FDAA /* CreateAccountViewController.swift */; };
 		B4FC28FB239AE8770095C555 /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FC28FA239AE8770095C555 /* UserController.swift */; };
 		B4FC28FD239B09B90095C555 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FC28FC239B09B90095C555 /* ProfileViewController.swift */; };
 		DC6BF52391ACE61F1415D33D /* Pods_MeetU_MeetUUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57113C123C32829CBE8E8621 /* Pods_MeetU_MeetUUITests.framework */; };
@@ -65,7 +75,6 @@
 		75603D89236B61AE00D81813 /* MeetUUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetUUITests.swift; sourceTree = "<group>"; };
 		75603D8B236B61AE00D81813 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75B026F62385E1F00093F06E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		75B4920E239AEA9E0069A84F /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		75C2F5B723AE353F00E5FA08 /* LocationESTG_2.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LocationESTG_2.gpx; sourceTree = "<group>"; };
 		75C2F5B823AE4C7A00E5FA08 /* LocationESTG_3.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LocationESTG_3.gpx; sourceTree = "<group>"; };
 		75D6AEBA2385C51600F16C00 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -75,6 +84,16 @@
 		B47EC6E023A5080D00E4CCEC /* LocationESTG_1.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = LocationESTG_1.gpx; sourceTree = "<group>"; };
 		B47F30A823D26DC300F3164E /* ProfileEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEditViewController.swift; sourceTree = "<group>"; };
 		B4BF32A02385D38C007D68F0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		B4F28C0623D66E070095FDAA /* NearbyUserTableCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyUserTableCellDelegate.swift; sourceTree = "<group>"; };
+		B4F28C0723D66E070095FDAA /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		B4F28C0823D66E080095FDAA /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		B4F28C0923D66E080095FDAA /* NearbyUserListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyUserListTableViewController.swift; sourceTree = "<group>"; };
+		B4F28C0A23D66E080095FDAA /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		B4F28C0B23D66E080095FDAA /* FavouriteControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavouriteControl.swift; sourceTree = "<group>"; };
+		B4F28C0C23D66E080095FDAA /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		B4F28C0D23D66E090095FDAA /* NearbyUserTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NearbyUserTableViewCell.swift; sourceTree = "<group>"; };
+		B4F28C0E23D66E090095FDAA /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		B4F28C1823D66EC50095FDAA /* CreateAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateAccountViewController.swift; path = ../../MeetUChat/MeetU/CreateAccountViewController.swift; sourceTree = "<group>"; };
 		B4FC28FA239AE8770095C555 /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		B4FC28FC239B09B90095C555 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		EB3E60CB3B050F55A9851300 /* Pods-MeetUTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeetUTests.release.xcconfig"; path = "Target Support Files/Pods-MeetUTests/Pods-MeetUTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -136,6 +155,17 @@
 			isa = PBXGroup;
 			children = (
 				75603D67236B61AC00D81813 /* AppDelegate.swift */,
+				B4F28C0723D66E070095FDAA /* AboutViewController.swift */,
+				B4F28C0A23D66E080095FDAA /* Chat.swift */,
+				B4F28C0823D66E080095FDAA /* ChatViewController.swift */,
+				B4F28C0B23D66E080095FDAA /* FavouriteControl.swift */,
+				B4F28C0C23D66E080095FDAA /* Message.swift */,
+				B4F28C0923D66E080095FDAA /* NearbyUserListTableViewController.swift */,
+				B4F28C0623D66E070095FDAA /* NearbyUserTableCellDelegate.swift */,
+				B4F28C0D23D66E090095FDAA /* NearbyUserTableViewCell.swift */,
+				B4F28C0E23D66E090095FDAA /* SettingsViewController.swift */,
+				B4BF32A02385D38C007D68F0 /* LoginViewController.swift */,
+				B4F28C1823D66EC50095FDAA /* CreateAccountViewController.swift */,
 				75603D69236B61AC00D81813 /* SceneDelegate.swift */,
 				75603D6B236B61AC00D81813 /* ViewController.swift */,
 				75603D6D236B61AC00D81813 /* Main.storyboard */,
@@ -143,14 +173,12 @@
 				75603D72236B61AE00D81813 /* LaunchScreen.storyboard */,
 				75603D75236B61AE00D81813 /* Info.plist */,
 				75D6AEBA2385C51600F16C00 /* GoogleService-Info.plist */,
-				B4BF32A02385D38C007D68F0 /* LoginViewController.swift */,
 				75B026F62385E1F00093F06E /* User.swift */,
 				B4FC28FA239AE8770095C555 /* UserController.swift */,
 				B40A6BB523870DC600B8DC48 /* MenuViewController.swift */,
 				B40A6BB7238717A000B8DC48 /* LocationESTG.gpx */,
 				B4FC28FC239B09B90095C555 /* ProfileViewController.swift */,
 				B47F30A823D26DC300F3164E /* ProfileEditViewController.swift */,
-				75B4920E239AEA9E0069A84F /* UserController.swift */,
 				B47EC6E023A5080D00E4CCEC /* LocationESTG_1.gpx */,
 				75C2F5B723AE353F00E5FA08 /* LocationESTG_2.gpx */,
 				75C2F5B823AE4C7A00E5FA08 /* LocationESTG_3.gpx */,
@@ -442,13 +470,23 @@
 			files = (
 				75603D6C236B61AC00D81813 /* ViewController.swift in Sources */,
 				B47F30A923D26DC300F3164E /* ProfileEditViewController.swift in Sources */,
+				B4F28C1023D66E090095FDAA /* AboutViewController.swift in Sources */,
 				B4FC28FB239AE8770095C555 /* UserController.swift in Sources */,
+				B4F28C1623D66E090095FDAA /* NearbyUserTableViewCell.swift in Sources */,
 				75603D68236B61AC00D81813 /* AppDelegate.swift in Sources */,
 				75B026F72385E1F00093F06E /* User.swift in Sources */,
+				B4F28C0F23D66E090095FDAA /* NearbyUserTableCellDelegate.swift in Sources */,
 				75603D6A236B61AC00D81813 /* SceneDelegate.swift in Sources */,
+				B4F28C1223D66E090095FDAA /* NearbyUserListTableViewController.swift in Sources */,
+				B4F28C1323D66E090095FDAA /* Chat.swift in Sources */,
+				B4F28C1923D66EC50095FDAA /* CreateAccountViewController.swift in Sources */,
 				B4FC28FD239B09B90095C555 /* ProfileViewController.swift in Sources */,
+				B4F28C1423D66E090095FDAA /* FavouriteControl.swift in Sources */,
 				B4BF32A12385D38C007D68F0 /* LoginViewController.swift in Sources */,
+				B4F28C1523D66E090095FDAA /* Message.swift in Sources */,
+				B4F28C1123D66E090095FDAA /* ChatViewController.swift in Sources */,
 				B40A6BB623870DC600B8DC48 /* MenuViewController.swift in Sources */,
+				B4F28C1723D66E090095FDAA /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
