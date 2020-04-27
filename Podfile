@@ -11,6 +11,10 @@ target 'MeetU' do
   pod 'Firebase/Core'
   pod 'Firebase/Auth'
   pod 'Firebase/Database'
+  pod 'SwiftOverlays', '~> 5.0.1'
+  pod ‘GeoFire’, :git => ‘https://github.com/firebase/geofire-objc.git'
+  pod 'MessageKit'
+  pod 'Firebase/Firestore'
   # add pods for any other desired Firebase products
   # https://firebase.google.com/docs/ios/setup#available-pods
   
